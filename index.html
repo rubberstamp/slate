@@ -1492,7 +1492,7 @@ kitten id, that was returned upon kitten creation.</p>
 <h2 id='update-a-kitten'>Update a Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/kittens'</span><span class="p">,</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/kittens/1'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">field01: </span><span class="s1">'value'</span>
   <span class="p">},</span>
@@ -1501,7 +1501,7 @@ kitten id, that was returned upon kitten creation.</p>
     <span class="ss">app_company_id: </span><span class="s1">'1'</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.rubberstamp.io/api/v1/kittens
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.rubberstamp.io/api/v1/kittens/1
   -X PUT
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
