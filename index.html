@@ -230,6 +230,39 @@
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
           <li>
+            <a href="#budgets" class="toc-h1 toc-link" data-title="Budgets">Budgets</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-budget" class="toc-h2 toc-link" data-title="Budgets">Create a Budget</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-budgets" class="toc-h2 toc-link" data-title="Budgets">GET All Budgets</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-budget" class="toc-h2 toc-link" data-title="Budgets">Get a specific Budget</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-budget" class="toc-h2 toc-link" data-title="Budgets">Update a Budget</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#comments" class="toc-h1 toc-link" data-title="Comments">Comments</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#add-new-comment-for-po" class="toc-h2 toc-link" data-title="Comments">Add new comment for PO</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#companies" class="toc-h1 toc-link" data-title="Companies">Companies</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-company" class="toc-h2 toc-link" data-title="Companies">Create a company</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
@@ -258,51 +291,6 @@
                   </li>
                   <li>
                     <a href="#logout" class="toc-h2 toc-link" data-title="Users">Logout</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#budgets" class="toc-h1 toc-link" data-title="Budgets">Budgets</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#create-a-budget" class="toc-h2 toc-link" data-title="Budgets">Create a Budget</a>
-                  </li>
-                  <li>
-                    <a href="#get-all-budgets" class="toc-h2 toc-link" data-title="Budgets">GET All Budgets</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-budget" class="toc-h2 toc-link" data-title="Budgets">Get a specific Budget</a>
-                  </li>
-                  <li>
-                    <a href="#update-a-budget" class="toc-h2 toc-link" data-title="Budgets">Update a Budget</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#comments" class="toc-h1 toc-link" data-title="Comments">Comments</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#add-new-comment-for-po" class="toc-h2 toc-link" data-title="Comments">Add new comment for PO</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#create-a-kitten" class="toc-h2 toc-link" data-title="Kittens">Create a Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Kittens">Get All Kittens</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Kittens">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#update-a-kitten" class="toc-h2 toc-link" data-title="Kittens">Update a Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Kittens">Delete a Specific Kitten</a>
                   </li>
               </ul>
           </li>
@@ -379,6 +367,690 @@ failure of an API request.</p>
 <td>500, 502, 503, 504</td>
 <td>Server Errors</td>
 <td>Something went wrong on Rubberstamp&#39;s end.  (these are rare)</td>
+</tr>
+</tbody></table>
+<h1 id='budgets'>Budgets</h1><h2 id='create-a-budget'>Create a Budget</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/budgets'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">budget: </span><span class="p">{</span>
+      <span class="ss">amount: </span><span class="mi">100</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+      <span class="ss">name: </span><span class="s1">'Test'</span><span class="p">,</span>
+      <span class="ss">currency_id: </span><span class="mi">1</span><span class="p">,</span>
+      <span class="ss">creator_id: </span><span class="mi">1</span><span class="p">,</span>
+      <span class="ss">allow_anyone_to_approve_a_po: </span><span class="kp">false</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.rubberstamp.io/api/v1/budgets
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -d <span class="s2">"budget[amount]=100.0"</span>
+  -d <span class="s2">"budget[name]=Test"</span>
+  -d <span class="s2">"budget[currency_id]=1"</span>
+  -d <span class="s2">"budget[creator_id=1]"</span>
+  -d <span class="s2">"budget[allow_anyone_to_approve_a_po]=false"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a new Budget and returns the Budget object that is created.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://app.rubberstamp.io/api/v1/budgets</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>registered company id</td>
+</tr>
+<tr>
+<td>budget[amount]</td>
+<td>double</td>
+<td>Budget Amount</td>
+</tr>
+<tr>
+<td>budget[name]</td>
+<td>string</td>
+<td>Budget Name</td>
+</tr>
+<tr>
+<td>budget[cost_code]</td>
+<td>string</td>
+<td>Budget cost code</td>
+</tr>
+<tr>
+<td>budget[cost_type]</td>
+<td>string</td>
+<td>Budget cost type</td>
+</tr>
+<tr>
+<td>budget[currency_id]</td>
+<td>integer</td>
+<td>Budget currency</td>
+</tr>
+<tr>
+<td>budget[creator_id]</td>
+<td>integer</td>
+<td>Budget creator</td>
+</tr>
+<tr>
+<td>budget[allow_anyone_to_approve_a_po]</td>
+<td>boolean</td>
+<td>Allow anyone to  approve a PO?</td>
+</tr>
+<tr>
+<td>budget[start_date]</td>
+<td>date</td>
+<td>Budget start date</td>
+</tr>
+<tr>
+<td>budget[end_date]</td>
+<td>date</td>
+<td>Budget end date</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-budgets'>GET All Budgets</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/budgets'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/budgets'</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advocacy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advocacy : 2017"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audit And Accountancy Fees"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audit And Accountancy Fees : 2017"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Board Expenses"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Board Expenses : 2017"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Returns a list of Budgets.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://app.rubberstamp.io/api/v1/budgets</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>registered company id</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-budget'>Get a specific Budget</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/budgets/1'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/budgets/1'</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advocacy"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advocacy : 2017"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieves the details of an existing budget. You need to supply the unique
+budget id that was returned upon budget creation.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://app.rubberstamp.io/api/v1/budgets/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>registered company id</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>integer</td>
+<td>The ID of the budget to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-budget'>Update a Budget</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/budgets/1'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">budget: </span><span class="p">{</span>
+      <span class="ss">amount: </span><span class="mi">200</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/budgets/1'</span>
+  -X PUT
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -d <span class="s2">"budget[amount]=200.0"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update the specified <code>Budget</code> by setting the value of parameters passed. Any
+parameters not provided will be left unchanged.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT https://app.rubberstamp.io/api/v1/budgets/:id</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>registered company id</td>
+</tr>
+<tr>
+<td>budget[amount]</td>
+<td>double</td>
+<td>Budget Amount</td>
+</tr>
+<tr>
+<td>budget[name]</td>
+<td>string</td>
+<td>Budget Name</td>
+</tr>
+<tr>
+<td>budget[cost_code]</td>
+<td>string</td>
+<td>Budget cost code</td>
+</tr>
+<tr>
+<td>budget[cost_type]</td>
+<td>string</td>
+<td>Budget cost type</td>
+</tr>
+<tr>
+<td>budget[currency_id]</td>
+<td>integer</td>
+<td>Budget currency</td>
+</tr>
+<tr>
+<td>budget[creator_id]</td>
+<td>integer</td>
+<td>Budget creator</td>
+</tr>
+<tr>
+<td>budget[allow_anyone_to_approve_a_po]</td>
+<td>boolean</td>
+<td>Allow anyone to  approve a PO?</td>
+</tr>
+<tr>
+<td>budget[start_date]</td>
+<td>date</td>
+<td>Budget start date</td>
+</tr>
+<tr>
+<td>budget[end_date]</td>
+<td>date</td>
+<td>Budget end date</td>
+</tr>
+</tbody></table>
+<h1 id='comments'>Comments</h1><h2 id='add-new-comment-for-po'>Add new comment for PO</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/purchase_orders/1/comments'</span><span class="p">,</span>
+  <span class="p">{</span> <span class="ss">comment: </span><span class="s1">'my first PO'</span> <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/purchase_orders/1/comments'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -d <span class="s2">"comment=my first PO"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my first PO"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"purchase_order_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1505796377</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uploads"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a new <code>Comment</code> for provided <code>Purchase Order</code> and returns the object that
+is created.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST
+https://app.rubberstamp.io/api/v1/purchase_order/:purchase_order_id/comments</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>Registered company id</td>
+</tr>
+<tr>
+<td>purchase_order_id</td>
+<td>integer</td>
+<td>Purchase order id</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>string</td>
+<td><code>Required</code> - Comment for purchase order</td>
+</tr>
+</tbody></table>
+<h1 id='companies'>Companies</h1><h2 id='create-a-company'>Create a company</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/companies'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">company: </span><span class="p">{</span>
+      <span class="ss">name: </span><span class="s1">'ABC Corp.'</span><span class="p">,</span>
+      <span class="ss">gross_or_net_config: </span><span class="mi">1</span><span class="p">,</span>
+      <span class="ss">company_setting_attributes: </span><span class="p">{</span>
+        <span class="ss">currency_id: </span><span class="mi">1</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/companies'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -d <span class="s2">"company[name]=ABC Corp."</span>
+  -d <span class="s2">"company[gross_or_net_config]=1"</span>
+  -d <span class="s2">"company[company_setting_attributes][currency_id]=1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC Corp."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a new Company and returns the <code>Company</code> object that is created.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://app.rubberstamp.io/api/v1/companies</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>company[name]</td>
+<td>string</td>
+<td><code>Required</code> - Company name</td>
+</tr>
+<tr>
+<td>company[gross_or_net_config]</td>
+<td>integer</td>
+<td>Gross or Net config</td>
+</tr>
+<tr>
+<td>company[default_tax_rate]</td>
+<td>double</td>
+<td>Default TAX Rate</td>
+</tr>
+<tr>
+<td>company[supported_currency_ids]</td>
+<td>Array[]</td>
+<td>Supported currency ids</td>
+</tr>
+<tr>
+<td>company[company_currency_exchange_rates]</td>
+<td>Array[]</td>
+<td>Currency exchange rates</td>
+</tr>
+<tr>
+<td>company[budget_attributes][0][amount]</td>
+<td>double</td>
+<td>Budget amount</td>
+</tr>
+<tr>
+<td>company[budget_attributes][0][name]</td>
+<td>string</td>
+<td>Budget Name</td>
+</tr>
+<tr>
+<td>company[budget_attributes][0][creator_id]</td>
+<td>integer</td>
+<td>Budget creator id</td>
+</tr>
+<tr>
+<td>company[budget_attributes][0][currency_id]</td>
+<td>integer</td>
+<td>Budget currency id</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][id]</td>
+<td>integer</td>
+<td>ID</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][currency_id]</td>
+<td>integer</td>
+<td><code>Required</code> - Company Setting&#39;s currency id</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][pdf_font_size]</td>
+<td>integer</td>
+<td>PDF font size</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][date_format]</td>
+<td>string</td>
+<td>Date format e.g: &quot;%Y-%m-%d&quot;</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][custom_field_to_include_in_po_number_id]</td>
+<td>integer</td>
+<td>Custom field to include in PO number ID</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][javascript]</td>
+<td>string</td>
+<td>Javascript setting</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][departments_alias]</td>
+<td>string</td>
+<td>Department alias</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][tax_label]</td>
+<td>string</td>
+<td>Tax label</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][approvals_require_login]</td>
+<td>boolean</td>
+<td>Approvals require Login?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][show_po_item_number]</td>
+<td>boolean</td>
+<td>Show PO item number?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][fixed_supplier_list]</td>
+<td>boolean</td>
+<td>Fixed supplier List?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][display_remaining_budget_amount]</td>
+<td>boolean</td>
+<td>Display remaining budget amount?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][display_budget_on_pdf]</td>
+<td>boolean</td>
+<td>Display budget on PDF?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][fixed_product_list]</td>
+<td>boolean</td>
+<td>Fixed product list?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][show_tax_column]</td>
+<td>boolean</td>
+<td>Show TAX column?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][show_company_name]</td>
+<td>boolean</td>
+<td>Show company name?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][show_approver_name]</td>
+<td>boolean</td>
+<td>Show approver name?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][user_can_add_supplier]</td>
+<td>boolean</td>
+<td>User can add supplier?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][manually_approve_by_lowest_available_approvers]</td>
+<td>boolean</td>
+<td>Manually approve by lowest available approvers?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][share_po_access_by_department]</td>
+<td>boolean</td>
+<td>Share PO access by department?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][allow_budget_overruns]</td>
+<td>boolean</td>
+<td>Allow budget overruns?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][allocations_enabled]</td>
+<td>boolean</td>
+<td>Allocations enabled?</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][pdf_background]</td>
+<td>string</td>
+<td>PDF background</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][pdf_footer]</td>
+<td>string</td>
+<td>PDF footer</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][logo]</td>
+<td>string</td>
+<td>Logo</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][logo_alignment]</td>
+<td>string</td>
+<td>Logo alignment</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][logo_content_type]</td>
+<td>string</td>
+<td>Logo content type</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][budgets_alias]</td>
+<td>string</td>
+<td>Budget alias</td>
+</tr>
+<tr>
+<td>company[company_setting_attributes][po_fields]</td>
+<td>Array[]</td>
+<td>PO fields</td>
 </tr>
 </tbody></table>
 <h1 id='users'>Users</h1><h2 id='register'>Register</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span>
@@ -944,731 +1616,6 @@ authentication_token you need to login again.</p>
 <td>authentication_token</td>
 <td>header</td>
 <td>Authentication token</td>
-</tr>
-</tbody></table>
-<h1 id='budgets'>Budgets</h1><h2 id='create-a-budget'>Create a Budget</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/budgets'</span><span class="p">,</span>
-  <span class="p">{</span>
-    <span class="ss">budget: </span><span class="p">{</span>
-      <span class="ss">amount: </span><span class="mi">100</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
-      <span class="ss">name: </span><span class="s1">'Test'</span><span class="p">,</span>
-      <span class="ss">currency_id: </span><span class="mi">1</span><span class="p">,</span>
-      <span class="ss">creator_id: </span><span class="mi">1</span><span class="p">,</span>
-      <span class="ss">allow_anyone_to_approve_a_po: </span><span class="kp">false</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-    <span class="ss">app_company_id: </span><span class="mi">1</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.rubberstamp.io/api/v1/budgets
-  -X POST
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-  -H <span class="s2">"app_company_id: 1"</span>
-  -d <span class="s2">"budget[amount]=100.0"</span>
-  -d <span class="s2">"budget[name]=Test"</span>
-  -d <span class="s2">"budget[currency_id]=1"</span>
-  -d <span class="s2">"budget[creator_id=1]"</span>
-  -d <span class="s2">"budget[allow_anyone_to_approve_a_po]=false"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Create a new Budget and returns the Budget object that is created.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.rubberstamp.io/api/v1/budgets</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>app_company_id</td>
-<td>header</td>
-<td>registered company id</td>
-</tr>
-<tr>
-<td>budget[amount]</td>
-<td>double</td>
-<td>Budget Amount</td>
-</tr>
-<tr>
-<td>budget[name]</td>
-<td>string</td>
-<td>Budget Name</td>
-</tr>
-<tr>
-<td>budget[cost_code]</td>
-<td>string</td>
-<td>Budget cost code</td>
-</tr>
-<tr>
-<td>budget[cost_type]</td>
-<td>string</td>
-<td>Budget cost type</td>
-</tr>
-<tr>
-<td>budget[currency_id]</td>
-<td>integer</td>
-<td>Budget currency</td>
-</tr>
-<tr>
-<td>budget[creator_id]</td>
-<td>integer</td>
-<td>Budget creator</td>
-</tr>
-<tr>
-<td>budget[allow_anyone_to_approve_a_po]</td>
-<td>boolean</td>
-<td>Allow anyone to  approve a PO?</td>
-</tr>
-<tr>
-<td>budget[start_date]</td>
-<td>date</td>
-<td>Budget start date</td>
-</tr>
-<tr>
-<td>budget[end_date]</td>
-<td>date</td>
-<td>Budget end date</td>
-</tr>
-</tbody></table>
-<h2 id='get-all-budgets'>GET All Budgets</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/budgets'</span><span class="p">,</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-    <span class="ss">app_company_id: </span><span class="mi">1</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/budgets'</span>
-  -X GET
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-  -H <span class="s2">"app_company_id: 1"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advocacy"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advocacy : 2017"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audit And Accountancy Fees"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audit And Accountancy Fees : 2017"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Board Expenses"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Board Expenses : 2017"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>Returns a list of Budgets.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.rubberstamp.io/api/v1/budgets</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>app_company_id</td>
-<td>header</td>
-<td>registered company id</td>
-</tr>
-</tbody></table>
-<h2 id='get-a-specific-budget'>Get a specific Budget</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/budgets/1'</span><span class="p">,</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-    <span class="ss">app_company_id: </span><span class="mi">1</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/budgets/1'</span>
-  -X GET
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-  -H <span class="s2">"app_company_id: 1"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advocacy"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advocacy : 2017"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Retrieves the details of an existing budget. You need to supply the unique
-budget id that was returned upon budget creation.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.rubberstamp.io/api/v1/budgets/:id</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Params</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>app_company_id</td>
-<td>header</td>
-<td>registered company id</td>
-</tr>
-<tr>
-<td>ID</td>
-<td>integer</td>
-<td>The ID of the budget to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='update-a-budget'>Update a Budget</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/budgets/1'</span><span class="p">,</span>
-  <span class="p">{</span>
-    <span class="ss">budget: </span><span class="p">{</span>
-      <span class="ss">amount: </span><span class="mi">200</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-    <span class="ss">app_company_id: </span><span class="mi">1</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/budgets/1'</span>
-  -X PUT
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-  -H <span class="s2">"app_company_id: 1"</span>
-  -d <span class="s2">"budget[amount]=200.0"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Update the specified <code>Budget</code> by setting the value of parameters passed. Any
-parameters not provided will be left unchanged.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT https://app.rubberstamp.io/api/v1/budgets/:id</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Params</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>app_company_id</td>
-<td>header</td>
-<td>registered company id</td>
-</tr>
-<tr>
-<td>budget[amount]</td>
-<td>double</td>
-<td>Budget Amount</td>
-</tr>
-<tr>
-<td>budget[name]</td>
-<td>string</td>
-<td>Budget Name</td>
-</tr>
-<tr>
-<td>budget[cost_code]</td>
-<td>string</td>
-<td>Budget cost code</td>
-</tr>
-<tr>
-<td>budget[cost_type]</td>
-<td>string</td>
-<td>Budget cost type</td>
-</tr>
-<tr>
-<td>budget[currency_id]</td>
-<td>integer</td>
-<td>Budget currency</td>
-</tr>
-<tr>
-<td>budget[creator_id]</td>
-<td>integer</td>
-<td>Budget creator</td>
-</tr>
-<tr>
-<td>budget[allow_anyone_to_approve_a_po]</td>
-<td>boolean</td>
-<td>Allow anyone to  approve a PO?</td>
-</tr>
-<tr>
-<td>budget[start_date]</td>
-<td>date</td>
-<td>Budget start date</td>
-</tr>
-<tr>
-<td>budget[end_date]</td>
-<td>date</td>
-<td>Budget end date</td>
-</tr>
-</tbody></table>
-<h1 id='comments'>Comments</h1><h2 id='add-new-comment-for-po'>Add new comment for PO</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/purchase_orders/1/comments'</span><span class="p">,</span>
-  <span class="p">{</span> <span class="ss">comment: </span><span class="s1">'my first PO'</span> <span class="p">},</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-    <span class="ss">app_company_id: </span><span class="mi">1</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/purchase_orders/1/comments'</span>
-  -X POST
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-  -H <span class="s2">"app_company_id: 1"</span>
-  -d <span class="s2">"comment=my first PO"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my first PO"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"purchase_order_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1505796377</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"uploads"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Create a new <code>Comment</code> for provided <code>Purchase Order</code> and returns the object that
-is created.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>POST
-https://app.rubberstamp.io/api/v1/purchase_order/:purchase_order_id/comments</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Params</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>app_company_id</td>
-<td>header</td>
-<td>Registered company id</td>
-</tr>
-<tr>
-<td>purchase_order_id</td>
-<td>integer</td>
-<td>Purchase order id</td>
-</tr>
-<tr>
-<td>comment</td>
-<td>string</td>
-<td>Comment for purchase order</td>
-</tr>
-</tbody></table>
-<h1 id='kittens'>Kittens</h1><h2 id='create-a-kitten'>Create a Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/kittens'</span><span class="p">,</span>
-  <span class="p">{</span>
-    <span class="ss">field01: </span><span class="s1">'value'</span>
-  <span class="p">},</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-    <span class="ss">app_company_id: </span><span class="s1">'1'</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.rubberstamp.io/api/v1/kittens
-  -X POST
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-  -H <span class="s2">"app_company_id: 1"</span>
-  -d <span class="s2">"field01=value"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Create a new kitten and returns the Kitten object that is created.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.rubberstamp.io/api/v1/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>app_company_id</td>
-<td>header</td>
-<td>registered company id</td>
-</tr>
-<tr>
-<td>field01</td>
-<td>string</td>
-<td>first field</td>
-</tr>
-</tbody></table>
-<h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/kittens'</span><span class="p">,</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-    <span class="ss">app_company_id: </span><span class="s1">'1'</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-
-<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/kittens'</span>
-  -X GET
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-  -H <span class="s2">"app_company_id: 1"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>Returns a list of your kittens.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.rubberstamp.io/api/v1/kittens</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>app_company_id</td>
-<td>header</td>
-<td>registered company id</td>
-</tr>
-</tbody></table>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/kittens/1'</span><span class="p">,</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-    <span class="ss">app_company_id: </span><span class="s1">'1'</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-
-<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/kittens/1'</span>
-  -X GET
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-  -H <span class="s2">"app_company_id: 1"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Retrieves the details of an existing kitten. You need to supply the unique
-kitten id, that was returned upon kitten creation.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.rubberstamp.io/api/v1/kittens/:id</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Params</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>app_company_id</td>
-<td>header</td>
-<td>registered company id</td>
-</tr>
-<tr>
-<td>ID</td>
-<td>integer</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='update-a-kitten'>Update a Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/kittens/1'</span><span class="p">,</span>
-  <span class="p">{</span>
-    <span class="ss">field01: </span><span class="s1">'value'</span>
-  <span class="p">},</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-    <span class="ss">app_company_id: </span><span class="s1">'1'</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.rubberstamp.io/api/v1/kittens/1
-  -X PUT
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-  -H <span class="s2">"app_company_id: 1"</span>
-  -d <span class="s2">"field01=value"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Update the specified kitten by setting the value of parameters passed. Any
-parameters not provided will be left unchanged.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT https://app.rubberstamp.io/api/v1/kittens/:id</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>app_company_id</td>
-<td>header</td>
-<td>registered company id</td>
-</tr>
-<tr>
-<td>field01</td>
-<td>string</td>
-<td>first field</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/kittens/1'</span><span class="p">,</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-    <span class="ss">app_company_id: </span><span class="s1">'1'</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/kittens/1'</span>
-  -X DELETE
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-  -H <span class="s2">"app_company_id: 1"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Permanently deletes a kitten. It cannot be undone. It then returns a deleted
-parameter on success. If the kitten id doesn&#39;t exists, it raises the error.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>DELETE https://app.rubberstamp.io/api/v1/kittens/:id</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Params</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>app_company_id</td>
-<td>header</td>
-<td>registered company id</td>
-</tr>
-<tr>
-<td>ID</td>
-<td>integer</td>
-<td>The ID of the kitten to retrieve</td>
 </tr>
 </tbody></table>
 
