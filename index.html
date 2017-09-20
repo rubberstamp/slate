@@ -230,6 +230,38 @@
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
           <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#register" class="toc-h2 toc-link" data-title="Users">Register</a>
+                  </li>
+                  <li>
+                    <a href="#login" class="toc-h2 toc-link" data-title="Users">Login</a>
+                  </li>
+                  <li>
+                    <a href="#get-current-user" class="toc-h2 toc-link" data-title="Users">GET Current User</a>
+                  </li>
+                  <li>
+                    <a href="#update-user" class="toc-h2 toc-link" data-title="Users">Update User</a>
+                  </li>
+                  <li>
+                    <a href="#reset-password" class="toc-h2 toc-link" data-title="Users">Reset Password</a>
+                  </li>
+                  <li>
+                    <a href="#google-login" class="toc-h2 toc-link" data-title="Users">Google Login</a>
+                  </li>
+                  <li>
+                    <a href="#get-my-currencies" class="toc-h2 toc-link" data-title="Users">Get My Currencies</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-currencies" class="toc-h2 toc-link" data-title="Users">Get All Currencies</a>
+                  </li>
+                  <li>
+                    <a href="#logout" class="toc-h2 toc-link" data-title="Users">Logout</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#budgets" class="toc-h1 toc-link" data-title="Budgets">Budgets</a>
               <ul class="toc-list-h2">
                   <li>
@@ -295,34 +327,19 @@
               </ul>
           </li>
           <li>
-            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+            <a href="#products" class="toc-h1 toc-link" data-title="Products">Products</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#register" class="toc-h2 toc-link" data-title="Users">Register</a>
+                    <a href="#create-a-product" class="toc-h2 toc-link" data-title="Products">Create a Product</a>
                   </li>
                   <li>
-                    <a href="#login" class="toc-h2 toc-link" data-title="Users">Login</a>
+                    <a href="#get-all-products" class="toc-h2 toc-link" data-title="Products">Get all Products</a>
                   </li>
                   <li>
-                    <a href="#get-current-user" class="toc-h2 toc-link" data-title="Users">GET Current User</a>
+                    <a href="#get-product-details" class="toc-h2 toc-link" data-title="Products">Get Product details</a>
                   </li>
                   <li>
-                    <a href="#update-user" class="toc-h2 toc-link" data-title="Users">Update User</a>
-                  </li>
-                  <li>
-                    <a href="#reset-password" class="toc-h2 toc-link" data-title="Users">Reset Password</a>
-                  </li>
-                  <li>
-                    <a href="#google-login" class="toc-h2 toc-link" data-title="Users">Google Login</a>
-                  </li>
-                  <li>
-                    <a href="#get-my-currencies" class="toc-h2 toc-link" data-title="Users">Get My Currencies</a>
-                  </li>
-                  <li>
-                    <a href="#get-all-currencies" class="toc-h2 toc-link" data-title="Users">Get All Currencies</a>
-                  </li>
-                  <li>
-                    <a href="#logout" class="toc-h2 toc-link" data-title="Users">Logout</a>
+                    <a href="#update-product" class="toc-h2 toc-link" data-title="Products">Update Product</a>
                   </li>
               </ul>
           </li>
@@ -399,6 +416,571 @@ failure of an API request.</p>
 <td>500, 502, 503, 504</td>
 <td>Server Errors</td>
 <td>Something went wrong on Rubberstamp&#39;s end.  (these are rare)</td>
+</tr>
+</tbody></table>
+<h1 id='users'>Users</h1><h2 id='register'>Register</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s2">"email=api@example.com"</span>
+  -d <span class="s2">"password=pass1234"</span>
+  -d <span class="s2">"password_confirmation=pass1234"</span>
+  -d <span class="s2">"name=Api user"</span>
+  -d <span class="s2">"phone_number=98xxxxxxxx"</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
+    <span class="ss">password: </span><span class="s1">'pass1234'</span><span class="p">,</span>
+    <span class="ss">password_confirmation: </span><span class="s1">'pass1234'</span><span class="p">,</span>
+    <span class="ss">name: </span><span class="s1">'Api user'</span><span class="p">,</span>
+    <span class="ss">phone_number: </span><span class="s1">'98xxxxxx'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Api user"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98xxxxxxxx"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t0k3n"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint will register you as a rubberstamp user, send confirmation link
+to your email and you can confirm it. It will returns <code>User</code> object along
+with <code>authentication_token</code>.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://app.rubberstamp.io/api/v1/register</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Your registered email address</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>strong password</td>
+</tr>
+<tr>
+<td>password_confirmation</td>
+<td>string</td>
+<td>password confirmation</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Your First Name and Last Name</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>string</td>
+<td>Phone number</td>
+</tr>
+</tbody></table>
+<h2 id='login'>Login</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/login'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
+    <span class="ss">password: </span><span class="s1">'pass1234'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/login'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s2">"email=api@example.com"</span>
+  -d <span class="s2">"password=pass1234"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Api user"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98xxxxxxxx"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t0k3n"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Demo Company"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns <code>User</code> object along with <code>authentication_token</code>.</p>
+
+<p>RubberStamp expects for the Authentication token to be included in all API
+requests to the server in a header.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://app.rubberstamp.io/api/v1/login[.json]</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Your registered email address</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>strong password</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember — You need to be a valid user to get authenticated. If you haven't
+registered yet, try register api.
+</aside>
+<h2 id='get-current-user'>GET Current User</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/currentuser'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="s1">'1'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/currentuser'</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Api user"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98xxxxxxxx"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t0k3n"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Demo Company"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieves the details of current logged in user. You need to supply the user&#39;s
+authentication token and company id as a header params.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://app.rubberstamp.io/api/v1/currentuser</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>registered company id</td>
+</tr>
+</tbody></table>
+<h2 id='update-user'>Update User</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/currentuser'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">email: </span><span class="s1">'john@example.com'</span><span class="p">,</span>
+    <span class="ss">password: </span><span class="s1">'password'</span><span class="p">,</span>
+    <span class="ss">name: </span><span class="s1">'John Doe'</span><span class="p">,</span>
+    <span class="ss">phone_number: </span><span class="s1">'98xxxxxxxx'</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span> <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.rubberstamp.io/api/v1/currentuser
+  -X PUT
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -d <span class="s2">"email=john@example.com"</span>
+  -d <span class="s2">"password=password"</span>
+  -d <span class="s2">"name=John Doe"</span>
+  -d <span class="s2">"phone_number=98xxxxxxxx"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98xxxxxxxx"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newt0k3n"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Demo Company"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update current logged in user setting the value of parameters passed. Any
+parameters not provided will be left unchanged.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT https://app.rubberstamp.io/api/v1/currentuser</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>registered company id</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>email</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>strong password</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Your First and Last name</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>string</td>
+<td>Phone number</td>
+</tr>
+</tbody></table>
+<h2 id='reset-password'>Reset Password</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/reset_password'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s2">"email=api@example.com"</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/reset_password'</span><span class="p">,</span>
+  <span class="p">{</span> <span class="ss">email: </span><span class="s1">'api@example.com'</span> <span class="p">}</span>
+<span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Sends password reset instructions in your email inbox. You need to pass your
+valid email address as a parameter. After you get the password reset instruction
+in your inbox, you can click on the link which will redirect you to the password
+reset page and you can reset your password from there.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST https://app.rubberstamp.io/api/v1/reset_password</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Your registered email address</td>
+</tr>
+</tbody></table>
+<h2 id='google-login'>Google Login</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/google_login'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s2">"email=api@example.com"</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/google_login'</span><span class="p">,</span>
+  <span class="p">{</span> <span class="ss">email: </span><span class="s1">'api@example.com'</span> <span class="p">}</span>
+<span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Api user"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98xxxxxxxx"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t0k3n"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Demo Company"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It will return <code>User</code> object back with the matching email address.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://app.rubberstamp.io/api/v1/google_login</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Your registered email address</td>
+</tr>
+</tbody></table>
+<h2 id='get-my-currencies'>Get My Currencies</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/currencies'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="s1">'1'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/currencies'</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"978"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Euro"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"826"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"British Pound"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Returns a list of currencies that are enabled for given company id.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://app.rubberstamp.io/api/v1/currencies</code></p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>registered company id</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-currencies'>Get All Currencies</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/all_currencies'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/all_currencies'</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AFN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"971"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Afghan Afghani"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"؋"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"008"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Albanian Lek"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"L"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DZD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"012"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algerian Dinar"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"د.ج"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AOA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"973"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Angolan Kwanza"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kz"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"032"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Argentine Peso"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"051"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Armenian Dram"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"դր."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWG"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"533"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aruban Florin"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ƒ"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"036"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australian Dollar"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Returns a list of all available currencies.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://app.rubberstamp.io/api/v1/all_currencies</code></p>
+<h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+</tbody></table>
+<h2 id='logout'>Logout</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/logout'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.rubberstamp.io/api/v1/logout
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Logged out"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Logout user and set authentication_token to nil. If you want new
+authentication_token you need to login again.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST https://app.rubberstamp.io/api/v1/logout</code></p>
+<h3 id='query-parameters-8'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
 </tr>
 </tbody></table>
 <h1 id='budgets'>Budgets</h1><h2 id='create-a-budget'>Create a Budget</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
@@ -1849,8 +2431,8 @@ department id, that was returned upon department creation.</p>
   </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Update the specified department by setting the value of parameters passed. 
-Any parameters not provoded will be left unchanged.</p>
+<p>Update the specified department by setting the value of parameters passed.
+Any parameters not provided will be left unchanged.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>PUT https://app.rubberstamp.io/api/v1/departments/:id</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
@@ -1922,162 +2504,159 @@ Any parameters not provoded will be left unchanged.</p>
 <td>User IDs</td>
 </tr>
 </tbody></table>
-<h1 id='users'>Users</h1><h2 id='register'>Register</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span>
-  -X POST
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -d <span class="s2">"email=api@example.com"</span>
-  -d <span class="s2">"password=pass1234"</span>
-  -d <span class="s2">"password_confirmation=pass1234"</span>
-  -d <span class="s2">"name=Api user"</span>
-  -d <span class="s2">"phone_number=98xxxxxxxx"</span>
-</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<h1 id='products'>Products</h1><h2 id='create-a-product'>Create a Product</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span><span class="p">,</span>
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/products'</span><span class="p">,</span>
   <span class="p">{</span>
-    <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
-    <span class="ss">password: </span><span class="s1">'pass1234'</span><span class="p">,</span>
-    <span class="ss">password_confirmation: </span><span class="s1">'pass1234'</span><span class="p">,</span>
-    <span class="ss">name: </span><span class="s1">'Api user'</span><span class="p">,</span>
-    <span class="ss">phone_number: </span><span class="s1">'98xxxxxx'</span>
+    <span class="ss">product: </span><span class="p">{</span>
+      <span class="ss">description: </span><span class="s1">'1 IPad Charging Station'</span><span class="p">,</span>
+      <span class="ss">sku: </span><span class="s1">'SKU-001'</span><span class="p">,</span>
+      <span class="ss">unit_price: </span><span class="mi">44</span><span class="o">.</span><span class="mi">23</span><span class="p">,</span>
+      <span class="ss">supplier_id: </span><span class="mi">1</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-
-<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/products'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -d <span class="s2">"product[description]=1 IPad Charging Station"</span>
+  -d <span class="s2">"product[sku]=SKU-001"</span>
+  -d <span class="s2">"product[unit_price]=44.23"</span>
+  -d <span class="s2">"product[supplier_id]=1"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Api user"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98xxxxxxxx"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t0k3n"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="s2">"supplier_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU-001"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 IPad Charging Station"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44.23"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint will register you as a rubberstamp user, send confirmation link
-to your email and you can confirm it. It will returns <code>User</code> object along
-with <code>authentication_token</code>.</p>
+<p>Create a new products and returns the <code>Product</code> object that is created.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.rubberstamp.io/api/v1/register</code></p>
+<p><code>POST https://app.rubberstamp.io/api/v1/products</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
-<th>Param</th>
+<th>Params</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>email</td>
-<td>string</td>
-<td>Your registered email address</td>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
 </tr>
 <tr>
-<td>password</td>
-<td>string</td>
-<td>strong password</td>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company ID</td>
 </tr>
 <tr>
-<td>password_confirmation</td>
+<td>product[description]</td>
 <td>string</td>
-<td>password confirmation</td>
+<td><code>Required</code> Product Description</td>
 </tr>
 <tr>
-<td>name</td>
+<td>product[sku]</td>
 <td>string</td>
-<td>Your First Name and Last Name</td>
+<td>Product Stock Keeping Unit (sku)</td>
 </tr>
 <tr>
-<td>phone_number</td>
-<td>string</td>
-<td>Phone number</td>
+<td>product[unit_price]</td>
+<td>decimal</td>
+<td>Product Unit Price</td>
+</tr>
+<tr>
+<td>product[supplier_id]</td>
+<td>integer</td>
+<td>Supplier ID</td>
 </tr>
 </tbody></table>
-<h2 id='login'>Login</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<h2 id='get-all-products'>Get all Products</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/login'</span><span class="p">,</span>
-  <span class="p">{</span>
-    <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
-    <span class="ss">password: </span><span class="s1">'pass1234'</span>
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/products'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-
-<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/login'</span>
-  -X POST
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/products'</span>
+  -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
-  -d <span class="s2">"email=api@example.com"</span>
-  -d <span class="s2">"password=pass1234"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Api user"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98xxxxxxxx"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t0k3n"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Demo Company"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"supplier_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU-001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 IPad Charging Station"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44.23"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"supplier_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU-002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Macbook Air Retina"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1300"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint returns <code>User</code> object along with <code>authentication_token</code>.</p>
-
-<p>RubberStamp expects for the Authentication token to be included in all API
-requests to the server in a header.</p>
+<p>Returns a list of your products.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://app.rubberstamp.io/api/v1/login[.json]</code></p>
+<p><code>GET https://app.rubberstamp.io/api/v1/products</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
-<th>Param</th>
+<th>Params</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>email</td>
-<td>string</td>
-<td>Your registered email address</td>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
 </tr>
 <tr>
-<td>password</td>
-<td>string</td>
-<td>strong password</td>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company ID</td>
 </tr>
 </tbody></table>
+<h2 id='get-product-details'>Get Product details</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<aside class="success">
-Remember — You need to be a valid user to get authenticated. If you haven't
-registered yet, try register api.
-</aside>
-<h2 id='get-current-user'>GET Current User</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/currentuser'</span><span class="p">,</span>
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/products/1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-    <span class="ss">app_company_id: </span><span class="s1">'1'</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-
-<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/currentuser'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/products/1'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -2088,25 +2667,18 @@ registered yet, try register api.
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Api user"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98xxxxxxxx"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t0k3n"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Demo Company"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"supplier_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU-001"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 IPad Charging Station"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44.23"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Retrieves the details of current logged in user. You need to supply the user&#39;s
-authentication token and company id as a header params.</p>
+<p>Retrieves the details of an existing products. You need to supply the unique
+product id, that was returned upon product creation.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.rubberstamp.io/api/v1/currentuser</code></p>
+<p><code>GET https://app.rubberstamp.io/api/v1/products/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2123,59 +2695,56 @@ authentication token and company id as a header params.</p>
 <tr>
 <td>app_company_id</td>
 <td>header</td>
-<td>registered company id</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>integer</td>
+<td>Product ID</td>
 </tr>
 </tbody></table>
-<h2 id='update-user'>Update User</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<h2 id='update-product'>Update Product</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/currentuser'</span><span class="p">,</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/products/1'</span><span class="p">,</span>
   <span class="p">{</span>
-    <span class="ss">email: </span><span class="s1">'john@example.com'</span><span class="p">,</span>
-    <span class="ss">password: </span><span class="s1">'password'</span><span class="p">,</span>
-    <span class="ss">name: </span><span class="s1">'John Doe'</span><span class="p">,</span>
-    <span class="ss">phone_number: </span><span class="s1">'98xxxxxxxx'</span>
+    <span class="ss">product: </span><span class="p">{</span>
+      <span class="ss">description: </span><span class="s1">'updated'</span>
+    <span class="p">}</span>
   <span class="p">},</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span> <span class="p">}</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.rubberstamp.io/api/v1/currentuser
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/products/1'</span>
   -X PUT
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
   -H <span class="s2">"app_company_id: 1"</span>
-  -d <span class="s2">"email=john@example.com"</span>
-  -d <span class="s2">"password=password"</span>
-  -d <span class="s2">"name=John Doe"</span>
-  -d <span class="s2">"phone_number=98xxxxxxxx"</span>
+  -d <span class="s2">"product[description]=updated"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>the above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98xxxxxxxx"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newt0k3n"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Demo Company"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"supplier_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU-001"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"updated"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44.23"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Update current logged in user setting the value of parameters passed. Any
-parameters not provided will be left unchanged.</p>
+<p>Update the specified department by setting the value of parameters passed.
+Any parameters not provided will be left unchanged.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT https://app.rubberstamp.io/api/v1/currentuser</code></p>
+<p><code>PUT https://app.rubberstamp.io/api/v1/products/:id</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
-<th>Param</th>
+<th>Params</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
@@ -2188,303 +2757,32 @@ parameters not provided will be left unchanged.</p>
 <tr>
 <td>app_company_id</td>
 <td>header</td>
-<td>registered company id</td>
+<td>Company ID</td>
 </tr>
 <tr>
-<td>email</td>
+<td>ID</td>
+<td>integer</td>
+<td>Product ID</td>
+</tr>
+<tr>
+<td>product[description]</td>
 <td>string</td>
-<td>email</td>
+<td><code>Required</code> Product Description</td>
 </tr>
 <tr>
-<td>password</td>
+<td>product[sku]</td>
 <td>string</td>
-<td>strong password</td>
+<td>Product Stock Keeping Unit (sku)</td>
 </tr>
 <tr>
-<td>name</td>
-<td>string</td>
-<td>Your First and Last name</td>
+<td>product[unit_price]</td>
+<td>decimal</td>
+<td>Product Unit Price</td>
 </tr>
 <tr>
-<td>phone_number</td>
-<td>string</td>
-<td>Phone number</td>
-</tr>
-</tbody></table>
-<h2 id='reset-password'>Reset Password</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/reset_password'</span>
-  -X POST
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -d <span class="s2">"email=api@example.com"</span>
-</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/reset_password'</span><span class="p">,</span>
-  <span class="p">{</span> <span class="ss">email: </span><span class="s1">'api@example.com'</span> <span class="p">}</span>
-<span class="p">)</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Sends password reset instructions in your email inbox. You need to pass your
-valid email address as a parameter. After you get the password reset instruction
-in your inbox, you can click on the link which will redirect you to the password
-reset page and you can reset your password from there.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST https://app.rubberstamp.io/api/v1/reset_password</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email</td>
-<td>string</td>
-<td>Your registered email address</td>
-</tr>
-</tbody></table>
-<h2 id='google-login'>Google Login</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/google_login'</span>
-  -X POST
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -d <span class="s2">"email=api@example.com"</span>
-</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/google_login'</span><span class="p">,</span>
-  <span class="p">{</span> <span class="ss">email: </span><span class="s1">'api@example.com'</span> <span class="p">}</span>
-<span class="p">)</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Api user"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98xxxxxxxx"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t0k3n"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Demo Company"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>It will return <code>User</code> object back with the matching email address.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
-<p><code>POST https://app.rubberstamp.io/api/v1/google_login</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email</td>
-<td>string</td>
-<td>Your registered email address</td>
-</tr>
-</tbody></table>
-<h2 id='get-my-currencies'>Get My Currencies</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/currencies'</span><span class="p">,</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-    <span class="ss">app_company_id: </span><span class="s1">'1'</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/currencies'</span>
-  -X GET
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-  -H <span class="s2">"app_company_id: 1"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"978"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Euro"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"826"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"British Pound"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="err">...</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>Returns a list of currencies that are enabled for given company id.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
-<p><code>GET https://app.rubberstamp.io/api/v1/currencies</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>app_company_id</td>
-<td>header</td>
-<td>registered company id</td>
-</tr>
-</tbody></table>
-<h2 id='get-all-currencies'>Get All Currencies</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/all_currencies'</span><span class="p">,</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/all_currencies'</span>
-  -X GET
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AFN"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"971"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Afghan Afghani"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"؋"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"008"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Albanian Lek"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"L"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DZD"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"012"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algerian Dinar"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"د.ج"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AOA"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"973"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Angolan Kwanza"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kz"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"032"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Argentine Peso"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMD"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"051"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Armenian Dram"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"դր."</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWG"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"533"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aruban Florin"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ƒ"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"036"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australian Dollar"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="err">...</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>Returns a list of all available currencies.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
-<p><code>GET https://app.rubberstamp.io/api/v1/all_currencies</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
-</tr>
-</tbody></table>
-<h2 id='logout'>Logout</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/logout'</span><span class="p">,</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">authentication_token: </span><span class="s1">'your token'</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.rubberstamp.io/api/v1/logout
-  -X POST
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"authentication_token: your token"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Logged out"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Logout user and set authentication_token to nil. If you want new
-authentication_token you need to login again.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
-<p><code>POST https://app.rubberstamp.io/api/v1/logout</code></p>
-<h3 id='query-parameters-8'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authentication_token</td>
-<td>header</td>
-<td>Authentication token</td>
+<td>product[supplier_id]</td>
+<td>integer</td>
+<td>Supplier ID</td>
 </tr>
 </tbody></table>
 
