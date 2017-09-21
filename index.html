@@ -3306,10 +3306,10 @@ these values will determine the status of the Purchase Order.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Returns a list of purchase orders. The response of purchase orders are paginated,
-so it will only return first 20 records as a response. You can send <code>page</code> params
-to load other records e.g: <code>/api/v1/purchase_orders?page=2</code>.</p>
+so it will only return first 20 records as a response.</p>
 <h3 id='pagination'>Pagination</h3>
-<p>You can also see <code>meta</code> key in the response you get, that will return informations
+<p>You can send <code>page</code> params to load other records e.g: <code>/api/v1/purchase_orders?page=2</code>.
+You can also see <code>meta</code> key in the response you get, that will return informations
 like <code>current_page</code>, <code>next_page</code>, <code>previous_page</code>, <code>total_pages</code>, and <code>total_count</code>
 to help your write your own logic of pagination.</p>
 <h3 id='search'>Search</h3>
