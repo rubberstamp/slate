@@ -360,6 +360,20 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#uploads" class="toc-h1 toc-link" data-title="Uploads">Uploads</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#purchase-order-upload" class="toc-h2 toc-link" data-title="Uploads">Purchase Order Upload</a>
+                  </li>
+                  <li>
+                    <a href="#po-comment-upload" class="toc-h2 toc-link" data-title="Uploads">PO Comment Upload</a>
+                  </li>
+                  <li>
+                    <a href="#get-status" class="toc-h2 toc-link" data-title="Uploads">Get Status</a>
+                  </li>
+              </ul>
+          </li>
       </div>
         <ul class="toc-footer">
             <li><a href='#'>Sign Up for a Developer Key</a></li>
@@ -3555,6 +3569,207 @@ them in JSON format.</p>
 <td>app_company_id</td>
 <td>header</td>
 <td>Company ID</td>
+</tr>
+</tbody></table>
+<h1 id='uploads'>Uploads</h1><h2 id='purchase-order-upload'>Purchase Order Upload</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/uploads/po'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">po_id: </span><span class="s1">'1'</span><span class="p">,</span>
+    <span class="ss">uploads_attributes: </span><span class="p">{</span>
+      <span class="ss">upload_token: </span><span class="s1">'myuploadtoken'</span><span class="p">,</span>
+      <span class="ss">file: </span><span class="s1">'file upload field value'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/uploads/po'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -d <span class="s2">"po_id=1"</span>
+  -d <span class="s2">"uploads_attributes[upload_token]=myuploadtoken"</span>
+  -d <span class="s2">"uploads_attributes[file]=file upload field value"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"file_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"purchase_order.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3-eu-west-1.amazonaws.com/bucket/uploads/files/000/100/959/original/myAvatar.png?1505993714"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"upload_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myuploadtoken"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Add upload for Purchase Order, upload it to s3, and then returns the content
+in json format.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://app.rubberstamp.io/api/v1/uploads/po</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>po_id</td>
+<td>integer</td>
+<td>Purchase Order ID</td>
+</tr>
+<tr>
+<td>uploads_attributes[upload_token]</td>
+<td>string</td>
+<td>Upload Token</td>
+</tr>
+<tr>
+<td>uploads_attributes[file]</td>
+<td>file</td>
+<td>File field</td>
+</tr>
+</tbody></table>
+<h2 id='po-comment-upload'>PO Comment Upload</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/uploads/poc'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">poc_id: </span><span class="s1">'1'</span><span class="p">,</span>
+    <span class="ss">uploads_attributes: </span><span class="p">{</span>
+      <span class="ss">upload_token: </span><span class="s1">'myuploadtoken1'</span><span class="p">,</span>
+      <span class="ss">file: </span><span class="s1">'file upload field value'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/uploads/poc'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -d <span class="s2">"poc_id=1"</span>
+  -d <span class="s2">"uploads_attributes[upload_token]=myuploadtoken1"</span>
+  -d <span class="s2">"uploads_attributes[file]=file upload field value"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"file_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"purchase_order_comment.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3-eu-west-1.amazonaws.com/bucket/uploads/files/001/100/959/original/myAvatar.png?1505993715"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"upload_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myuploadtoken1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Add upload for Purchase Order, upload it to s3, and then returns the content
+in json format.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://app.rubberstamp.io/api/v1/uploads/poc</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>poc_id</td>
+<td>integer</td>
+<td>Purchase Order Comment ID</td>
+</tr>
+<tr>
+<td>uploads_attributes[upload_token]</td>
+<td>string</td>
+<td>Upload Token</td>
+</tr>
+<tr>
+<td>uploads_attributes[file]</td>
+<td>file</td>
+<td>File field</td>
+</tr>
+</tbody></table>
+<h2 id='get-status'>Get Status</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/uploads/status?upload_token=myuploadtoken1'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/uploads/status?upload_token=myuploadtoken1'</span>
+  -X GET
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+</code></pre>
+<blockquote>
+<p>The above command will returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"file_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"purchase_order_comment.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3-eu-west-1.amazonaws.com/bucket/uploads/files/001/100/959/original/myAvatar.png?1505993715"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"upload_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myuploadtoken1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Expects <code>upload_token</code> to be passed in the url params and return matching upload
+object in JSON format.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://app.rubberstamp.io/api/v1/uploads/status?upload_token=your token</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>upload_token</td>
+<td>string</td>
+<td>Upload Token in url params</td>
 </tr>
 </tbody></table>
 
