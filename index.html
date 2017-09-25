@@ -483,7 +483,9 @@ failure of an API request.</p>
 <td>Something went wrong on Rubberstamp&#39;s end.  (these are rare)</td>
 </tr>
 </tbody></table>
-<h1 id='users'>Users</h1><h2 id='register'>Register</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span>
+<h1 id='users'>Users</h1><h2 id='register'>Register</h2><pre class="highlight shell tab-shell"><code><span class="c"># Example Without Tracking Info</span>
+
+curl <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s2">"email=api@example.com"</span>
@@ -491,9 +493,29 @@ failure of an API request.</p>
   -d <span class="s2">"password_confirmation=pass1234"</span>
   -d <span class="s2">"name=Api user"</span>
   -d <span class="s2">"phone_number=98xxxxxxxx"</span>
+
+<span class="c"># Example With Tracking Info</span>
+
+curl <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"tracking_info[properties][uuid]=your uuid"</span>
+  -H <span class="s2">"tracking_info[properties][is_web_view]=false"</span>
+  -H <span class="s2">"tracking_info[properties][is_ipad]=false"</span>
+  -H <span class="s2">"tracking_info[properties][is_ios]=true"</span>
+  -H <span class="s2">"tracking_info[properties][is_android]=false"</span>
+  -H <span class="s2">"tracking_info[properties][platform]=ios"</span>
+  -H <span class="s2">"tracking_info[properties][version]=0"</span>
+  -d <span class="s2">"email=api@example.com"</span>
+  -d <span class="s2">"password=pass1234"</span>
+  -d <span class="s2">"password_confirmation=pass1234"</span>
+  -d <span class="s2">"name=Api user"</span>
+  -d <span class="s2">"phone_number=98xxxxxxxx"</span>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+<span class="c1"># Example Without Tracking Info</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
   <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
@@ -504,7 +526,33 @@ failure of an API request.</p>
   <span class="p">}</span>
 <span class="p">)</span>
 
-<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+<span class="c1"># Example With Tracking Info</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
+    <span class="ss">password: </span><span class="s1">'pass1234'</span><span class="p">,</span>
+    <span class="ss">password_confirmation: </span><span class="s1">'pass1234'</span><span class="p">,</span>
+    <span class="ss">name: </span><span class="s1">'Api user'</span><span class="p">,</span>
+    <span class="ss">phone_number: </span><span class="s1">'98xxxxxx'</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"tracking_info"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="p">{</span>
+        <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"uuid"</span><span class="p">:</span> <span class="s2">"your uuid"</span><span class="p">,</span>
+          <span class="s2">"is_web_view"</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+          <span class="s2">"is_ipad"</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+          <span class="s2">"is_ios"</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+          <span class="s2">"is_android"</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+          <span class="s2">"platform"</span><span class="p">:</span> <span class="s2">"ios"</span><span class="p">,</span>
+          <span class="s2">"version"</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">)</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -526,7 +574,23 @@ to your email and you can confirm it. It will returns <code>User</code> object a
 with <code>authentication_token</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.rubberstamp.io/api/v1/register</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='tracking-registration'>Tracking Registration</h3>
+<p>You can track each registration with <a href="https://segment.com">segment.io</a> by passing
+<code>tracking_info</code> <code>HEADER</code> params as shown in the example.</p>
+<pre class="highlight ruby tab-ruby"><code><span class="s2">"tracking_info"</span><span class="p">:</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"uuid"</span><span class="p">:</span> <span class="s2">"your uuid"</span><span class="p">,</span>
+      <span class="s2">"is_web_view"</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+      <span class="s2">"is_ipad"</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+      <span class="s2">"is_ios"</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+      <span class="s2">"is_android"</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+      <span class="s2">"platform"</span><span class="p">:</span> <span class="s2">"ios"</span><span class="p">,</span>
+      <span class="s2">"version"</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Param</th>
@@ -559,10 +623,47 @@ with <code>authentication_token</code>.</p>
 <td>string</td>
 <td>Phone number</td>
 </tr>
+<tr>
+<td>tracking_info[properties][uuid]</td>
+<td>header</td>
+<td>Pass uuid to track</td>
+</tr>
+<tr>
+<td>tracking_info[properties][is_web-view]</td>
+<td>header</td>
+<td><code>true</code> if user is using web browsers otherwise <code>false</code></td>
+</tr>
+<tr>
+<td>tracking_info[properties][is_ipad]</td>
+<td>header</td>
+<td><code>true</code> if user is using IPad otherwise <code>false</code></td>
+</tr>
+<tr>
+<td>tracking_info[properties][is_ios]</td>
+<td>header</td>
+<td><code>true</code> if user is using IOS device otherwise <code>false</code></td>
+</tr>
+<tr>
+<td>tracking_info[properties][is_android]</td>
+<td>header</td>
+<td><code>true</code> if user is using android device otherwise <code>false</code></td>
+</tr>
+<tr>
+<td>tracking_info[properties][platform]</td>
+<td>header</td>
+<td>device platform</td>
+</tr>
+<tr>
+<td>tracking_info[properties][version]</td>
+<td>header</td>
+<td>device version</td>
+</tr>
 </tbody></table>
 <h2 id='login'>Login</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+<span class="c1"># Example Without Tracking info</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
   <span class="s1">'https://app.rubberstamp.io/api/v1/login'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
@@ -570,10 +671,49 @@ with <code>authentication_token</code>.</p>
   <span class="p">}</span>
 <span class="p">)</span>
 
-<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/login'</span>
+<span class="c1"># Example With Tracking Info</span>
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/login'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
+    <span class="ss">password: </span><span class="s1">'pass1234'</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"tracking_info"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="p">{</span>
+        <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"uuid"</span><span class="p">:</span> <span class="s2">"your uuid"</span><span class="p">,</span>
+          <span class="s2">"is_web_view"</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+          <span class="s2">"is_ipad"</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+          <span class="s2">"is_ios"</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+          <span class="s2">"is_android"</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+          <span class="s2">"platform"</span><span class="p">:</span> <span class="s2">"ios"</span><span class="p">,</span>
+          <span class="s2">"version"</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># Example Without Tracking Info</span>
+
+curl <span class="s1">'https://app.rubberstamp.io/api/v1/login'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s2">"email=api@example.com"</span>
+  -d <span class="s2">"password=pass1234"</span>
+
+<span class="c"># Example With Tracking Info</span>
+
+curl <span class="s1">'https://app.rubberstamp.io/api/v1/login'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"tracking_info[properties][uuid]=your uuid"</span>
+  -H <span class="s2">"tracking_info[properties][is_web_view]=false"</span>
+  -H <span class="s2">"tracking_info[properties][is_ipad]=false"</span>
+  -H <span class="s2">"tracking_info[properties][is_ios]=true"</span>
+  -H <span class="s2">"tracking_info[properties][is_android]=false"</span>
+  -H <span class="s2">"tracking_info[properties][platform]=ios"</span>
+  -H <span class="s2">"tracking_info[properties][version]=0"</span>
   -d <span class="s2">"email=api@example.com"</span>
   -d <span class="s2">"password=pass1234"</span>
 </code></pre>
@@ -602,7 +742,10 @@ with <code>authentication_token</code>.</p>
 <p>RubberStamp expects for the Authentication token to be included in all API
 requests to the server in a header.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://app.rubberstamp.io/api/v1/login[.json]</code></p>
+<p><code>POST https://app.rubberstamp.io/api/v1/login</code></p>
+<h3 id='tracking-registration-2'>Tracking Registration</h3>
+<p>You can track each login with <a href="https://segment.com">segment.io</a> by passing
+<code>tracking_info</code> <code>HEADER</code> params as shown in the example.</p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -620,6 +763,41 @@ requests to the server in a header.</p>
 <td>password</td>
 <td>string</td>
 <td>strong password</td>
+</tr>
+<tr>
+<td>tracking_info[properties][uuid]</td>
+<td>header</td>
+<td>Pass uuid to track</td>
+</tr>
+<tr>
+<td>tracking_info[properties][is_web-view]</td>
+<td>header</td>
+<td><code>true</code> if user is using web browsers otherwise <code>false</code></td>
+</tr>
+<tr>
+<td>tracking_info[properties][is_ipad]</td>
+<td>header</td>
+<td><code>true</code> if user is using IPad otherwise <code>false</code></td>
+</tr>
+<tr>
+<td>tracking_info[properties][is_ios]</td>
+<td>header</td>
+<td><code>true</code> if user is using IOS device otherwise <code>false</code></td>
+</tr>
+<tr>
+<td>tracking_info[properties][is_android]</td>
+<td>header</td>
+<td><code>true</code> if user is using android device otherwise <code>false</code></td>
+</tr>
+<tr>
+<td>tracking_info[properties][platform]</td>
+<td>header</td>
+<td>device platform</td>
+</tr>
+<tr>
+<td>tracking_info[properties][version]</td>
+<td>header</td>
+<td>device version</td>
 </tr>
 </tbody></table>
 
@@ -1234,6 +1412,9 @@ authentication_token you need to login again.</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Returns a list of Budgets.</p>
+<h3 id='filter-budgets-by-department_id'>Filter budgets by department_id</h3>
+<p>you can pass <code>department_id</code> query params to filter budgets by departments like:
+<code>/api/v1/budgets?department_id=1</code></p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://app.rubberstamp.io/api/v1/budgets</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
@@ -1253,6 +1434,11 @@ authentication_token you need to login again.</p>
 <td>app_company_id</td>
 <td>header</td>
 <td>registered company id</td>
+</tr>
+<tr>
+<td>department_id</td>
+<td>integer</td>
+<td>Filter budgets by department</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-specific-budget'>Get a specific Budget</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
@@ -2381,6 +2567,10 @@ that was returned upon company creation.</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Returns a list of your departments.</p>
+<h3 id='filter-by-archived'>Filter by archived</h3>
+<p>You can also filter only archived departments by sending <code>archived</code> params and
+set it&#39;s value to <code>true</code> or <code>false</code> as your requirements.
+example, <code>/api/v1/departments?archived=true</code></p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://app.rubberstamp.io/api/v1/departments</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
@@ -2400,6 +2590,11 @@ that was returned upon company creation.</p>
 <td>app_company_id</td>
 <td>header</td>
 <td>Registered company id</td>
+</tr>
+<tr>
+<td>archived</td>
+<td>boolean</td>
+<td>Filter departments by archived</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-specific-department'>Get a specific Department</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
@@ -2691,6 +2886,12 @@ Any parameters not provided will be left unchanged.</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Returns a list of your products.</p>
+<h3 id='filter-products-by-supplier'>Filter products by supplier</h3>
+<p>you can pass <code>supplier_id</code> query params to filter products by supplier like:
+<code>/api/v1/products?supplier_id=1</code></p>
+<h3 id='filter-archived-products'>Filter archived products</h3>
+<p>If you want to filter archived products you can pass <code>archived</code> params like:
+<code>/api/v1/products?archived=true</code></p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://app.rubberstamp.io/api/v1/products</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
@@ -2710,6 +2911,16 @@ Any parameters not provided will be left unchanged.</p>
 <td>app_company_id</td>
 <td>header</td>
 <td>Company ID</td>
+</tr>
+<tr>
+<td>supplier_id</td>
+<td>integer</td>
+<td>filter by supplier</td>
+</tr>
+<tr>
+<td>archived</td>
+<td>boolean</td>
+<td>filter archived products</td>
 </tr>
 </tbody></table>
 <h2 id='get-product-details'>Get Product details</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
@@ -3790,6 +4001,9 @@ them in JSON format.</p>
 <code>meta</code> object which contains information like <code>current_page</code>, <code>next_page</code>,
 <code>previous_page</code>, <code>total_pages</code> and <code>total_count</code>. You can use these information
 to write your own pagination logic.</p>
+<h3 id='top-n-records'>Top n records</h3>
+<p>You can also find top n suppliers by passing <code>top</code> and <code>from</code> params like:
+<code>/api/v1/suppliers?top=10&amp;from=100</code></p>
 <h3 id='filter-archived-suppliers'>Filter Archived Suppliers</h3>
 <p>You can pass <code>archived</code> params with <code>true</code> or <code>false</code> to filter Archived suppliers.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
@@ -3821,6 +4035,16 @@ to write your own pagination logic.</p>
 <td>archived</td>
 <td>boolean</td>
 <td><code>true</code> or <code>false</code> to filter archived suppliers</td>
+</tr>
+<tr>
+<td>top</td>
+<td>integer</td>
+<td>top n record</td>
+</tr>
+<tr>
+<td>from</td>
+<td>integer</td>
+<td>top from these manu records</td>
 </tr>
 </tbody></table>
 <h2 id='get-supplier-details'>Get Supplier details</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
