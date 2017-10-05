@@ -305,9 +305,6 @@
                     <a href="#approvers" class="toc-h2 toc-link" data-title="Companies">Approvers</a>
                   </li>
                   <li>
-                    <a href="#existing-approvers" class="toc-h2 toc-link" data-title="Companies">Existing Approvers</a>
-                  </li>
-                  <li>
                     <a href="#invite-user" class="toc-h2 toc-link" data-title="Companies">Invite User</a>
                   </li>
               </ul>
@@ -2350,8 +2347,7 @@ that was returned upon company creation.</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>Retrieves the list of approvers for current company. It will not return approver
-lists if it is an auto approval PO.</p>
+<p>Retrieves the list of approvers for current company. It will return <code>[]</code> if it is an auto approval PO.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://app.rubberstamp.io/api/v1/companies/approvers</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
@@ -2373,7 +2369,7 @@ lists if it is an auto approval PO.</p>
 <td>Company Id</td>
 </tr>
 </tbody></table>
-<h2 id='existing-approvers'>Existing Approvers</h2><h2 id='invite-user'>Invite User</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<h2 id='invite-user'>Invite User</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
   <span class="s1">'https://app.rubberstamp.io/api/v1/companies/send_user_invite'</span><span class="p">,</span>
