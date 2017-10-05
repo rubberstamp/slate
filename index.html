@@ -2351,15 +2351,6 @@ that was returned upon company creation.</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Retrieves the list of approvers for current company.</p>
-<h3 id='populate-approvers-list-depending-on-approval-routing'>Populate approvers list depending on approval routing</h3>
-<p>if you pass <code>budget_id</code> as an extra params then it will check if it is match auto
-approval routing and if yes, it won&#39;t return approvers list. example:
-<code>https://app.rubberstamp.io/api/v1/companies/approvers?budget_id=1</code></p>
-<h3 id='filter-approvers-by-budget'>Filter approvers by budget</h3>
-<p>if you pass both <code>budget_id</code> and <code>show_approvers</code> then it will display list of
-approvers for that budget if any.</p>
-
-<p><code>https://app.rubberstamp.io/api/v1/companies/approvers?budget_id=1&amp;show_approvers=true</code></p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://app.rubberstamp.io/api/v1/companies/approvers</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
