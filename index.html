@@ -2350,7 +2350,8 @@ that was returned upon company creation.</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>Retrieves the list of approvers for current company.</p>
+<p>Retrieves the list of approvers for current company. It will not return approver
+lists if it is an auto approval PO.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://app.rubberstamp.io/api/v1/companies/approvers</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
@@ -2370,16 +2371,6 @@ that was returned upon company creation.</p>
 <td>app_company_id</td>
 <td>headers</td>
 <td>Company Id</td>
-</tr>
-<tr>
-<td>budget_id</td>
-<td>integer</td>
-<td>Approvers list won&#39;t display if already assigned to budget</td>
-</tr>
-<tr>
-<td>show_approvers</td>
-<td>boolean</td>
-<td>Will display approvers for budget</td>
 </tr>
 </tbody></table>
 <h2 id='existing-approvers'>Existing Approvers</h2><h2 id='invite-user'>Invite User</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
