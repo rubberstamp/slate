@@ -2377,7 +2377,7 @@ that was returned upon company creation.</p>
     <span class="ss">invite_user: </span><span class="p">{</span>
       <span class="ss">email: </span><span class="s1">'friend@example.com'</span><span class="p">,</span>
       <span class="ss">name: </span><span class="s1">'Pherrel Williams'</span><span class="p">,</span>
-      <span class="ss">roles: </span><span class="p">[</span><span class="s2">"admin"</span><span class="p">,</span> <span class="s2">"accountant"</span><span class="p">]</span>
+      <span class="ss">roles: </span><span class="p">[</span><span class="s2">"approver"</span><span class="p">,</span> <span class="s2">"teammember"</span><span class="p">]</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -2392,8 +2392,8 @@ that was returned upon company creation.</p>
   -H <span class="s2">"app_company_id: 1"</span>
   -d <span class="s2">"invite_user[email]=friend@example.com"</span>
   -d <span class="s2">"invite_user[name]=Pherrel Williams"</span>
-  -d <span class="s2">"invite_user[roles]=admin"</span>
-  -d <span class="s2">"invite_user[roles]=accountant"</span>
+  -d <span class="s2">"invite_user[roles]=approver"</span>
+  -d <span class="s2">"invite_user[roles]=teammember"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2434,7 +2434,7 @@ that was returned upon company creation.</p>
 <tr>
 <td>invite_user[roles]</td>
 <td>Array[]</td>
-<td>List of Roles for that user</td>
+<td>List of Roles for that user. Available roles are: <br/> - companyadmin <br/> - approver <br/> - finance <br/> - teammember</td>
 </tr>
 </tbody></table>
 <h1 id='departments'>Departments</h1><h2 id='create-a-department'>Create a Department</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
