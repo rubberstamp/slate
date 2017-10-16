@@ -358,6 +358,12 @@
                   <li>
                     <a href="#new-purchase-order" class="toc-h2 toc-link" data-title="Purchase Orders">New Purchase Order</a>
                   </li>
+                  <li>
+                    <a href="#approve" class="toc-h2 toc-link" data-title="Purchase Orders">Approve</a>
+                  </li>
+                  <li>
+                    <a href="#reject" class="toc-h2 toc-link" data-title="Purchase Orders">Reject</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -3868,6 +3874,114 @@ them in JSON format.</p>
 <td>app_company_id</td>
 <td>header</td>
 <td>Company ID</td>
+</tr>
+</tbody></table>
+<h2 id='approve'>Approve</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/purchase_orders/1/approve'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">token: </span><span class="s1">'accept-token'</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/purchase_orders/1/approve'</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -d <span class="s2">"token=accept-token"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Approved"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Approve purchase order. You must pass valid accept token to approve the Purchase
+order.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://app.rubberstamp.io/api/v1/purchase_orders/:id/approve</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Approver&#39;s accept token</td>
+</tr>
+</tbody></table>
+<h2 id='reject'>Reject</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/purchase_orders/1/reject'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">token: </span><span class="s1">'reject-token'</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/purchase_orders/1/reject'</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -d <span class="s2">"token=reject-token"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rejected"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Reject purchase order. You must pass valid reject token to reject the Purchase
+order.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://app.rubberstamp.io/api/v1/purchase_orders/:id/reject</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Approver&#39;s reject token</td>
 </tr>
 </tbody></table>
 <h1 id='suppliers'>Suppliers</h1><h2 id='create-a-supplier'>Create a Supplier</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
