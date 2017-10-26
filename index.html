@@ -3942,7 +3942,17 @@ them in JSON format.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Retrieves the list of Pending requests for current authentication_token.</p>
+<p>Retrieves the list of Pending requests in Chronological Order
+for current authentication_token.</p>
+<h3 id='sorting'>Sorting</h3>
+<p>You can sort requests by column with <code>asc</code> and <code>desc</code> directions.
+Example if you want to sort requests in <code>asc</code> order by <code>created_at</code> column then:
+<code>GET https://app.rubberstamp.io/api/v1/purchase_orders/pending_requests?sort=created_at&amp;direction=asc</code></p>
+<h3 id='pagination-2'>Pagination</h3>
+<p>You can send <code>page</code> params to load paginated records e.g: <code>/api/v1/purchase_orders?page=2</code>.
+You can also see <code>meta</code> key in the response you get, that will return
+informations like <code>current_page</code>, <code>next_page</code>, <code>previous_page</code>, <code>total_pages</code>,
+and <code>total_count</code> to help your write your own logic of pagination.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://app.rubberstamp.io/api/v1/purchase_orders/pending_requests</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
@@ -3962,6 +3972,16 @@ them in JSON format.</p>
 <td>app_company_id</td>
 <td>header</td>
 <td>Company ID</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>string</td>
+<td>sorting column name</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>sorting direction. values are: - <code>asc</code> <br/> - <code>desc</code></td>
 </tr>
 </tbody></table>
 <h2 id='pending-requests-count'>Pending Requests Count</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
