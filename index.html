@@ -371,6 +371,9 @@
                     <a href="#reject" class="toc-h2 toc-link" data-title="Purchase Orders">Reject</a>
                   </li>
                   <li>
+                    <a href="#mark-as-delivered" class="toc-h2 toc-link" data-title="Purchase Orders">Mark as Delivered</a>
+                  </li>
+                  <li>
                     <a href="#cancel" class="toc-h2 toc-link" data-title="Purchase Orders">Cancel</a>
                   </li>
                   <li>
@@ -4149,6 +4152,89 @@ order.</p>
 <td>Approver&#39;s reject token</td>
 </tr>
 </tbody></table>
+<h2 id='mark-as-delivered'>Mark as Delivered</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/purchase_orders/1/mark_as_delivered'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">purchase_order: </span><span class="p">{</span>
+      <span class="ss">item_ids: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+      <span class="ss">item_quantities: </span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">.</span><span class="mo">00</span><span class="p">],</span>
+      <span class="ss">notes: </span><span class="s1">'Item delivered successfully!'</span><span class="p">,</span>
+      <span class="ss">delivered_on: </span><span class="s1">'2017-1-1'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/purchase_orders/1/mark_as_delivered'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -d <span class="s2">"purchase_order[item_ids][]=1"</span>
+  -d <span class="s2">"purchase_order[item_ids][]=2"</span>
+  -d <span class="s2">"purchase_order[item_ids][]=3"</span>
+  -d <span class="s2">"purchase_order[item_quantities][]=10"</span>
+  -d <span class="s2">"purchase_order[item_quantities][]=10"</span>
+  -d <span class="s2">"purchase_order[item_quantities][]=20.00"</span>
+  -d <span class="s2">"purchase_order[delivered_on]=2017-1-1"</span>
+  -d <span class="s2">"purchase_order[notes]=Item delivered successfully!"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Ability to mark purchase order as delivered. Please make sure to pass item_ids
+and item_quantities in same array index. for example <code>item_ids=[1,2]</code> and 
+<code>item_quantities=[10,20]</code> in this example, item with <code>id=1</code> have <code>quantity=10</code> and
+item with <code>id=2</code> have <code>quantity=20</code>.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST https://app.rubberstamp.io/api/v1/purchase_orders/:id/mark_as_delivered</code></p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>string</td>
+<td>comment/notes</td>
+</tr>
+<tr>
+<td>delivered_on</td>
+<td>string</td>
+<td>value must be in valid date format</td>
+</tr>
+<tr>
+<td>item_ids</td>
+<td>array[]</td>
+<td>list of item ids</td>
+</tr>
+<tr>
+<td>item_quantities</td>
+<td>array[]</td>
+<td>list of item quantities</td>
+</tr>
+</tbody></table>
 <h2 id='cancel'>Cancel</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
@@ -4172,9 +4258,9 @@ order.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Ability to Cancel purchase order.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://app.rubberstamp.io/api/v1/purchase_orders/:id/cancel</code></p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
+<h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Params</th>
@@ -4216,9 +4302,9 @@ order.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Ability to Archive purchase order.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://app.rubberstamp.io/api/v1/purchase_orders/:id/archive</code></p>
-<h3 id='url-parameters-8'>URL Parameters</h3>
+<h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Params</th>
