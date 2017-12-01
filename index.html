@@ -2329,13 +2329,13 @@ that was returned upon company creation.</p>
 <h2 id='approvers'>Approvers</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.rubberstamp.io/api/v1/companies/approvers'</span><span class="p">,</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/companies/approvers?department_id=1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/companies/approvers'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.rubberstamp.io/api/v1/companies/approvers?department_id=1'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -2380,8 +2380,11 @@ that was returned upon company creation.</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Retrieves the list of approvers for current company. It will return <code>[]</code> if it is an auto approval PO.</p>
+<h3 id='filter-by-department'>Filter By Department</h3>
+<p>You can filter approvers list with department by passing <code>department_id</code> query
+params.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://app.rubberstamp.io/api/v1/companies/approvers</code></p>
+<p><code>GET https://app.rubberstamp.io/api/v1/companies/approvers?department_id=:id</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2399,6 +2402,11 @@ that was returned upon company creation.</p>
 <td>app_company_id</td>
 <td>headers</td>
 <td>Company Id</td>
+</tr>
+<tr>
+<td>department_id</td>
+<td>integer</td>
+<td>Optional, if you want to filter approvers by department</td>
 </tr>
 </tbody></table>
 <h2 id='invite-user'>Invite User</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
