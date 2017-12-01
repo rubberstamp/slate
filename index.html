@@ -4205,7 +4205,7 @@ order.</p>
 </span></code></pre>
 <p>Ability to mark purchase order as delivered. Before marking purchase order as delivered
 You might need to check whether given user have enough permission to perform this action.
-You can find <code>can_mark_as_delivered</code> in <a href="/#get-purchase-order-details">Purchase Order Details</a>
+You can find <code>can_mark_as_delivered</code> in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a>
 page. Please make sure to pass item_ids and item_quantities in same array index.
 for example <code>item_ids=[1,2]</code> and <code>item_quantities=[10,20]</code> in this example,
 item with <code>id=1</code> have <code>quantity=10</code> and item with <code>id=2</code> have <code>quantity=20</code>.</p>
@@ -4273,7 +4273,7 @@ item with <code>id=1</code> have <code>quantity=10</code> and item with <code>id
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Ability to Cancel purchase order. You can check if user can mark purchase order as
-cancel or not by checking <code>can_cancel</code> value in <a href="/#get-purchase-order-details">Purchase Order Details</a> page</p>
+cancel or not by checking <code>can_cancel</code> value in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a> page</p>
 <h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://app.rubberstamp.io/api/v1/purchase_orders/:id/cancel</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
@@ -4318,7 +4318,7 @@ cancel or not by checking <code>can_cancel</code> value in <a href="/#get-purcha
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Ability to Archive purchase order. You can check if current logged in user can archive
-purchase or or not by checking <code>can_archive</code> value in <a href="#get-purchase-order-details">Purchase Order Details page</a></p>
+purchase or or not by checking <code>can_archive</code> value in <a href="/slate/#get-purchase-order-details">Purchase Order Details page</a></p>
 <h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://app.rubberstamp.io/api/v1/purchase_orders/:id/archive</code></p>
 <h3 id='url-parameters-9'>URL Parameters</h3>
@@ -4344,7 +4344,7 @@ purchase or or not by checking <code>can_archive</code> value in <a href="#get-p
 <p>To mark Purchase Order as paid you need to check out <a href="/#create-a-payment">Payments</a>
 API endpoint. Before marking purchase order as paid You might need to check whether
 given user have enough permission to perform this action. You can find <code>can_mark_as_paid</code>
-in <a href="/#get-purchase-order-details">Purchase Order Details</a></p>
+in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a></p>
 <h1 id='payments'>Payments</h1><h2 id='create-a-payment'>Create a Payment</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
@@ -4389,7 +4389,7 @@ in <a href="/#get-purchase-order-details">Purchase Order Details</a></p>
 </span></code></pre>
 <p>Use this api endpoint to mark purchase order as paid. To check if authentication_token
 have enough permission to mark purchase order as paid or not, you need to first check
-<code>can_mark_po_as_paid</code> in the <a href="/#get-purchase-order-details">Purchase Order Detail</a> endpoint.</p>
+<code>can_mark_po_as_paid</code> in the <a href="/slate/#get-purchase-order-details">Purchase Order Detail</a> endpoint.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.rubberstamp.io/api/v1/purchase_orders/:purchase_order_id/payments</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
