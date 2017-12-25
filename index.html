@@ -4622,6 +4622,9 @@ to write your own pagination logic.</p>
 <h3 id='top-n-records'>Top n records</h3>
 <p>You can also find top n suppliers by passing <code>top</code> and <code>from</code> params like:
 <code>/api/v1/suppliers/top?top=10&amp;from=100</code></p>
+<h3 id='filter-suppliers-by-department'>Filter Suppliers by department</h3>
+<p>To filter suppliers for specific department you can pass <code>department_id</code> in
+queryparams. example: <code>/api/v1/suppliers?department_id=1</code>.</p>
 <h3 id='filter-archived-suppliers'>Filter Archived Suppliers</h3>
 <p>You can pass <code>archived</code> params with <code>true</code> or <code>false</code> to filter Archived suppliers.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
@@ -4648,6 +4651,11 @@ to write your own pagination logic.</p>
 <td>page</td>
 <td>integer</td>
 <td>Page number to paginate</td>
+</tr>
+<tr>
+<td>department_id</td>
+<td>integer</td>
+<td>filter suppliers by department</td>
 </tr>
 <tr>
 <td>archived</td>
