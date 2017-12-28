@@ -4620,8 +4620,8 @@ have enough permission to mark purchase order as paid or not, you need to first 
 <code>previous_page</code>, <code>total_pages</code> and <code>total_count</code>. You can use these information
 to write your own pagination logic.</p>
 <h3 id='top-n-records'>Top n records</h3>
-<p>You can also find top n suppliers by passing <code>top</code> and <code>from</code> params like:
-<code>/api/v1/suppliers/top?top=10&amp;from=100</code></p>
+<p>You can also find top n suppliers by passing <code>top</code> params.
+<code>/api/v1/suppliers/top?top=10</code></p>
 <h3 id='filter-suppliers-by-department'>Filter Suppliers by department</h3>
 <p>To filter suppliers for specific department you can pass <code>department_id</code> in
 queryparams. example: <code>/api/v1/suppliers?department_id=1</code>.</p>
@@ -4665,12 +4665,7 @@ queryparams. example: <code>/api/v1/suppliers?department_id=1</code>.</p>
 <tr>
 <td>top</td>
 <td>integer</td>
-<td>top n record</td>
-</tr>
-<tr>
-<td>from</td>
-<td>integer</td>
-<td>top from these manu records</td>
+<td>limit n record</td>
 </tr>
 </tbody></table>
 <h2 id='get-supplier-details'>Get Supplier details</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
