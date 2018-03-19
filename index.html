@@ -1389,7 +1389,9 @@ authentication_token you need to login again.</p>
       <span class="ss">name: </span><span class="s1">'Test'</span><span class="p">,</span>
       <span class="ss">currency_id: </span><span class="mi">1</span><span class="p">,</span>
       <span class="ss">creator_id: </span><span class="mi">1</span><span class="p">,</span>
-      <span class="ss">allow_anyone_to_approve_a_po: </span><span class="kp">false</span>
+      <span class="ss">allow_anyone_to_approve_a_po: </span><span class="kp">false</span><span class="p">,</span>
+      <span class="ss">department_ids: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span>
+      <span class="ss">approver_ids: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1405,8 +1407,10 @@ authentication_token you need to login again.</p>
   -d <span class="s2">"budget[amount]=100.0"</span>
   -d <span class="s2">"budget[name]=Test"</span>
   -d <span class="s2">"budget[currency_id]=1"</span>
-  -d <span class="s2">"budget[creator_id=1]"</span>
+  -d <span class="s2">"budget[creator_id]=1"</span>
   -d <span class="s2">"budget[allow_anyone_to_approve_a_po]=false"</span>
+  -d <span class="s2">"budget[department_ids]=[1,4]"</span>
+  -d <span class="s2">"budget[approvers_ids]=[1,2]"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1429,6 +1433,12 @@ authentication_token you need to login again.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Create a new Budget and returns the Budget object that is created.</p>
+<h3 id='include-associated-departments-and-approvers'>Include associated departments and approvers</h3>
+<p>To add approvers to this you can pass <code>approver_ids</code> which expect array of
+approver ids in the POST request.</p>
+
+<p>And to add departments you can pass <code>department_ids</code> which expect array of
+department ids in the POST request.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.rubberstamp.io/api/v1/budgets</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -1493,6 +1503,16 @@ authentication_token you need to login again.</p>
 <td>budget[end_date]</td>
 <td>date</td>
 <td>Budget end date</td>
+</tr>
+<tr>
+<td>budget[approver_ids]</td>
+<td>Array</td>
+<td>Array of approver ids</td>
+</tr>
+<tr>
+<td>budget[department_ids]</td>
+<td>Array</td>
+<td>Array of department ids</td>
 </tr>
 </tbody></table>
 <h2 id='get-all-budgets'>GET All Budgets</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
