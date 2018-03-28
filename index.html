@@ -993,13 +993,27 @@ registered yet, try register api.
   </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Demo Company"</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Demo Company"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"membership_archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_removed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"in_trial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"companyadmin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"approver"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"finance"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"teammember"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Retrieves the details of current logged in user. You need to supply the user&#39;s
 authentication token and company id as a header params.</p>
+<h3 id='available-roles'>Available Roles</h3>
+<p>Each user can have various roles for their different companies. List of available roles are: <code>companyadmin</code>, <code>approver</code>,
+<code>finance</code>, <code>teammember</code>.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://app.rubberstamp.io/api/v1/currentuser</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
@@ -1058,7 +1072,18 @@ authentication token and company id as a header params.</p>
   </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Demo Company"</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Demo Company"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"membership_archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_removed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"in_trial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"companyadmin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"approver"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"finance"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"teammember"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4462,8 +4487,11 @@ in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a></p>
   <span class="s1">'https://app.rubberstamp.io/api/v1/purchase_orders/1/receiving_items'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">purchase_order: </span><span class="p">{</span>
-      <span class="ss">item_ids: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
-      <span class="ss">item_quantities: </span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">.</span><span class="mo">00</span><span class="p">],</span>
+      <span class="ss">items: </span><span class="p">[</span>
+        <span class="p">{</span> <span class="ss">id: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">quantity: </span><span class="mi">10</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="ss">id: </span><span class="mi">2</span><span class="p">,</span> <span class="ss">quantity: </span><span class="mi">10</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="ss">id: </span><span class="mi">3</span><span class="p">,</span> <span class="ss">quantity: </span><span class="mi">20</span> <span class="p">},</span>
+      <span class="p">],</span>
       <span class="ss">notes: </span><span class="s1">'Item delivered successfully!'</span><span class="p">,</span>
       <span class="ss">delivered_on: </span><span class="s1">'2017-1-1'</span>
     <span class="p">}</span>
@@ -4478,12 +4506,12 @@ in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a></p>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
   -H <span class="s2">"app_company_id: 1"</span>
-  -d <span class="s2">"purchase_order[item_ids][]=1"</span>
-  -d <span class="s2">"purchase_order[item_ids][]=2"</span>
-  -d <span class="s2">"purchase_order[item_ids][]=3"</span>
-  -d <span class="s2">"purchase_order[item_quantities][]=10"</span>
-  -d <span class="s2">"purchase_order[item_quantities][]=10"</span>
-  -d <span class="s2">"purchase_order[item_quantities][]=20.00"</span>
+  -d <span class="s2">"purchase_order[items][0][id]=1"</span>
+  -d <span class="s2">"purchase_order[items][0][quantity]=10"</span>
+  -d <span class="s2">"purchase_order[items][1][id]=2"</span>
+  -d <span class="s2">"purchase_order[items][1][quantity]=10"</span>
+  -d <span class="s2">"purchase_order[items][2][id]=3"</span>
+  -d <span class="s2">"purchase_order[items][2][quantity]=20"</span>
   -d <span class="s2">"purchase_order[delivered_on]=2017-1-1"</span>
   -d <span class="s2">"purchase_order[notes]=Item delivered successfully!"</span>
 </code></pre>
@@ -4495,10 +4523,7 @@ in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a></p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>You can find <code>can_receive_item</code> in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a>
-page, This value should be true in order to allow user to receive items.
-Please make sure to pass item_ids and item_quantities in same array index.
-for example <code>item_ids=[1,2]</code> and <code>item_quantities=[10,20]</code> in this example,
-item with <code>id=1</code> have <code>quantity=10</code> and item with <code>id=2</code> have <code>quantity=20</code>.</p>
+page, This value should be true in order to allow user to receive items.</p>
 <h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://app.rubberstamp.io/api/v1/purchase_orders/:id/receiving_items</code></p>
 <h3 id='url-parameters-9'>URL Parameters</h3>
@@ -4530,12 +4555,12 @@ item with <code>id=1</code> have <code>quantity=10</code> and item with <code>id
 <td>value must be in valid date format</td>
 </tr>
 <tr>
-<td>item_ids</td>
+<td>items[][id]</td>
 <td>array[]</td>
 <td>list of item ids</td>
 </tr>
 <tr>
-<td>item_quantities</td>
+<td>items[][quantity]</td>
 <td>array[]</td>
 <td>list of item quantities</td>
 </tr>
