@@ -1014,6 +1014,11 @@ authentication token and company id as a header params.</p>
 <h3 id='available-roles'>Available Roles</h3>
 <p>Each user can have various roles for their different companies. List of available roles are: <code>companyadmin</code>, <code>approver</code>,
 <code>finance</code>, <code>teammember</code>.</p>
+<h3 id='check-if-app_company_id-is-current-employer-id'>Check if app_company_id is current employer id</h3>
+<p>To Check if the user&#39;s mobile company is the active employer among many companies,
+you can check <code>current_user.employer_id === app_company_id</code> where current_user is
+the current logged in user in mobile app with <code>authentication_token</code> and <code>app_company_id</code>
+is the active company for that user in that mobile.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://app.rubberstamp.io/api/v1/currentuser</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
