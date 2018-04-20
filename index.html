@@ -2870,6 +2870,11 @@ params.</p>
 <p>You can also filter only archived departments by sending <code>archived</code> params and
 set it&#39;s value to <code>true</code> or <code>false</code> as your requirements.
 example, <code>/api/v1/departments?archived=true</code></p>
+<h3 id='filter-company-specific-departments'>Filter company specific departments</h3>
+<p>By default all departments associated with current logged in users are returned
+in the api response. If you want to list all department for given company then
+you can pass <code>company_specific=true</code> flag in the query params, example:
+<code>/api/v1/departments?company_specific=true&amp;archived=false</code></p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://app.rubberstamp.io/api/v1/departments</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
@@ -2894,6 +2899,11 @@ example, <code>/api/v1/departments?archived=true</code></p>
 <td>archived</td>
 <td>boolean</td>
 <td>Filter departments by archived</td>
+</tr>
+<tr>
+<td>company_specific</td>
+<td>boolean</td>
+<td>Filter company specific department</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-specific-department'>Get a specific Department</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
