@@ -273,6 +273,12 @@
                   <li>
                     <a href="#logout" class="toc-h2 toc-link" data-title="Users">Logout</a>
                   </li>
+                  <li>
+                    <a href="#list-domain-matching-companies" class="toc-h2 toc-link" data-title="Users">List domain matching companies</a>
+                  </li>
+                  <li>
+                    <a href="#join-existing-companies" class="toc-h2 toc-link" data-title="Users">Join existing companies</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1439,6 +1445,109 @@ authentication_token you need to login again.</p>
 <td>authentication_token</td>
 <td>header</td>
 <td>Authentication token</td>
+</tr>
+</tbody></table>
+<h2 id='list-domain-matching-companies'>List domain matching companies</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/users/join_account'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.rubberstamp.io/api/v1/users/join_account<span class="s1">'
+  -X GET
+  -H "Content-Type: application/json"
+  -H "authentication_token: your token"
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo 1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"membership_archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_removed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"in_trial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roles"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"remaining_trial_days"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prev_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Returns list of companies that matches the domain/subdomain of users mailer
+account. We ignore <code>gmail</code>, <code>hotmail</code>, <code>icloud</code>, <code>yahoo</code> domain though.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>GET https://app.rubberstamp.io/api/v1/users/join_account</code></p>
+<h3 id='query-parameters-9'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+</tbody></table>
+<h2 id='join-existing-companies'>Join existing companies</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.rubberstamp.io/api/v1/users/join_existing_company'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="ss">company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.rubberstamp.io/api/v1/users/join_existing_company<span class="s1">'
+  -X POST
+  -H "Content-Type: application/json"
+  -H "authentication_token: your token"
+  -d "company_id: 1"
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Action to actually <code>join</code> existing company. To join the company, you need to pass
+<code>company_id</code> as a query_params</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>POST https://app.rubberstamp.io/api/v1/users/join_existing_company</code></p>
+<h3 id='query-parameters-10'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>integer</td>
+<td>Company id you want to send join request to</td>
 </tr>
 </tbody></table>
 <h1 id='budgets'>Budgets</h1><h2 id='create-a-budget'>Create a Budget</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
