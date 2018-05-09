@@ -5357,7 +5357,8 @@ Any parameters not provided will be left unchanged.</p>
     "note": "Thank you for subscribing",
     "save_template": true,
     "email_subject": "Thank you for subscribing",
-    "template_label": "woo hoo!!"
+    "template_label": "woo hoo!!",
+    "uploads": [1,2],
   }'</span>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
@@ -5369,7 +5370,8 @@ Any parameters not provided will be left unchanged.</p>
     <span class="ss">note: </span><span class="s2">"Thank you for subscribing"</span><span class="p">,</span>
     <span class="ss">save_template: </span><span class="kp">true</span><span class="p">,</span>
     <span class="ss">email_subject: </span><span class="s2">"Thank you for subscribing"</span><span class="p">,</span>
-    <span class="ss">template_label: </span><span class="s2">"woo hoo!!"</span>
+    <span class="ss">template_label: </span><span class="s2">"woo hoo!!"</span><span class="p">,</span>
+    <span class="ss">uploads: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
   <span class="p">},</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
@@ -5450,6 +5452,11 @@ Any parameters not provided will be left unchanged.</p>
 <td>update_template</td>
 <td>boolean</td>
 <td><code>true</code> if you want to update template</td>
+</tr>
+<tr>
+<td>uploads</td>
+<td>Array</td>
+<td>list of upload ids</td>
 </tr>
 </tbody></table>
 
