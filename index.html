@@ -5332,10 +5332,6 @@ Any parameters not provided will be left unchanged.</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Get list of all templates.</p>
-<h3 id='emails'>Emails</h3>
-<p>In <a href="/slate/#get-purchase-order-details">Purchase Order Details</a> you will get <code>supplier.email</code>, which you can send in <code>emails</code> field.</p>
-<h3 id='cc'>CC</h3>
-<p>In <a href="/slate/#get-purchase-order-details">Purchase Order Details</a> you will get <code>creator_email</code>, you can set that value in <code>cc</code> field.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://app.rubberstamp.io/api/v1/send_to_supplier_templates</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -5399,11 +5395,15 @@ Any parameters not provided will be left unchanged.</p>
 <h3 id='create-new-template'>Create New Template</h3>
 <p>To create new template, you must pass <code>save_template: true</code> params or form data into the post request.</p>
 <h3 id='update-existing-template'>Update Existing Template</h3>
-<p>To update existing template, you must need to pass <code>update_template: true</code> params or form data into this post request</p>
+<p>To update existing template, you must need to pass <code>update_template: true</code> params or form data into this post request.</p>
 <h3 id='send-template-to-supplier'>Send template to supplier</h3>
 <p>If <code>save_template</code> or <code>update_template</code> is not there, then it will send given template to the supplier.</p>
 <h3 id='default-template'>Default Template</h3>
 <p>To mark template as default, you need to pass <code>is_default: true</code> params or form data.</p>
+<h3 id='emails-fields'>Emails Fields</h3>
+<p>In <a href="/slate/#get-purchase-order-details">Purchase Order Details</a> you will get <code>supplier.email</code>, which you can send in <code>emails</code> field.</p>
+<h3 id='cc-fields'>CC Fields</h3>
+<p>In <a href="/slate/#get-purchase-order-details">Purchase Order Details</a> you will get <code>creator_email</code>, you can set that value in <code>cc</code> field.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>PUT https://app.rubberstamp.io/api/v1/purchase_orders/:id/forward</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
