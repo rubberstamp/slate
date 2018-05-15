@@ -5353,7 +5353,7 @@ Any parameters not provided will be left unchanged.</p>
 <td>Authentication Token</td>
 </tr>
 </tbody></table>
-<h2 id='forward-template'>Forward Template</h2><pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
+<h2 id='forward-template'>Forward Template</h2><pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
   --url https://app.rubberstamp.io/api/v1/purchase_orders/2/forward <span class="se">\</span>
   --header <span class="s1">'app_company_id: 1'</span> <span class="se">\</span>
   --header <span class="s1">'authentication_token: your token'</span> <span class="se">\</span>
@@ -5369,7 +5369,7 @@ Any parameters not provided will be left unchanged.</p>
   }'</span>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
   <span class="s1">'https://app.rubberstamp.io/api/v1/purchase_orders/2/forward'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">emails: </span><span class="s2">"test@example.com"</span><span class="p">,</span>
@@ -5405,7 +5405,7 @@ Any parameters not provided will be left unchanged.</p>
 <h3 id='cc-fields'>CC Fields</h3>
 <p>In <a href="/slate/#get-purchase-order-details">Purchase Order Details</a> you will get <code>creator_email</code>, you can set that value in <code>cc</code> field.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>PUT https://app.rubberstamp.io/api/v1/purchase_orders/:id/forward</code></p>
+<p><code>POST https://app.rubberstamp.io/api/v1/purchase_orders/:id/forward</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -5445,9 +5445,9 @@ Any parameters not provided will be left unchanged.</p>
 <td>Email subject</td>
 </tr>
 <tr>
-<td>email_label</td>
+<td>template_label</td>
 <td>string</td>
-<td>Email Label</td>
+<td>Template Label</td>
 </tr>
 <tr>
 <td>save_template</td>
