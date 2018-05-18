@@ -669,6 +669,7 @@ curl <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span>
   -d <span class="s2">"password_confirmation=pass1234"</span>
   -d <span class="s2">"name=Api user"</span>
   -d <span class="s2">"phone_number=98xxxxxxxx"</span>
+  -d <span class="s2">"terms_of_service=true"</span>
 
 <span class="c"># Example With Tracking Info</span>
 
@@ -687,6 +688,7 @@ curl <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span>
   -d <span class="s2">"password_confirmation=pass1234"</span>
   -d <span class="s2">"name=Api user"</span>
   -d <span class="s2">"phone_number=98xxxxxxxx"</span>
+  -d <span class="s2">"terms_of_service=true"</span>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="c1"># Example Without Tracking Info</span>
@@ -698,7 +700,8 @@ curl <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span>
     <span class="ss">password: </span><span class="s1">'pass1234'</span><span class="p">,</span>
     <span class="ss">password_confirmation: </span><span class="s1">'pass1234'</span><span class="p">,</span>
     <span class="ss">name: </span><span class="s1">'Api user'</span><span class="p">,</span>
-    <span class="ss">phone_number: </span><span class="s1">'98xxxxxx'</span>
+    <span class="ss">phone_number: </span><span class="s1">'98xxxxxx'</span><span class="p">,</span>
+    <span class="ss">terms_of_service: </span><span class="kp">true</span>
   <span class="p">}</span>
 <span class="p">)</span>
 
@@ -711,7 +714,8 @@ curl <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span>
     <span class="ss">password: </span><span class="s1">'pass1234'</span><span class="p">,</span>
     <span class="ss">password_confirmation: </span><span class="s1">'pass1234'</span><span class="p">,</span>
     <span class="ss">name: </span><span class="s1">'Api user'</span><span class="p">,</span>
-    <span class="ss">phone_number: </span><span class="s1">'98xxxxxx'</span>
+    <span class="ss">phone_number: </span><span class="s1">'98xxxxxx'</span><span class="p">,</span>
+    <span class="ss">terms_of_service: </span><span class="kp">true</span>
   <span class="p">},</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"tracking_info"</span><span class="p">:</span> <span class="p">{</span>
@@ -748,6 +752,8 @@ curl <span class="s1">'https://app.rubberstamp.io/api/v1/register'</span>
 <p>This endpoint will register you as a rubberstamp user, send confirmation link
 to your email and you can confirm it. It will returns <code>User</code> object along
 with <code>authentication_token</code>.</p>
+<h3 id='terms-of-service'>Terms of service</h3>
+<p><code>terms_of_service</code> is a required field.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.rubberstamp.io/api/v1/register</code></p>
 <h3 id='tracking-registration'>Tracking Registration</h3>
@@ -798,6 +804,11 @@ with <code>authentication_token</code>.</p>
 <td>phone_number</td>
 <td>string</td>
 <td>Phone number</td>
+</tr>
+<tr>
+<td>terms_of_serivce</td>
+<td>boolean</td>
+<td>You must accept terms of service</td>
 </tr>
 <tr>
 <td>tracking_info[properties][uuid]</td>
