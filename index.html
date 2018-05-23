@@ -5415,6 +5415,8 @@ Any parameters not provided will be left unchanged.</p>
 <p>In <a href="/slate/#get-purchase-order-details">Purchase Order Details</a> you will get <code>supplier.email</code>, which you can send in <code>emails</code> field.</p>
 <h3 id='cc-fields'>CC Fields</h3>
 <p>In <a href="/slate/#get-purchase-order-details">Purchase Order Details</a> you will get <code>creator_email</code>, you can set that value in <code>cc</code> field.</p>
+<h3 id='uploads-fields'>Uploads Fields</h3>
+<p><code>uploads</code> accept list of ids, and must be Array values. If uploads are send while saving or updating template, they are ignored. <code>uploads</code> are only available when you are sending template to the supplier.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://app.rubberstamp.io/api/v1/purchase_orders/:id/forward</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
