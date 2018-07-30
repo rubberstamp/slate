@@ -330,6 +330,9 @@
                   <li>
                     <a href="#invite-user" class="toc-h2 toc-link" data-title="Companies">Invite User</a>
                   </li>
+                  <li>
+                    <a href="#invite-limit-left" class="toc-h2 toc-link" data-title="Companies">Invite Limit Left</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2872,6 +2875,51 @@ params.</p>
 <td>invite_user[roles]</td>
 <td>Array[]</td>
 <td>List of Roles for that user. Available roles are: <br/> - companyadmin <br/> - approver <br/> - finance <br/> - teammember</td>
+</tr>
+</tbody></table>
+<h2 id='invite-limit-left'>Invite Limit Left</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/companies/invite_limit_left'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s1">'token'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight sh tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/companies/invite_limit_left'</span>
+  -X GET
+  -H <span class="s1">'authentication_token: token'</span>
+  -H <span class="s1">'app_company_id: 1'</span>
+</code></pre>
+<blockquote>
+<p>Above command will response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"limit_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"active_users"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"allowed_users"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint will return information about your current subscription. Information like, <code>limit_left</code>, how many <code>active_users</code> are currently there in company and how many total <code>allowed_users</code> you can add to this company as per your subscription.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://app.procurementexpress.com/api/v1/companies/invite_limit_left</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>headers</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>headers</td>
+<td>Company id</td>
 </tr>
 </tbody></table>
 <h1 id='departments'>Departments</h1><h2 id='create-a-department'>Create a Department</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
