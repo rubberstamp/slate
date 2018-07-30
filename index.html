@@ -527,8 +527,8 @@
 <blockquote>
 <p>API Endpoint</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>https://app.procurmentexpress.com
-</code></pre><pre class="highlight ruby tab-ruby"><code><span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">app</span><span class="p">.</span><span class="nf">procurmentexpress</span><span class="p">.</span><span class="nf">com</span>
+<pre class="highlight shell tab-shell"><code>https://app.procurementexpress.com
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">app</span><span class="p">.</span><span class="nf">procurementexpress</span><span class="p">.</span><span class="nf">com</span>
 </code></pre>
 <p>Welcome to <code>V1</code> API documentaiton for <strong>Rubberstamp</strong> - A simple Purchase Order solution.</p>
 
@@ -536,12 +536,12 @@
 <h1 id='authentication'>Authentication</h1><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/endpoint'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/endpoint'</span><span class="p">,</span>
   <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 
-curl <span class="s2">"https://app.procurmentexpress.com/api/v1/endpoint"</span>
+curl <span class="s2">"https://app.procurementexpress.com/api/v1/endpoint"</span>
   -H <span class="s2">"authentication_token: your token"</span>
 </code></pre>
 <blockquote>
@@ -592,12 +592,12 @@ failure of an API request.</p>
 <h1 id='internationalization'>Internationalization</h1><h2 id='country-and-regional-support'>Country and Regional Support</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/endpoint'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/endpoint'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">locale: </span><span class="s1">'es'</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight sh tab-shell"><code>curl https://app.procurmentexpress.com/api/v1/endpoint<span class="s1">'
+</code></pre><pre class="highlight sh tab-shell"><code>curl https://app.procurementexpress.com/api/v1/endpoint<span class="s1">'
   -H "locale: es"
 </span></code></pre>
 <blockquote>
@@ -647,7 +647,7 @@ failure of an API request.</p>
 </tr>
 </tbody></table>
 <h2 id='http-request'>HTTP Request</h2>
-<p><code>POST https://app.procurmentexpress.com/api/v1/endpoint</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/endpoint</code></p>
 <h2 id='query-parameters'>Query Parameters</h2>
 <table><thead>
 <tr>
@@ -664,7 +664,7 @@ failure of an API request.</p>
 </tbody></table>
 <h1 id='users'>Users</h1><h2 id='register'>Register</h2><pre class="highlight shell tab-shell"><code><span class="c"># Example Without Tracking Info</span>
 
-curl <span class="s1">'https://app.procurmentexpress.com/api/v1/register'</span>
+curl <span class="s1">'https://app.procurementexpress.com/api/v1/register'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s2">"email=api@example.com"</span>
@@ -676,7 +676,7 @@ curl <span class="s1">'https://app.procurmentexpress.com/api/v1/register'</span>
 
 <span class="c"># Example With Tracking Info</span>
 
-curl <span class="s1">'https://app.procurmentexpress.com/api/v1/register'</span>
+curl <span class="s1">'https://app.procurementexpress.com/api/v1/register'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"tracking_info[properties][uuid]=your uuid"</span>
@@ -697,7 +697,7 @@ curl <span class="s1">'https://app.procurmentexpress.com/api/v1/register'</span>
 <span class="c1"># Example Without Tracking Info</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/register'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/register'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
     <span class="ss">password: </span><span class="s1">'pass1234'</span><span class="p">,</span>
@@ -711,7 +711,7 @@ curl <span class="s1">'https://app.procurmentexpress.com/api/v1/register'</span>
 <span class="c1"># Example With Tracking Info</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/register'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/register'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
     <span class="ss">password: </span><span class="s1">'pass1234'</span><span class="p">,</span>
@@ -758,7 +758,7 @@ with <code>authentication_token</code>.</p>
 <h3 id='terms-of-service'>Terms of service</h3>
 <p><code>terms_of_service</code> is a required field.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/register</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/register</code></p>
 <h3 id='tracking-registration'>Tracking Registration</h3>
 <p>You can track each registration with <a href="https://segment.com">segment.io</a> by passing
 <code>tracking_info</code> <code>HEADER</code> params as shown in the example.</p>
@@ -854,7 +854,7 @@ with <code>authentication_token</code>.</p>
 <span class="c1"># Example Without Tracking info</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/login'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/login'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
     <span class="ss">password: </span><span class="s1">'pass1234'</span>
@@ -863,7 +863,7 @@ with <code>authentication_token</code>.</p>
 
 <span class="c1"># Example With Tracking Info</span>
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/login'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/login'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
     <span class="ss">password: </span><span class="s1">'pass1234'</span>
@@ -886,7 +886,7 @@ with <code>authentication_token</code>.</p>
 <span class="p">)</span>
 </code></pre><pre class="highlight shell tab-shell"><code><span class="c"># Example Without Tracking Info</span>
 
-curl <span class="s1">'https://app.procurmentexpress.com/api/v1/login'</span>
+curl <span class="s1">'https://app.procurementexpress.com/api/v1/login'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s2">"email=api@example.com"</span>
@@ -894,7 +894,7 @@ curl <span class="s1">'https://app.procurmentexpress.com/api/v1/login'</span>
 
 <span class="c"># Example With Tracking Info</span>
 
-curl <span class="s1">'https://app.procurmentexpress.com/api/v1/login'</span>
+curl <span class="s1">'https://app.procurementexpress.com/api/v1/login'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"tracking_info[properties][uuid]=your uuid"</span>
@@ -932,7 +932,7 @@ curl <span class="s1">'https://app.procurmentexpress.com/api/v1/login'</span>
 <p>RubberStamp expects for the Authentication token to be included in all API
 requests to the server in a header.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/login</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/login</code></p>
 <h3 id='tracking-registration-2'>Tracking Registration</h3>
 <p>You can track each login with <a href="https://segment.com">segment.io</a> by passing
 <code>tracking_info</code> <code>HEADER</code> params as shown in the example.</p>
@@ -998,7 +998,7 @@ registered yet, try register api.
 <h2 id='get-current-user'>GET Current User</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/currentuser'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/currentuser'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="s1">'1'</span>
@@ -1006,7 +1006,7 @@ registered yet, try register api.
 <span class="p">)</span>
 
 <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/currentuser'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/currentuser'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -1051,7 +1051,7 @@ you can check <code>current_user.employer_id === app_company_id</code> where cur
 the current logged in user in mobile app with <code>authentication_token</code> and <code>app_company_id</code>
 is the active company for that user in that mobile.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/currentuser</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/currentuser</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1074,7 +1074,7 @@ is the active company for that user in that mobile.</p>
 <h2 id='update-user'>Update User</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/currentuser'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/currentuser'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">email: </span><span class="s1">'john@example.com'</span><span class="p">,</span>
     <span class="ss">password: </span><span class="s1">'password'</span><span class="p">,</span>
@@ -1083,7 +1083,7 @@ is the active company for that user in that mobile.</p>
   <span class="p">},</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span> <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurmentexpress.com/api/v1/currentuser
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurementexpress.com/api/v1/currentuser
   -X PUT
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -1122,7 +1122,7 @@ is the active company for that user in that mobile.</p>
 <p>Update current logged in user setting the value of parameters passed. Any
 parameters not provided will be left unchanged.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT https://app.procurmentexpress.com/api/v1/currentuser</code></p>
+<p><code>PUT https://app.procurementexpress.com/api/v1/currentuser</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1162,14 +1162,14 @@ parameters not provided will be left unchanged.</p>
 <td>Phone number</td>
 </tr>
 </tbody></table>
-<h2 id='reset-password'>Reset Password</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/reset_password'</span>
+<h2 id='reset-password'>Reset Password</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/reset_password'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s2">"email=api@example.com"</span>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/reset_password'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/reset_password'</span><span class="p">,</span>
   <span class="p">{</span> <span class="ss">email: </span><span class="s1">'api@example.com'</span> <span class="p">}</span>
 <span class="p">)</span>
 </code></pre>
@@ -1185,7 +1185,7 @@ valid email address as a parameter. After you get the password reset instruction
 in your inbox, you can click on the link which will redirect you to the password
 reset page and you can reset your password from there.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/reset_password</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/reset_password</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1200,7 +1200,7 @@ reset page and you can reset your password from there.</p>
 <td>Your registered email address</td>
 </tr>
 </tbody></table>
-<h2 id='google-login'>Google Login</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/google_login'</span>
+<h2 id='google-login'>Google Login</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/google_login'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s2">"uuid=encoded_google_id"</span>
@@ -1210,7 +1210,7 @@ reset page and you can reset your password from there.</p>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/google_login'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/google_login'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">uuid: </span><span class="s1">'encoded_google_id'</span><span class="p">,</span>
     <span class="ss">email: </span><span class="s1">'api@example.com'</span><span class="p">,</span>
@@ -1241,7 +1241,7 @@ reset page and you can reset your password from there.</p>
 </span></code></pre>
 <p>To use this api endpoint, you first need to <code>login with googl</code> using oauth/oauth2 and get user&#39;s <code>uuid</code>, <code>email</code>,<code>first_name</code>and<code>last_name</code>. Then encode <code>uuid</code> using provided encryption method. Once everything is in place, send encoded uuid along with other required data. As a response you will get user object.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/google_login</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/google_login</code></p>
 <h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1274,13 +1274,13 @@ reset page and you can reset your password from there.</p>
 <h2 id='get-my-currencies'>Get My Currencies</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/currencies'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/currencies'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="s1">'1'</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/currencies'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/currencies'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -1309,7 +1309,7 @@ reset page and you can reset your password from there.</p>
 </span></code></pre>
 <p>Returns a list of currencies that are enabled for given company id.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/currencies</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/currencies</code></p>
 <h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1332,12 +1332,12 @@ reset page and you can reset your password from there.</p>
 <h2 id='get-all-currencies'>Get All Currencies</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/all_currencies'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/all_currencies'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/all_currencies'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/all_currencies'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -1407,7 +1407,7 @@ reset page and you can reset your password from there.</p>
 </span></code></pre>
 <p>Returns a list of all available currencies.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/all_currencies</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/all_currencies</code></p>
 <h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1425,12 +1425,12 @@ reset page and you can reset your password from there.</p>
 <h2 id='logout'>Logout</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/logout'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/logout'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurmentexpress.com/api/v1/logout
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurementexpress.com/api/v1/logout
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -1446,7 +1446,7 @@ reset page and you can reset your password from there.</p>
 <p>Logout user and set authentication_token to nil. If you want new
 authentication_token you need to login again.</p>
 <h3 id='http-request-9'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/logout</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/logout</code></p>
 <h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1464,12 +1464,12 @@ authentication_token you need to login again.</p>
 <h2 id='list-domain-matching-companies'>List domain matching companies</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/users/join_account'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/users/join_account'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurmentexpress.com/api/v1/users/join_account<span class="s1">'
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurementexpress.com/api/v1/users/join_account<span class="s1">'
   -X GET
   -H "Content-Type: application/json"
   -H "authentication_token: your token"
@@ -1504,7 +1504,7 @@ authentication_token you need to login again.</p>
 <p>Returns list of companies that matches the domain/subdomain of users mailer
 account. We ignore <code>gmail</code>, <code>hotmail</code>, <code>icloud</code>, <code>yahoo</code> domain though.</p>
 <h3 id='http-request-10'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/users/join_account</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/users/join_account</code></p>
 <h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1522,12 +1522,12 @@ account. We ignore <code>gmail</code>, <code>hotmail</code>, <code>icloud</code>
 <h2 id='join-existing-companies'>Join existing companies</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/users/join_existing_company?company_id=1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/users/join_existing_company?company_id=1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurmentexpress.com/api/v1/users/join_existing_company<span class="s1">'
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurementexpress.com/api/v1/users/join_existing_company<span class="s1">'
   -X POST
   -H "Content-Type: application/json"
   -H "authentication_token: your token"
@@ -1542,7 +1542,7 @@ account. We ignore <code>gmail</code>, <code>hotmail</code>, <code>icloud</code>
 <code>company_id</code> as a query_params</p>
 <h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST
-https://app.procurmentexpress.com/api/v1/users/join_existing_company?company_id=:id</code></p>
+https://app.procurementexpress.com/api/v1/users/join_existing_company?company_id=:id</code></p>
 <h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1565,7 +1565,7 @@ https://app.procurmentexpress.com/api/v1/users/join_existing_company?company_id=
 <h1 id='budgets'>Budgets</h1><h2 id='create-a-budget'>Create a Budget</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/budgets'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/budgets'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">budget: </span><span class="p">{</span>
       <span class="ss">amount: </span><span class="mi">100</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
@@ -1582,7 +1582,7 @@ https://app.procurmentexpress.com/api/v1/users/join_existing_company?company_id=
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurmentexpress.com/api/v1/budgets
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurementexpress.com/api/v1/budgets
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -1630,7 +1630,7 @@ department ids in the POST request.</p>
 <code>company_setting.date_format</code>. In this API endpoint, you need to provide proper
 date format for <code>start_date</code> and <code>end_date</code>. Please find date format in <a href="/slate/#get-a-specific-company">Company Setting</a></p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/budgets</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/budgets</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1708,13 +1708,13 @@ date format for <code>start_date</code> and <code>end_date</code>. Please find d
 <h2 id='get-all-budgets'>GET All Budgets</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/budgets'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/budgets'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/budgets'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/budgets'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -1788,7 +1788,7 @@ date format for <code>start_date</code> and <code>end_date</code>. Please find d
 <p>you can pass <code>department_id</code> query params to filter budgets by departments like:
 <code>/api/v1/budgets?department_id=1</code></p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/budgets</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/budgets</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1816,13 +1816,13 @@ date format for <code>start_date</code> and <code>end_date</code>. Please find d
 <h2 id='get-a-specific-budget'>Get a specific Budget</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/budgets/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/budgets/1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/budgets/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/budgets/1'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -1855,7 +1855,7 @@ date format for <code>start_date</code> and <code>end_date</code>. Please find d
 <p>Retrieves the details of an existing budget. You need to supply the unique
 budget id that was returned upon budget creation.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/budgets/:id</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/budgets/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1883,7 +1883,7 @@ budget id that was returned upon budget creation.</p>
 <h2 id='update-a-budget'>Update a Budget</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/budgets/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/budgets/1'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">budget: </span><span class="p">{</span>
       <span class="ss">amount: </span><span class="mi">200</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
@@ -1894,7 +1894,7 @@ budget id that was returned upon budget creation.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/budgets/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/budgets/1'</span>
   -X PUT
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -1927,7 +1927,7 @@ budget id that was returned upon budget creation.</p>
 <p>Update the specified <code>Budget</code> by setting the value of parameters passed. Any
 parameters not provided will be left unchanged.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT https://app.procurmentexpress.com/api/v1/budgets/:id</code></p>
+<p><code>PUT https://app.procurementexpress.com/api/v1/budgets/:id</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2005,14 +2005,14 @@ parameters not provided will be left unchanged.</p>
 <h1 id='comments'>Comments</h1><h2 id='add-new-comment-for-po'>Add new comment for PO</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/comments'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/comments'</span><span class="p">,</span>
   <span class="p">{</span> <span class="ss">comment: </span><span class="s1">'my first PO'</span> <span class="p">},</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/comments'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/comments'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -2037,7 +2037,7 @@ parameters not provided will be left unchanged.</p>
 is created.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST
-https://app.procurmentexpress.com/api/v1/purchase_order/:purchase_order_id/comments</code></p>
+https://app.procurementexpress.com/api/v1/purchase_order/:purchase_order_id/comments</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2070,7 +2070,7 @@ https://app.procurmentexpress.com/api/v1/purchase_order/:purchase_order_id/comme
 <h1 id='companies'>Companies</h1><h2 id='create-a-company'>Create a company</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/companies'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/companies'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">company: </span><span class="p">{</span>
       <span class="ss">name: </span><span class="s1">'ABC Corp.'</span><span class="p">,</span>
@@ -2084,7 +2084,7 @@ https://app.procurmentexpress.com/api/v1/purchase_order/:purchase_order_id/comme
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/companies'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/companies'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -2102,7 +2102,7 @@ https://app.procurmentexpress.com/api/v1/purchase_order/:purchase_order_id/comme
 </span></code></pre>
 <p>Create a new Company and returns the <code>Company</code> object that is created.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/companies</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/companies</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2310,14 +2310,14 @@ https://app.procurmentexpress.com/api/v1/purchase_order/:purchase_order_id/comme
 <h2 id='get-all-companies'>Get all companies</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/companies'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/companies'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span>
   <span class="p">}</span>
 <span class="p">)</span>
 
 <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/companies'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/companies'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -2338,7 +2338,7 @@ https://app.procurmentexpress.com/api/v1/purchase_order/:purchase_order_id/comme
 </span></code></pre>
 <p>Returns a list of companies for current logged in user.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/companies</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/companies</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2356,12 +2356,12 @@ https://app.procurmentexpress.com/api/v1/purchase_order/:purchase_order_id/comme
 <h2 id='get-a-specific-company'>Get a specific company</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/companies/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/companies/1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/companies/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/companies/1'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -2481,7 +2481,7 @@ https://app.procurmentexpress.com/api/v1/purchase_order/:purchase_order_id/comme
 <p>Retrieves the details of an existing company. You need to send unique company id
 that was returned upon company creation.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/companies/:id</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/companies/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2504,13 +2504,13 @@ that was returned upon company creation.</p>
 <h2 id='get-details'>Get Details</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/companies/details'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/companies/details'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/companies/details'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/companies/details'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -2631,7 +2631,7 @@ that was returned upon company creation.</p>
 <p>Retrieves the details of an existing company. You need to send unique company id
 that was returned upon company creation.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/companies/details</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/companies/details</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2654,13 +2654,13 @@ that was returned upon company creation.</p>
 <h2 id='approvers'>Approvers</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/companies/approvers?department_id=1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/companies/approvers?department_id=1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/companies/approvers?department_id=1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/companies/approvers?department_id=1'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -2709,7 +2709,7 @@ that was returned upon company creation.</p>
 <p>You can filter approvers list with department by passing <code>department_id</code> query
 params.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/companies/approvers?department_id=:id</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/companies/approvers?department_id=:id</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2737,13 +2737,13 @@ params.</p>
 <h2 id='get-all-approvers'>Get All Approvers</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/companies/all_approvers'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/companies/all_approvers'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/companies/all_approvers'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/companies/all_approvers'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -2789,7 +2789,7 @@ params.</p>
 </span></code></pre>
 <p>Retrieves the list of all approvers for current company regardless of auto approval routing</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/companies/all_approvers</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/companies/all_approvers</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2812,7 +2812,7 @@ params.</p>
 <h2 id='invite-user'>Invite User</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/companies/send_user_invite'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/companies/send_user_invite'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">invite_user: </span><span class="p">{</span>
       <span class="ss">email: </span><span class="s1">'friend@example.com'</span><span class="p">,</span>
@@ -2825,7 +2825,7 @@ params.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/companies/send_user_invite'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/companies/send_user_invite'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -2842,7 +2842,7 @@ params.</p>
 </span></code></pre>
 <p>Send invitation to the user.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/companies/send_user_invite</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/companies/send_user_invite</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2925,7 +2925,7 @@ params.</p>
 <h1 id='departments'>Departments</h1><h2 id='create-a-department'>Create a Department</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/departments'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/departments'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">department: </span><span class="p">{</span>
       <span class="ss">name: </span><span class="s1">'Accounting'</span><span class="p">,</span>
@@ -2944,7 +2944,7 @@ params.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/departments'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/departments'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -2977,7 +2977,7 @@ params.</p>
 </span></code></pre>
 <p>Create a new <code>Department</code> and returns the <code>Department</code> object that is created.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/departments</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/departments</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -3045,13 +3045,13 @@ params.</p>
 <h2 id='get-all-departments'>Get All Departments</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/departments'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/departments'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/departments'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/departments'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -3096,7 +3096,7 @@ in the api response. If you want to list all department for given company then
 you can pass <code>company_specific=true</code> flag in the query params, example:
 <code>/api/v1/departments?company_specific=true&amp;archived=false</code></p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/departments</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/departments</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -3129,13 +3129,13 @@ you can pass <code>company_specific=true</code> flag in the query params, exampl
 <h2 id='get-a-specific-department'>Get a specific Department</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/departments/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/departments/1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/departments/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/departments/1'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -3159,7 +3159,7 @@ you can pass <code>company_specific=true</code> flag in the query params, exampl
 <p>Retrieves the details of an existing department. You need to supply the unique
 department id, that was returned upon department creation.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/departments/:id</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/departments/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -3187,7 +3187,7 @@ department id, that was returned upon department creation.</p>
 <h2 id='update-a-department'>Update a department</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/departments/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/departments/1'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">department: </span><span class="p">{</span>
       <span class="ss">name: </span><span class="s1">'Accounting department'</span><span class="p">,</span>
@@ -3198,7 +3198,7 @@ department id, that was returned upon department creation.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/departments/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/departments/1'</span>
   -X PUT
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -3223,7 +3223,7 @@ department id, that was returned upon department creation.</p>
 <p>Update the specified department by setting the value of parameters passed.
 Any parameters not provided will be left unchanged.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT https://app.procurmentexpress.com/api/v1/departments/:id</code></p>
+<p><code>PUT https://app.procurementexpress.com/api/v1/departments/:id</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -3296,7 +3296,7 @@ Any parameters not provided will be left unchanged.</p>
 <h1 id='products'>Products</h1><h2 id='create-a-product'>Create a Product</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/products'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/products'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">product: </span><span class="p">{</span>
       <span class="ss">description: </span><span class="s1">'1 IPad Charging Station'</span><span class="p">,</span>
@@ -3310,7 +3310,7 @@ Any parameters not provided will be left unchanged.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/products'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/products'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -3335,7 +3335,7 @@ Any parameters not provided will be left unchanged.</p>
 </span></code></pre>
 <p>Create a new products and returns the <code>Product</code> object that is created.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/products</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/products</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -3378,13 +3378,13 @@ Any parameters not provided will be left unchanged.</p>
 <h2 id='get-all-products'>Get all Products</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/products'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/products'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/products'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/products'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -3422,7 +3422,7 @@ Any parameters not provided will be left unchanged.</p>
 <p>If you want to filter archived products you can pass <code>archived</code> params like:
 <code>/api/v1/products?archived=true</code></p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/products</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/products</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -3455,13 +3455,13 @@ Any parameters not provided will be left unchanged.</p>
 <h2 id='get-product-details'>Get Product details</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/products/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/products/1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/products/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/products/1'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -3483,7 +3483,7 @@ Any parameters not provided will be left unchanged.</p>
 <p>Retrieves the details of an existing products. You need to supply the unique
 product id, that was returned upon product creation.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/products/:id</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/products/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -3511,7 +3511,7 @@ product id, that was returned upon product creation.</p>
 <h2 id='update-product'>Update Product</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/products/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/products/1'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">product: </span><span class="p">{</span>
       <span class="ss">description: </span><span class="s1">'updated'</span>
@@ -3522,7 +3522,7 @@ product id, that was returned upon product creation.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/products/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/products/1'</span>
   -X PUT
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -3545,7 +3545,7 @@ product id, that was returned upon product creation.</p>
 <p>Update the specified department by setting the value of parameters passed.
 Any parameters not provided will be left unchanged.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT https://app.procurmentexpress.com/api/v1/products/:id</code></p>
+<p><code>PUT https://app.procurementexpress.com/api/v1/products/:id</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -3593,7 +3593,7 @@ Any parameters not provided will be left unchanged.</p>
 <h1 id='purchase-orders'>Purchase Orders</h1><h2 id='create-a-purchase-order'>Create a Purchase Order</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">commit: </span><span class="s2">"Send"</span><span class="p">,</span>
     <span class="ss">purchase_order: </span><span class="p">{</span>
@@ -3621,7 +3621,7 @@ Any parameters not provided will be left unchanged.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -3735,7 +3735,7 @@ Any parameters not provided will be left unchanged.</p>
 You need to pass <code>commit</code> param which accepts 2 values for now <code>Draft</code> and <code>Send</code>,
 these values will determine the status of the Purchase Order.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/purchase_orders</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -4049,13 +4049,13 @@ these values will determine the status of the Purchase Order.</p>
 <h2 id='get-all-purchase-orders'>Get all Purchase Orders</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4118,7 +4118,7 @@ to help your write your own logic of pagination.</p>
 <code>/api/v1/purchase_orders?search=your search keyword</code>. It will perform full-text
 search and return result accordingly.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/purchase_orders?page=1&amp;search=something</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders?page=1&amp;search=something</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -4151,13 +4151,13 @@ search and return result accordingly.</p>
 <h2 id='get-purchase-order-details'>Get Purchase Order details</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4273,7 +4273,7 @@ unique purchase order id, that was returned upon product creation.</p>
 approved this purchase order. You can find list of approvers in <code>approver_requests</code>
 attribute.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/purchase_orders/:id</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4301,13 +4301,13 @@ attribute.</p>
 <h2 id='new-purchase-order'>New Purchase Order</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/new'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/new'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/new'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/new'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4366,7 +4366,7 @@ attribute.</p>
 <p>Generate new object for Purchase Order and associated models and return
 them in JSON format.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/purchase_orders/new</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders/new</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4389,13 +4389,13 @@ them in JSON format.</p>
 <h2 id='pending-requests'>Pending Requests</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/pending_requests'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/pending_requests'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/pending_requests'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/pending_requests'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4451,14 +4451,14 @@ for current authentication_token.</p>
 <h3 id='sorting'>Sorting</h3>
 <p>You can sort requests by column with <code>asc</code> and <code>desc</code> directions.
 Example if you want to sort requests in <code>asc</code> order by <code>created_at</code> column then:
-<code>GET https://app.procurmentexpress.com/api/v1/purchase_orders/pending_requests?sort=created_at&amp;direction=asc</code></p>
+<code>GET https://app.procurementexpress.com/api/v1/purchase_orders/pending_requests?sort=created_at&amp;direction=asc</code></p>
 <h3 id='pagination-2'>Pagination</h3>
 <p>You can send <code>page</code> params to load paginated records e.g: <code>/api/v1/purchase_orders?page=2</code>.
 You can also see <code>meta</code> key in the response you get, that will return
 informations like <code>current_page</code>, <code>next_page</code>, <code>previous_page</code>, <code>total_pages</code>,
 and <code>total_count</code> to help your write your own logic of pagination.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/purchase_orders/pending_requests</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders/pending_requests</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4496,13 +4496,13 @@ and <code>total_count</code> to help your write your own logic of pagination.</p
 <h2 id='pending-requests-count'>Pending Requests Count</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/pending_request_count'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/pending_request_count'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/pending_request_count'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/pending_request_count'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4517,7 +4517,7 @@ and <code>total_count</code> to help your write your own logic of pagination.</p
 </span></code></pre>
 <p>Count total number of pending requests for current authentication_token.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/purchase_orders/pending_request_count</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders/pending_request_count</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4540,7 +4540,7 @@ and <code>total_count</code> to help your write your own logic of pagination.</p
 <h2 id='approve'>Approve</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/approve'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/approve'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">token: </span><span class="s1">'accept-token'</span>
   <span class="p">},</span>
@@ -4549,7 +4549,7 @@ and <code>total_count</code> to help your write your own logic of pagination.</p
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/approve'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/approve'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4566,7 +4566,7 @@ and <code>total_count</code> to help your write your own logic of pagination.</p
 <p>Approve purchase order. You must pass valid accept token to approve the Purchase
 order.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/purchase_orders/:id/approve</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders/:id/approve</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4594,7 +4594,7 @@ order.</p>
 <h2 id='reject'>Reject</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/reject'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/reject'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">token: </span><span class="s1">'reject-token'</span>
   <span class="p">},</span>
@@ -4603,7 +4603,7 @@ order.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/reject'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/reject'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4620,7 +4620,7 @@ order.</p>
 <p>Reject purchase order. You must pass valid reject token to reject the Purchase
 order.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/purchase_orders/:id/reject</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders/:id/reject</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4648,13 +4648,13 @@ order.</p>
 <h2 id='cancel'>Cancel</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/cancel'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/cancel'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/cancel'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/cancel'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4670,7 +4670,7 @@ order.</p>
 <p>Ability to Cancel purchase order. You can check if user can mark purchase order as
 cancel or not by checking <code>can_cancel</code> value in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a> page</p>
 <h3 id='http-request-9'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/purchase_orders/:id/cancel</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders/:id/cancel</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4693,13 +4693,13 @@ cancel or not by checking <code>can_cancel</code> value in <a href="/slate/#get-
 <h2 id='archive'>Archive</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/archive'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/archive'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/archive'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/archive'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4715,7 +4715,7 @@ cancel or not by checking <code>can_cancel</code> value in <a href="/slate/#get-
 <p>Ability to Archive purchase order. You can check if current logged in user can archive
 purchase or or not by checking <code>can_archive</code> value in <a href="/slate/#get-purchase-order-details">Purchase Order Details page</a></p>
 <h3 id='http-request-10'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/purchase_orders/:id/archive</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders/:id/archive</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4743,7 +4743,7 @@ in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a></p>
 <h2 id='receiving-items'>Receiving Items</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/receiving_items'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/receiving_items'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">purchase_order: </span><span class="p">{</span>
       <span class="ss">items: </span><span class="p">[</span>
@@ -4760,7 +4760,7 @@ in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a></p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/receiving_items'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/receiving_items'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4784,7 +4784,7 @@ in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a></p>
 <p>You can find <code>can_receive_item</code> in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a>
 page, This value should be true in order to allow user to receive items.</p>
 <h3 id='http-request-11'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/purchase_orders/:id/receiving_items</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders/:id/receiving_items</code></p>
 <h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4827,13 +4827,13 @@ page, This value should be true in order to allow user to receive items.</p>
 <h2 id='cancel-receiving-items'>Cancel Receiving Items</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/cancel_receiving_items'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/cancel_receiving_items'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/cancel_receiving_items'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/cancel_receiving_items'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4849,7 +4849,7 @@ page, This value should be true in order to allow user to receive items.</p>
 <p>You can find <code>can_cancel_receiving_items</code> in <a href="/slate/#get-purchase-order-details">Purchase Order Details</a>
 page, the users who are able to receive items can also cancel them. so please make sure this property is set to <code>true</code>.</p>
 <h3 id='http-request-12'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/purchase_orders/:id/cancel_receiving_items</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders/:id/cancel_receiving_items</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4872,7 +4872,7 @@ page, the users who are able to receive items can also cancel them. so please ma
 <h1 id='payments'>Payments</h1><h2 id='create-a-payment'>Create a Payment</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/payments'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/payments'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">payment: </span><span class="p">{</span>
       <span class="ss">notes: </span><span class="s2">"payment notes"</span><span class="p">,</span>
@@ -4893,7 +4893,7 @@ page, the users who are able to receive items can also cancel them. so please ma
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/1/payments'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/payments'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4915,7 +4915,7 @@ page, the users who are able to receive items can also cancel them. so please ma
 have enough permission to mark purchase order as paid or not, you need to first check
 <code>can_mark_po_as_paid</code> in the <a href="/slate/#get-purchase-order-details">Purchase Order Detail</a> endpoint.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/purchase_orders/:purchase_order_id/payments</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders/:purchase_order_id/payments</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -4953,7 +4953,7 @@ have enough permission to mark purchase order as paid or not, you need to first 
 <h1 id='suppliers'>Suppliers</h1><h2 id='create-a-supplier'>Create a Supplier</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/suppliers'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/suppliers'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">supplier: </span><span class="p">{</span>
       <span class="ss">name: </span><span class="s1">'iCare Center'</span><span class="p">,</span>
@@ -4967,7 +4967,7 @@ have enough permission to mark purchase order as paid or not, you need to first 
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/suppliers'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/suppliers'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -4996,7 +4996,7 @@ have enough permission to mark purchase order as paid or not, you need to first 
 </span></code></pre>
 <p>Create a new suppliers and returns the <code>Supplier</code> object that is created.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/suppliers</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/suppliers</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -5069,13 +5069,13 @@ have enough permission to mark purchase order as paid or not, you need to first 
 <h2 id='get-all-suppliers'>Get all Suppliers</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/suppliers'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/suppliers'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/suppliers'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/suppliers'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -5144,7 +5144,7 @@ queryparams. example: <code>/api/v1/suppliers?department_id=1</code>.</p>
 <h3 id='filter-archived-suppliers'>Filter Archived Suppliers</h3>
 <p>You can pass <code>archived</code> params with <code>true</code> or <code>false</code> to filter Archived suppliers.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/suppliers</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/suppliers</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -5187,13 +5187,13 @@ queryparams. example: <code>/api/v1/suppliers?department_id=1</code>.</p>
 <h2 id='get-supplier-details'>Get Supplier details</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/suppliers/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/suppliers/1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/suppliers/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/suppliers/1'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -5219,7 +5219,7 @@ queryparams. example: <code>/api/v1/suppliers?department_id=1</code>.</p>
 <p>Retrieves the details of an existing suppliers. You need to supply the unique
 supplier id, that was returned upon supplier creation.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app/rubberstamp.io/api/v1/suppliers/:id</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/suppliers/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -5247,7 +5247,7 @@ supplier id, that was returned upon supplier creation.</p>
 <h2 id='update-supplier'>Update Supplier</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/suppliers/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/suppliers/1'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">supplier: </span><span class="p">{</span>
       <span class="ss">name: </span><span class="s1">'updated'</span>
@@ -5258,7 +5258,7 @@ supplier id, that was returned upon supplier creation.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/suppliers/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/suppliers/1'</span>
   -X PUT
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -5285,7 +5285,7 @@ supplier id, that was returned upon supplier creation.</p>
 <p>Update the specified supplier by setting the value of parameters passed.
 Any parameters not provided will be left unchanged.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT https://app.procurmentexpress.com/api/v1/suppliers/:id</code></p>
+<p><code>PUT https://app.procurementexpress.com/api/v1/suppliers/:id</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -5356,14 +5356,14 @@ Any parameters not provided will be left unchanged.</p>
 </tr>
 </tbody></table>
 <h1 id='send-to-supplier-templates'>Send to supplier templates</h1><h2 id='get-all-templates'>Get All Templates</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.procurmentexpress.com/api/v1/send_to_supplier_templates <span class="se">\</span>
+  --url https://app.procurementexpress.com/api/v1/send_to_supplier_templates <span class="se">\</span>
   --header <span class="s1">'app_company_id: 1'</span> <span class="se">\</span>
   --header <span class="s1">'authentication_token: your token'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/send_to_supplier_templates'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/send_to_supplier_templates'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
       <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
       <span class="ss">app_company_id: </span><span class="s1">'1'</span>
@@ -5392,7 +5392,7 @@ Any parameters not provided will be left unchanged.</p>
 </span></code></pre>
 <p>Get list of all templates.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/send_to_supplier_templates</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/send_to_supplier_templates</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -5413,7 +5413,7 @@ Any parameters not provided will be left unchanged.</p>
 </tr>
 </tbody></table>
 <h2 id='forward-template'>Forward Template</h2><pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.procurmentexpress.com/api/v1/purchase_orders/2/forward <span class="se">\</span>
+  --url https://app.procurementexpress.com/api/v1/purchase_orders/2/forward <span class="se">\</span>
   --header <span class="s1">'app_company_id: 1'</span> <span class="se">\</span>
   --header <span class="s1">'authentication_token: your token'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -5429,7 +5429,7 @@ Any parameters not provided will be left unchanged.</p>
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/purchase_orders/2/forward'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/2/forward'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">emails: </span><span class="s2">"test@example.com"</span><span class="p">,</span>
     <span class="ss">cc: </span><span class="s2">"test2@example.com"</span><span class="p">,</span>
@@ -5466,7 +5466,7 @@ Any parameters not provided will be left unchanged.</p>
 <h3 id='uploads-fields'>Uploads Fields</h3>
 <p><code>uploads</code> accept list of ids, and must be Array values. If uploads are send while saving or updating template, they are ignored. <code>uploads</code> are only available when you are sending template to the supplier.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/purchase_orders/:id/forward</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders/:id/forward</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -5536,7 +5536,7 @@ Any parameters not provided will be left unchanged.</p>
 
 ```shell
 curl --request POST \
-  --url https://app.procurmentexpress.com/api/v1/send_to_supplier_templates \
+  --url https://app.procurementexpress.com/api/v1/send_to_supplier_templates \
   --header 'app_company_id: 1' \
   --header 'authentication_token: your token' \
   --header 'content-type: application/json' \
@@ -5551,7 +5551,7 @@ curl --request POST \
 ```ruby
 require 'rest-client'
 RestClient.post(
-  'https://app.procurmentexpress.com/api/v1/send_to_supplier_templates',
+  'https://app.procurementexpress.com/api/v1/send_to_supplier_templates',
   {
     send_to_supplier_template: {
         label: 'Sample Template',
@@ -5580,7 +5580,7 @@ Create new Send to supplier template with `label` and `text`.
 
 ### HTTP Request
 
-`POST https://app.procurmentexpress.com/api/v1/send_to_supplier_templates`
+`POST https://app.procurementexpress.com/api/v1/send_to_supplier_templates`
 
 ### Query Parameters
 
@@ -5597,7 +5597,7 @@ Create new Send to supplier template with `label` and `text`.
 
 ```sh
 curl --request GET \
-  --url https://app.procurmentexpress.com/api/v1/send_to_supplier_templates/2 \
+  --url https://app.procurementexpress.com/api/v1/send_to_supplier_templates/2 \
   --header 'app_company_id: 1' \
   --header 'authentication_token: your token' \
   --header 'content-type: application/json'
@@ -5607,7 +5607,7 @@ curl --request GET \
 require 'rest-client'
 
 response = RestClient.get(
-  'https://app.procurmentexpress.com/api/v1/send_to_supplier_templates/2',
+  'https://app.procurementexpress.com/api/v1/send_to_supplier_templates/2',
   headers = {
     authentication_token: 'your token',
     app_company_id: '1'
@@ -5630,7 +5630,7 @@ Get detail for send to supplier template by given id
 
 ### HTTP Request
 
-`GET https://app.procurmentexpress.com/api/v1/send_to_supplier_templates/:id`
+`GET https://app.procurementexpress.com/api/v1/send_to_supplier_templates/:id`
 
 ### URL Parameters
 
@@ -5646,7 +5646,7 @@ Get detail for send to supplier template by given id
 require 'rest-client'
 
 RestClient.put(
-  'https://app.procurmentexpress.com/api/v1/send_to_supplier_templates/1',
+  'https://app.procurementexpress.com/api/v1/send_to_supplier_templates/1',
   {
     label: 'Thank you template'
     text: 'Dear John Snow, \t\n\n Thank you for subscribing to our newsletter.'
@@ -5660,7 +5660,7 @@ RestClient.put(
 
 ```shell
 curl --request PUT \
-  --url https://app.procurmentexpress.com/api/v1/send_to_supplier_templates/2 \
+  --url https://app.procurementexpress.com/api/v1/send_to_supplier_templates/2 \
   --header 'app_company_id: 1' \
   --header 'authentication_token: your token' \
   --header 'content-type: application/json' \
@@ -5688,7 +5688,7 @@ parameters not provided will be left unchanged.
 
 ### HTTP Request
 
-`PUT https://app.procurmentexpress.com/api/v1/kittens/:id`
+`PUT https://app.procurementexpress.com/api/v1/kittens/:id`
 
 ### Query Parameters
 
@@ -5701,7 +5701,7 @@ parameters not provided will be left unchanged.
 <h1 id='tax-rates'>Tax Rates</h1><h2 id='create-a-tax-rate'>Create a Tax Rate</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/tax_rates'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/tax_rates'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">tax_rate: </span><span class="p">{</span>
       <span class="ss">name: </span><span class="s1">'default_13.0'</span><span class="p">,</span>
@@ -5713,7 +5713,7 @@ parameters not provided will be left unchanged.
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/tax_rates'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/tax_rates'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -5736,7 +5736,7 @@ parameters not provided will be left unchanged.
 </span></code></pre>
 <p>Create a new Tax rate and return the <code>TaxRate</code> object that is created.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/tax_rates</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/tax_rates</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -5779,13 +5779,13 @@ parameters not provided will be left unchanged.
 <h2 id='get-all-tax-rates'>Get All Tax Rates</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/tax_rates'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/tax_rates'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/tax_rates'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/tax_rates'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -5817,7 +5817,7 @@ parameters not provided will be left unchanged.
 </span></code></pre>
 <p>Returns a list of your tax rates.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/tax_rates</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/tax_rates</code></p>
 <h4 id='query-parameters-2'>Query Parameters</h4>
 <table><thead>
 <tr>
@@ -5840,13 +5840,13 @@ parameters not provided will be left unchanged.
 <h2 id='get-a-specific-tax-rates'>Get a Specific Tax Rates</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/tax_rates/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/tax_rates/1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/tax_rates/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/tax_rates/1'</span>
   -X GET
   -H <span class="s1">'Content-Type: application/json'</span>
   -H <span class="s1">'authentication_token: your token'</span>
@@ -5868,7 +5868,7 @@ parameters not provided will be left unchanged.
 <p>Retrieves the details of an existing tax rates. You need to supply the
 tax rate id, that was returned upon tax rate creation.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/tax_rates/:id</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/tax_rates/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -5896,7 +5896,7 @@ tax rate id, that was returned upon tax rate creation.</p>
 <h2 id='update-a-tax-rate'>Update a Tax Rate</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/tax_rates/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/tax_rates/1'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">tax_rate: </span><span class="p">{</span>
       <span class="ss">name: </span><span class="s1">'default_13.10'</span><span class="p">,</span>
@@ -5908,7 +5908,7 @@ tax rate id, that was returned upon tax rate creation.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/tax_rates/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/tax_rates/1'</span>
   -X PUT
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -5932,7 +5932,7 @@ tax rate id, that was returned upon tax rate creation.</p>
 <p>Update the specified tax rate by setting the value of parameters passed. Any
 parameters not provided will be left unchanged.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT https://app.procurmentexpress.com/api/v1/tax_rates/:id</code></p>
+<p><code>PUT https://app.procurementexpress.com/api/v1/tax_rates/:id</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -5975,7 +5975,7 @@ parameters not provided will be left unchanged.</p>
 <h1 id='uploads'>Uploads</h1><h2 id='purchase-order-upload'>Purchase Order Upload</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/uploads/po'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/uploads/po'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">po_id: </span><span class="s1">'1'</span><span class="p">,</span>
     <span class="ss">uploads_attributes: </span><span class="p">{</span>
@@ -5988,7 +5988,7 @@ parameters not provided will be left unchanged.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/uploads/po'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/uploads/po'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -6011,7 +6011,7 @@ parameters not provided will be left unchanged.</p>
 <p>Add upload for Purchase Order, upload it to s3, and then returns the content
 in json format.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/uploads/po</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/uploads/po</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -6049,7 +6049,7 @@ in json format.</p>
 <h2 id='po-comment-upload'>PO Comment Upload</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/uploads/poc'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/uploads/poc'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">poc_id: </span><span class="s1">'1'</span><span class="p">,</span>
     <span class="ss">uploads_attributes: </span><span class="p">{</span>
@@ -6062,7 +6062,7 @@ in json format.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/uploads/poc'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/uploads/poc'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -6085,7 +6085,7 @@ in json format.</p>
 <p>Add upload for Purchase Order, upload it to s3, and then returns the content
 in json format.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/uploads/poc</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/uploads/poc</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -6123,13 +6123,13 @@ in json format.</p>
 <h2 id='get-status'>Get Status</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/uploads/status?upload_token=myuploadtoken1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/uploads/status?upload_token=myuploadtoken1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/uploads/status?upload_token=myuploadtoken1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/uploads/status?upload_token=myuploadtoken1'</span>
   -X GET
   -H <span class="s2">"authentication_token: your token"</span>
   -H <span class="s2">"app_company_id: 1"</span>
@@ -6148,7 +6148,7 @@ in json format.</p>
 <p>Expects <code>upload_token</code> to be passed in the url params and return matching upload
 object in JSON format.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/uploads/status?upload_token=your token</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/uploads/status?upload_token=your token</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -6175,8 +6175,8 @@ object in JSON format.</p>
 </tbody></table>
 <h1 id='extras'>Extras</h1><h2 id='index'>Index</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.procurmentexpress.com/api/v1/extras'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/extras'</span>
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.procurementexpress.com/api/v1/extras'</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/extras'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
 </code></pre>
@@ -6189,11 +6189,11 @@ object in JSON format.</p>
 </span></code></pre>
 <p>Wait for 3 seconds and return a json response. Used for testing mobile app functionality.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/extras</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/extras</code></p>
 <h2 id='locales'>Locales</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.procurmentexpress.com/api/v1/locales/en'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/locales/en'</span>
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.procurementexpress.com/api/v1/locales/en'</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/locales/en'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
 </code></pre>
@@ -6222,7 +6222,7 @@ object in JSON format.</p>
 </span></code></pre>
 <p>Get list of locales depending on <code>locale</code> params</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/locales/:locale</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/locales/:locale</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -6258,7 +6258,7 @@ object in JSON format.</p>
 <h2 id='track'>Track</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-<span class="s1">'https://app.procurmentexpress.com/api/v1/track'</span><span class="p">,</span>
+<span class="s1">'https://app.procurementexpress.com/api/v1/track'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">tracking_info: </span><span class="p">{</span>
       <span class="ss">event: </span><span class="s1">'yyy'</span><span class="p">,</span>
@@ -6276,7 +6276,7 @@ object in JSON format.</p>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/track'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/track'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s2">"tracking_info[event]=yyy"</span>
@@ -6312,7 +6312,7 @@ object in JSON format.</p>
 </span></code></pre>
 <p>Track segment.io with given params value, and return as a json output.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/track</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/track</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -6364,8 +6364,8 @@ object in JSON format.</p>
 </tbody></table>
 <h2 id='user-already-registered'>User already registered?</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.procurmentexpress.com/api/v1/useralreadyregistered?email=test@example.com'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/useralreadyregistered?email=test@example.com'</span>
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.procurementexpress.com/api/v1/useralreadyregistered?email=test@example.com'</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/useralreadyregistered?email=test@example.com'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
 </code></pre>
@@ -6379,7 +6379,7 @@ object in JSON format.</p>
 <p>Check if given email is already registered in our server. Returns <code>true</code> if
 already registered otherwise returns <code>false</code>.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/useralreadyregistered?email=...</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/useralreadyregistered?email=...</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -6397,7 +6397,7 @@ already registered otherwise returns <code>false</code>.</p>
 <h1 id='webhooks'>Webhooks</h1><h2 id='create-a-webhook'>Create a Webhook</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/webhooks'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/webhooks'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">webhook: </span><span class="p">{</span>
       <span class="ss">name: </span><span class="s1">'My Awesome App'</span><span class="p">,</span>
@@ -6437,7 +6437,7 @@ already registered otherwise returns <code>false</code>.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/webhooks'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/webhooks'</span>
   -X POST
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -6500,7 +6500,7 @@ already registered otherwise returns <code>false</code>.</p>
 </span></code></pre>
 <p>Create a new Webhooks and returns the Webhook object that is created.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.procurmentexpress.com/api/v1/webhooks</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/webhooks</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -6578,13 +6578,13 @@ already registered otherwise returns <code>false</code>.</p>
 <h2 id='get-all-webhooks'>Get All Webhooks</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/webhooks'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/webhooks'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/webhooks'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/webhooks'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -6630,9 +6630,9 @@ already registered otherwise returns <code>false</code>.</p>
 <h3 id='filter-by-archived'>Filter by archived</h3>
 <p>Default result will only provide webhooks that are not already archived.
 If you want to get the list of webhooks that are archived then you can pass
-<code>archived=true</code> params e.g: <code>https://app.procurmentexpress.com/api/v1/webhooks?archived=true</code></p>
+<code>archived=true</code> params e.g: <code>https://app.procurementexpress.com/api/v1/webhooks?archived=true</code></p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/webhooks</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/webhooks</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -6655,13 +6655,13 @@ If you want to get the list of webhooks that are archived then you can pass
 <h2 id='get-a-specific-webhook'>Get a specific Webhook</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/webhooks/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/webhooks/1'</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/webhooks/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/webhooks/1'</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -6689,7 +6689,7 @@ If you want to get the list of webhooks that are archived then you can pass
 <p>Retrieves the details of an existing webhooks. You need to supply the unique
 Webhook id that was returned upon budget creation.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.procurmentexpress.com/api/v1/webhooks/:id</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/webhooks/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -6717,7 +6717,7 @@ Webhook id that was returned upon budget creation.</p>
 <h2 id='update-a-webhook'>Update a Webhook</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
-  <span class="s1">'https://app.procurmentexpress.com/api/v1/webhooks/1'</span><span class="p">,</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/webhooks/1'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">webhook: </span><span class="p">{</span>
       <span class="ss">name: </span><span class="s1">'My Awesome App name updated'</span><span class="p">,</span>
@@ -6732,7 +6732,7 @@ Webhook id that was returned upon budget creation.</p>
     <span class="ss">app_company_id: </span><span class="mi">1</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurmentexpress.com/api/v1/webhooks/1'</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/webhooks/1'</span>
   -X PUT
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -6777,7 +6777,7 @@ Webhook id that was returned upon budget creation.</p>
 <p>Update the specified <code>Webhook</code> by setting the value of parameters passed. Any
 parameters not provided will be left unchanged.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT https://app.procurmentexpress.com/api/v1/webhooks/:id</code></p>
+<p><code>PUT https://app.procurementexpress.com/api/v1/webhooks/:id</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
