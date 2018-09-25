@@ -6183,7 +6183,7 @@ object in JSON format.</p>
 </tbody></table>
 <h1 id='bulk-datas'>Bulk Datas</h1><h2 id='list-all-bulk-datas'>List All Bulk Datas</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
   <span class="s1">'https://app.procurementexpress.com/api/v1/bulk_datas'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">created_at: </span><span class="s2">"2018-8-10T09:17:58.097-05:00"</span>
@@ -6194,7 +6194,7 @@ object in JSON format.</p>
   <span class="p">}</span>
 <span class="p">)</span>
 </code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurementexpress.com/api/v1/bulk_datas
-  -X POST
+  -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
   -H <span class="s2">"app_company_id: 1"</span>
@@ -6213,7 +6213,7 @@ object in JSON format.</p>
 </span></code></pre>
 <p>List all <code>departments</code>, <code>budgets</code>, <code>tax_rates</code>, <code>suppliers</code>, <code>products</code>, etc from same api endpoint. If you pass <code>created_at</code> query params, then it will filter all data after that given created at for given company. If <code>created_at</code> is missing then it will return all data for given company.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://app.procurementexpress.com/api/v1/bulk_datas</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/bulk_datas</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
