@@ -6203,15 +6203,28 @@ object in JSON format.</p>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"departments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="s2">"budgets"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="s2">"tax_rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="s2">"suppliers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6008</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"android test"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employees_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"default_tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.3266</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prepaid_subscription"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"multicompany_pack"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_setting"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"supported_currencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"supported_currencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"departments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"budgets"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"tax_rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"suppliers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"synced_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-02T03:07:36.465-05:00"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>List all <code>departments</code>, <code>budgets</code>, <code>tax_rates</code>, <code>suppliers</code>, <code>products</code>, etc from same api endpoint. If you pass <code>created_at</code> query params, then it will filter all data after that given created at for given company. If <code>created_at</code> is missing then it will return all data for given company.</p>
+<p>List of current users companies along with <code>company_setting</code>, <code>custom_fields</code>, <code>supported_currencies</code>, <code>departments</code>, <code>budgets</code>, <code>tax_rates</code>, <code>suppliers</code>, <code>products</code>, etc from same api endpoint. You will also get <code>synced_at</code> which will always return last synced at date time. You can pass <code>synced_at</code> as <code>created_at</code> query params, then it will filter all data after that given created at for given company. If <code>created_at</code> is missing then it will return all data for given company.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://app.procurementexpress.com/api/v1/bulk_datas</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
