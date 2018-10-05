@@ -6186,7 +6186,7 @@ object in JSON format.</p>
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
   <span class="s1">'https://app.procurementexpress.com/api/v1/bulk_datas'</span><span class="p">,</span>
   <span class="p">{</span>
-    <span class="ss">created_at: </span><span class="s2">"2018-8-10T09:17:58.097-05:00"</span>
+    <span class="ss">synced_at: </span><span class="s2">"2018-8-10T09:17:58.097-05:00"</span>
   <span class="p">},</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
@@ -6198,35 +6198,46 @@ object in JSON format.</p>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
   -H <span class="s2">"app_company_id: 1"</span>
-  -d <span class="s2">"created_at=2018-8-10T09:17:58.097-05:00"</span>
+  -d <span class="s2">"synced_at=2018-8-10T09:17:58.097-05:00"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6008</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"android test"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"employees_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"default_tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.3266</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"prepaid_subscription"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"multicompany_pack"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"company_setting"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="s2">"supported_currencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"supported_currencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"departments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"budgets"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"tax_rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"suppliers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"synced_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-02T03:07:36.465-05:00"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11752</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at@icloud.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test android"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6008</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"synced_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-02T03:07:36.465-05:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6008</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"android test"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"employees_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"default_tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.3266</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prepaid_subscription"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"multicompany_pack"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company_setting"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"supported_currencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"supported_currencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"departments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"budgets"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"tax_rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"suppliers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"approvers"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>List of current users companies along with <code>company_setting</code>, <code>custom_fields</code>, <code>supported_currencies</code>, <code>departments</code>, <code>budgets</code>, <code>tax_rates</code>, <code>suppliers</code>, <code>products</code>, etc from same api endpoint. You will also get <code>synced_at</code> which will always return last synced at date time. You can pass <code>synced_at</code> as <code>created_at</code> query params, then it will filter all data after that given created at for given company. If <code>created_at</code> is missing then it will return all data for given company.</p>
+<p>List of current users object along with it&#39;s associated companies with <code>company_setting</code>, <code>custom_fields</code>, <code>supported_currencies</code>, <code>departments</code>, <code>budgets</code>, <code>tax_rates</code>, <code>suppliers</code>, <code>products</code>, etc for each companies from same api endpoint. You will also get <code>synced_at</code> which will always return last synced at date time. You can pass <code>synced_at</code> query params, which will return newly created or updated records after given synced-at date. If <code>synced_at</code> is missing then it will return all data for given company.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://app.procurementexpress.com/api/v1/bulk_datas</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/bulk_datas?synced_at=...</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -6246,14 +6257,14 @@ object in JSON format.</p>
 <td>registered company id</td>
 </tr>
 <tr>
-<td>created_at</td>
+<td>synced_at</td>
 <td>DateTime</td>
-<td>created_at datetime for the record</td>
+<td>synced_at datetime for the record that you get from json response</td>
 </tr>
 </tbody></table>
 
 <aside class="info">
-NOTE - You will get <strong>created_at</strong> value from the json response for each object, so make sure you store it somewhere to re use it in future.
+NOTE - You will get <strong>synced_at</strong> value from the json response for top level object, so make sure you store it somewhere to reuse it in future.
 </aside>
 <h1 id='extras'>Extras</h1><h2 id='index'>Index</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
