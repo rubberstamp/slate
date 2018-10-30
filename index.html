@@ -681,6 +681,7 @@ curl <span class="s1">'https://app.procurementexpress.com/api/v1/register'</span
   -d <span class="s2">"name=Api user"</span>
   -d <span class="s2">"phone_number=98xxxxxxxx"</span>
   -d <span class="s2">"terms_of_service=true"</span>
+  -d <span class="s2">"source=mobile_android"</span>
 
 <span class="c"># Example With Tracking Info</span>
 
@@ -712,7 +713,8 @@ curl <span class="s1">'https://app.procurementexpress.com/api/v1/register'</span
     <span class="ss">password_confirmation: </span><span class="s1">'pass1234'</span><span class="p">,</span>
     <span class="ss">name: </span><span class="s1">'Api user'</span><span class="p">,</span>
     <span class="ss">phone_number: </span><span class="s1">'98xxxxxx'</span><span class="p">,</span>
-    <span class="ss">terms_of_service: </span><span class="kp">true</span>
+    <span class="ss">terms_of_service: </span><span class="kp">true</span><span class="p">,</span>
+    <span class="ss">source: </span><span class="s1">'mobile_android'</span>
   <span class="p">}</span>
 <span class="p">)</span>
 
@@ -765,6 +767,9 @@ to your email and you can confirm it. It will returns <code>User</code> object a
 with <code>authentication_token</code>.</p>
 <h3 id='terms-of-service'>Terms of service</h3>
 <p><code>terms_of_service</code> is a required field.</p>
+<h3 id='about-source-column'>About source column</h3>
+<p>Source column is used to determine what is the source of data, and it accept one of these
+four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/register</code></p>
 <h3 id='tracking-registration'>Tracking Registration</h3>
@@ -820,6 +825,11 @@ with <code>authentication_token</code>.</p>
 <td>terms_of_serivce</td>
 <td>boolean</td>
 <td>You must accept terms of service</td>
+</tr>
+<tr>
+<td>source</td>
+<td>string</td>
+<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 <tr>
 <td>tracking_info[properties][uuid]</td>
@@ -1549,8 +1559,7 @@ account. We ignore <code>gmail</code>, <code>hotmail</code>, <code>icloud</code>
 <p>Action to actually <code>join</code> existing company. To join the company, you need to pass
 <code>company_id</code> as a query_params</p>
 <h3 id='http-request-11'>HTTP Request</h3>
-<p><code>POST
-https://app.procurementexpress.com/api/v1/users/join_existing_company?company_id=:id</code></p>
+<p><code>POST https://app.procurementexpress.com/api/v1/users/join_existing_company?company_id=:id</code></p>
 <h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1576,6 +1585,7 @@ https://app.procurementexpress.com/api/v1/users/join_existing_company?company_id
   <span class="s1">'https://app.procurementexpress.com/api/v1/budgets'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">budget: </span><span class="p">{</span>
+      <span class="ss">source: </span><span class="s1">'mobile_android'</span>
       <span class="ss">amount: </span><span class="mi">100</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
       <span class="ss">name: </span><span class="s1">'Test'</span><span class="p">,</span>
       <span class="ss">currency_id: </span><span class="mi">1</span><span class="p">,</span>
@@ -1595,6 +1605,7 @@ https://app.procurementexpress.com/api/v1/users/join_existing_company?company_id
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
   -H <span class="s2">"app_company_id: 1"</span>
+  -d <span class="s2">"budget[source]=mobile_android"</span>
   -d <span class="s2">"budget[amount]=100.0"</span>
   -d <span class="s2">"budget[name]=Test"</span>
   -d <span class="s2">"budget[currency_id]=1"</span>
@@ -1637,6 +1648,9 @@ department ids in the POST request.</p>
 <p>Because we support multiple date formats, we need to send dates depending on
 <code>company_setting.date_format</code>. In this API endpoint, you need to provide proper
 date format for <code>start_date</code> and <code>end_date</code>. Please find date format in <a href="/slate/#get-a-specific-company">Company Setting</a></p>
+<h3 id='about-source-column'>About source column</h3>
+<p>Source column is used to determine what is the source of data, and it accept one of these
+four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/budgets</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -1656,6 +1670,11 @@ date format for <code>start_date</code> and <code>end_date</code>. Please find d
 <td>app_company_id</td>
 <td>header</td>
 <td>registered company id</td>
+</tr>
+<tr>
+<td>budget[source]</td>
+<td>string</td>
+<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 <tr>
 <td>budget[amount]</td>
@@ -2082,6 +2101,7 @@ https://app.procurementexpress.com/api/v1/purchase_order/:purchase_order_id/comm
   <span class="p">{</span>
     <span class="ss">company: </span><span class="p">{</span>
       <span class="ss">name: </span><span class="s1">'ABC Corp.'</span><span class="p">,</span>
+      <span class="ss">source: </span><span class="s1">'website'</span><span class="p">,</span>
       <span class="ss">gross_or_net_config: </span><span class="mi">1</span><span class="p">,</span>
       <span class="ss">company_setting_attributes: </span><span class="p">{</span>
         <span class="ss">currency_id: </span><span class="mi">1</span>
@@ -2097,6 +2117,7 @@ https://app.procurementexpress.com/api/v1/purchase_order/:purchase_order_id/comm
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
   -d <span class="s2">"company[name]=ABC Corp."</span>
+  -d <span class="s2">"company[source]=website"</span>
   -d <span class="s2">"company[gross_or_net_config]=1"</span>
   -d <span class="s2">"company[company_setting_attributes][currency_id]=1"</span>
 </code></pre>
@@ -2104,11 +2125,14 @@ https://app.procurementexpress.com/api/v1/purchase_order/:purchase_order_id/comm
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC Corp."</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC Corp."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Create a new Company and returns the <code>Company</code> object that is created.</p>
+<h3 id='about-source-column'>About source column</h3>
+<p>Source column is used to determine what is the source of data, and it accept one of these
+four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/companies</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -2128,6 +2152,11 @@ https://app.procurementexpress.com/api/v1/purchase_order/:purchase_order_id/comm
 <td>company[name]</td>
 <td>string</td>
 <td><code>Required</code> - Company name</td>
+</tr>
+<tr>
+<td>company[source]</td>
+<td>string</td>
+<td>one of <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code> or <code>mobile_other</code></td>
 </tr>
 <tr>
 <td>company[gross_or_net_config]</td>
@@ -2403,13 +2432,7 @@ https://app.procurementexpress.com/api/v1/purchase_order/:purchase_order_id/comm
     </span><span class="s2">"allocations_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"report_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user_can_add_supplier"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"po_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Date"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Budgets"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"From"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"PO number"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Net Amount"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"po_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Date"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Budgets"</span><span class="p">,</span><span class="w"> </span><span class="s2">"From"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PO number"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Net Amount"</span><span class="p">],</span><span class="w">
     </span><span class="s2">"reserve_po_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2420,10 +2443,7 @@ https://app.procurementexpress.com/api/v1/purchase_order/:purchase_order_id/comm
       </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"select"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"Acquisition of new donors."</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Existing donors."</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Acquisition of new donors."</span><span class="p">,</span><span class="w"> </span><span class="s2">"Existing donors."</span><span class="p">],</span><span class="w">
       </span><span class="s2">"access_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"everyone"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"on_line_item"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -2553,13 +2573,7 @@ that was returned upon company creation.</p>
     </span><span class="s2">"allocations_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"report_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user_can_add_supplier"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"po_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Date"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Budgets"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"From"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"PO number"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Net Amount"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"po_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Date"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Budgets"</span><span class="p">,</span><span class="w"> </span><span class="s2">"From"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PO number"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Net Amount"</span><span class="p">],</span><span class="w">
     </span><span class="s2">"reserve_po_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2570,10 +2584,7 @@ that was returned upon company creation.</p>
       </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"select"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"Acquisition of new donors."</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Existing donors."</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Acquisition of new donors."</span><span class="p">,</span><span class="w"> </span><span class="s2">"Existing donors."</span><span class="p">],</span><span class="w">
       </span><span class="s2">"access_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"everyone"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"on_line_item"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -2678,38 +2689,38 @@ that was returned upon company creation.</p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin User"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin User"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC Corp."</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountant@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accountant User"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC Corp."</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC Corp."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountant@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accountant User"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC Corp."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Retrieves the list of approvers for current company. It will return <code>[]</code> if it is an auto approval PO.</p>
@@ -2761,38 +2772,38 @@ params.</p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin User"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin User"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC Corp."</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountant@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accountant User"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC Corp."</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC Corp."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountant@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accountant User"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"authentication_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"approval_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC Corp."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Retrieves the list of all approvers for current company regardless of auto approval routing</p>
@@ -3310,7 +3321,8 @@ Any parameters not provided will be left unchanged.</p>
       <span class="ss">description: </span><span class="s1">'1 IPad Charging Station'</span><span class="p">,</span>
       <span class="ss">sku: </span><span class="s1">'SKU-001'</span><span class="p">,</span>
       <span class="ss">unit_price: </span><span class="mi">44</span><span class="o">.</span><span class="mi">23</span><span class="p">,</span>
-      <span class="ss">supplier_id: </span><span class="mi">1</span>
+      <span class="ss">supplier_id: </span><span class="mi">1</span><span class="p">,</span>
+      <span class="ss">source: </span><span class="s1">'mobile_android'</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3327,6 +3339,7 @@ Any parameters not provided will be left unchanged.</p>
   -d <span class="s2">"product[sku]=SKU-001"</span>
   -d <span class="s2">"product[unit_price]=44.23"</span>
   -d <span class="s2">"product[supplier_id]=1"</span>
+  -d <span class="s2">"product[source]=mobile_android"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -3342,6 +3355,9 @@ Any parameters not provided will be left unchanged.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Create a new products and returns the <code>Product</code> object that is created.</p>
+<h3 id='about-source-column'>About source column</h3>
+<p>Source column is used to determine what is the source of data, and it accept one of these
+four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/products</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -3381,6 +3397,11 @@ Any parameters not provided will be left unchanged.</p>
 <td>product[supplier_id]</td>
 <td>integer</td>
 <td>Supplier ID</td>
+</tr>
+<tr>
+<td>product[source]</td>
+<td>string</td>
+<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 </tbody></table>
 <h2 id='get-all-products'>Get all Products</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
@@ -3612,6 +3633,7 @@ Any parameters not provided will be left unchanged.</p>
       <span class="ss">company_id: </span><span class="mi">1</span><span class="p">,</span>
       <span class="ss">currency_id: </span><span class="mi">1</span><span class="p">,</span>
       <span class="ss">department_id:  </span><span class="mi">1</span><span class="p">,</span>
+      <span class="ss">source: </span><span class="s1">'mobile_android'</span><span class="p">,</span>
       <span class="ss">purchase_order_items_attributes: </span><span class="p">[</span>
         <span class="p">{</span>
           <span class="ss">description: </span><span class="s2">"hello"</span><span class="p">,</span>
@@ -3635,6 +3657,7 @@ Any parameters not provided will be left unchanged.</p>
   -H <span class="s2">"authentication_token: your token"</span>
   -H <span class="s2">"app_company_id: 1"</span>
   -d <span class="s2">"commit=Send"</span>
+  -d <span class="s2">"purchase_order[source]=mobile_android"</span>
   -d <span class="s2">"purchase_order[creator_id]=1"</span>
   -d <span class="s2">"purchase_order[status]=draft"</span>
   -d <span class="s2">"purchase_order[supplier_name]=John Doe"</span>
@@ -3677,8 +3700,7 @@ Any parameters not provided will be left unchanged.</p>
   </span><span class="s2">"share_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEFYPNLBYFMKROPXUTCMPGMQCOGROKOS20170921003738"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"conversion_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.88159"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w">
-    </span><span class="s2">"John Doe James Kennedy  pending 44.56  1100044 - Embajadores de marca Google en Retail Chromecast hello 50.55 50.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe James Kennedy  pending 44.56  1100044 - Embajadores de marca Google en Retail Chromecast hello 50.55 50.0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"self_approved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"xero_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"synced_with_xero"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -3688,8 +3710,7 @@ Any parameters not provided will be left unchanged.</p>
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"purchase_order_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"budget_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"budget_summary"</span><span class="p">:</span><span class="w">
-        </span><span class="s2">"1100044 - Embajadores de marca Google en Retail Chromecast : F 9575 : TELEFONIA Y CELULARES"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"budget_summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1100044 - Embajadores de marca Google en Retail Chromecast : F 9575 : TELEFONIA Y CELULARES"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gross_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50.55"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50.0"</span><span class="p">,</span><span class="w">
@@ -3720,8 +3741,7 @@ Any parameters not provided will be left unchanged.</p>
       </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"summary"</span><span class="p">:</span><span class="w">
-        </span><span class="s2">"1100044 - Embajadores de marca Google en Retail Chromecast : F 9575 : TELEFONIA Y CELULARES"</span><span class="w">
+      </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1100044 - Embajadores de marca Google en Retail Chromecast : F 9575 : TELEFONIA Y CELULARES"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"purchase_order_comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -3742,6 +3762,9 @@ Any parameters not provided will be left unchanged.</p>
 <p>Create a new Purchase Order and return the <code>Purchase Order</code> object that is created.
 You need to pass <code>commit</code> param which accepts 2 values for now <code>Draft</code> and <code>Send</code>,
 these values will determine the status of the Purchase Order.</p>
+<h3 id='about-source-column'>About source column</h3>
+<p>Source column is used to determine what is the source of data, and it accept one of these
+four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -3770,6 +3793,12 @@ these values will determine the status of the Purchase Order.</p>
 <td>string</td>
 <td><code>Send</code> <br /> <code>Draft</code></td>
 <td>Possible values are <code>Send</code> and <code>Draft</code></td>
+</tr>
+<tr>
+<td>purchase_order[source]</td>
+<td>string</td>
+<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
+<td></td>
 </tr>
 <tr>
 <td>purchase_order[supplier_name]</td>
@@ -4080,8 +4109,7 @@ these values will determine the status of the Purchase Order.</p>
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50.55"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"supplier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w">
-        </span><span class="s2">"John doe James Kennedy  pending 44.56  1100044 - Embajadores de marca Google en Retail Chromecast hello 50.55 50.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe James Kennedy  pending 44.56  1100044 - Embajadores de marca Google en Retail Chromecast hello 50.55 50.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1505972258000</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency_symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
@@ -4095,8 +4123,7 @@ these values will determine the status of the Purchase Order.</p>
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50.55"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"supplier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w">
-        </span><span class="s2">"John Doe James Kennedy  pending 44.56  1100044 - Embajadores de marca Google en Retail Chromecast hello 50.55 50.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe James Kennedy  pending 44.56  1100044 - Embajadores de marca Google en Retail Chromecast hello 50.55 50.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1505972227000</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency_symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
@@ -4420,8 +4447,7 @@ them in JSON format.</p>
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50.55"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"supplier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w">
-        </span><span class="s2">"John doe James Kennedy  pending 44.56  1100044 - Embajadores de marca Google en Retail Chromecast hello 50.55 50.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe James Kennedy  pending 44.56  1100044 - Embajadores de marca Google en Retail Chromecast hello 50.55 50.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1505972258000</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency_symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
@@ -4435,8 +4461,7 @@ them in JSON format.</p>
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50.55"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"supplier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w">
-        </span><span class="s2">"John Doe James Kennedy  pending 44.56  1100044 - Embajadores de marca Google en Retail Chromecast hello 50.55 50.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe James Kennedy  pending 44.56  1100044 - Embajadores de marca Google en Retail Chromecast hello 50.55 50.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1505972227000</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency_symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
@@ -4967,7 +4992,8 @@ have enough permission to mark purchase order as paid or not, you need to first 
       <span class="ss">name: </span><span class="s1">'iCare Center'</span><span class="p">,</span>
       <span class="ss">email: </span><span class="s1">'icare@example.com'</span><span class="p">,</span>
       <span class="ss">address: </span><span class="s1">'234 Saint St.'</span><span class="p">,</span>
-      <span class="ss">notes: </span><span class="s1">'purchase iPhone 7'</span>
+      <span class="ss">notes: </span><span class="s1">'purchase iPhone 7'</span><span class="p">,</span>
+      <span class="ss">source: </span><span class="s1">'mobile_android'</span>
     <span class="p">}</span>
   <span class="p">}</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -4984,6 +5010,7 @@ have enough permission to mark purchase order as paid or not, you need to first 
   -d <span class="s2">"supplier[email]=icare@example.com"</span>
   -d <span class="s2">"supplier[address]=234 Saint St."</span>
   -d <span class="s2">"supplier[notes]=purchase iPhone 7"</span>
+  -d <span class="s2">"supplier[source]=mobile_android"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -5003,6 +5030,9 @@ have enough permission to mark purchase order as paid or not, you need to first 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Create a new suppliers and returns the <code>Supplier</code> object that is created.</p>
+<h3 id='about-source-column'>About source column</h3>
+<p>Source column is used to determine what is the source of data, and it accept one of these
+four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/suppliers</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -5022,6 +5052,11 @@ have enough permission to mark purchase order as paid or not, you need to first 
 <td>app_company_id</td>
 <td>header</td>
 <td>Company ID</td>
+</tr>
+<tr>
+<td>supplier[source]</td>
+<td>string</td>
+<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 <tr>
 <td>supplier[name]</td>
@@ -5222,7 +5257,7 @@ queryparams. example: <code>/api/v1/suppliers?department_id=1</code>.</p>
   </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"contact_person"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tax_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Retrieves the details of an existing suppliers. You need to supply the unique
 supplier id, that was returned upon supplier creation.</p>
