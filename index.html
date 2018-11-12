@@ -793,77 +793,92 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <tr>
 <th>Param</th>
 <th>Type</th>
+<th>required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>email</td>
 <td>string</td>
+<td>required</td>
 <td>Your registered email address</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
+<td>required</td>
 <td>strong password</td>
 </tr>
 <tr>
 <td>password_confirmation</td>
 <td>string</td>
+<td>required</td>
 <td>password confirmation</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
+<td>required</td>
 <td>Your First Name and Last Name</td>
 </tr>
 <tr>
 <td>phone_number</td>
 <td>string</td>
+<td>required</td>
 <td>Phone number</td>
 </tr>
 <tr>
 <td>terms_of_serivce</td>
 <td>boolean</td>
+<td>required</td>
 <td>You must accept terms of service</td>
 </tr>
 <tr>
 <td>source</td>
 <td>string</td>
+<td>optional</td>
 <td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 <tr>
 <td>tracking_info[properties][uuid]</td>
 <td>header</td>
+<td>optional</td>
 <td>Pass uuid to track</td>
 </tr>
 <tr>
 <td>tracking_info[properties][is_web-view]</td>
 <td>header</td>
+<td>optional</td>
 <td><code>true</code> if user is using web browsers otherwise <code>false</code></td>
 </tr>
 <tr>
 <td>tracking_info[properties][is_ipad]</td>
 <td>header</td>
+<td>optional</td>
 <td><code>true</code> if user is using IPad otherwise <code>false</code></td>
 </tr>
 <tr>
 <td>tracking_info[properties][is_ios]</td>
 <td>header</td>
+<td>optional</td>
 <td><code>true</code> if user is using IOS device otherwise <code>false</code></td>
 </tr>
 <tr>
 <td>tracking_info[properties][is_android]</td>
 <td>header</td>
+<td>optional</td>
 <td><code>true</code> if user is using android device otherwise <code>false</code></td>
 </tr>
 <tr>
 <td>tracking_info[properties][platform]</td>
 <td>header</td>
+<td>optional</td>
 <td>device platform</td>
 </tr>
 <tr>
 <td>tracking_info[properties][version]</td>
 <td>header</td>
+<td>optional</td>
 <td>device version</td>
 </tr>
 </tbody></table>
@@ -1658,78 +1673,93 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <tr>
 <th>Param</th>
 <th>Type</th>
+<th>required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>authentication_token</td>
 <td>header</td>
+<td>required</td>
 <td>Authentication token</td>
 </tr>
 <tr>
 <td>app_company_id</td>
 <td>header</td>
+<td>required</td>
 <td>registered company id</td>
-</tr>
-<tr>
-<td>budget[source]</td>
-<td>string</td>
-<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 <tr>
 <td>budget[amount]</td>
 <td>double</td>
+<td>required</td>
 <td>Budget Amount</td>
 </tr>
 <tr>
 <td>budget[name]</td>
 <td>string</td>
+<td>required</td>
 <td>Budget Name</td>
 </tr>
 <tr>
 <td>budget[cost_code]</td>
 <td>string</td>
+<td>optional</td>
 <td>Budget cost code</td>
 </tr>
 <tr>
 <td>budget[cost_type]</td>
 <td>string</td>
+<td>optional</td>
 <td>Budget cost type</td>
 </tr>
 <tr>
 <td>budget[currency_id]</td>
 <td>integer</td>
+<td>required</td>
 <td>Budget currency</td>
 </tr>
 <tr>
 <td>budget[creator_id]</td>
 <td>integer</td>
+<td>required</td>
 <td>Budget creator</td>
 </tr>
 <tr>
 <td>budget[allow_anyone_to_approve_a_po]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Allow anyone to approve a PO?</td>
 </tr>
 <tr>
 <td>budget[start_date]</td>
 <td>date</td>
+<td>optional</td>
 <td>Budget start date</td>
 </tr>
 <tr>
 <td>budget[end_date]</td>
 <td>date</td>
+<td>optional</td>
 <td>Budget end date</td>
 </tr>
 <tr>
 <td>budget[approver_ids]</td>
 <td>Array</td>
+<td>optional</td>
 <td>Array of approver ids</td>
 </tr>
 <tr>
 <td>budget[department_ids]</td>
 <td>Array</td>
+<td>optional</td>
 <td>Array of department ids</td>
+</tr>
+<tr>
+<td>budget[source]</td>
+<td>string</td>
+<td>optional</td>
+<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 </tbody></table>
 <h2 id='get-all-budgets'>GET All Budgets</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
@@ -2140,207 +2170,248 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <tr>
 <th>Params</th>
 <th>Type</th>
+<th>required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>authentication_token</td>
 <td>header</td>
+<td>required</td>
 <td>Authentication token</td>
 </tr>
 <tr>
 <td>company[name]</td>
 <td>string</td>
+<td>required</td>
 <td><code>Required</code> - Company name</td>
 </tr>
 <tr>
 <td>company[source]</td>
 <td>string</td>
+<td>optional</td>
 <td>one of <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code> or <code>mobile_other</code></td>
 </tr>
 <tr>
 <td>company[gross_or_net_config]</td>
 <td>integer</td>
+<td>optional</td>
 <td>Gross or Net config</td>
 </tr>
 <tr>
 <td>company[default_tax_rate]</td>
 <td>double</td>
+<td>optional</td>
 <td>Default TAX Rate</td>
 </tr>
 <tr>
 <td>company[supported_currency_ids]</td>
 <td>Array[]</td>
+<td>optional</td>
 <td>Supported currency ids</td>
 </tr>
 <tr>
 <td>company[company_currency_exchange_rates]</td>
 <td>Array[]</td>
+<td>optional</td>
 <td>Currency exchange rates</td>
 </tr>
 <tr>
 <td>company[budget_attributes][0][amount]</td>
 <td>double</td>
+<td>optional</td>
 <td>Budget amount</td>
 </tr>
 <tr>
 <td>company[budget_attributes][0][name]</td>
 <td>string</td>
+<td>optional</td>
 <td>Budget Name</td>
 </tr>
 <tr>
 <td>company[budget_attributes][0][creator_id]</td>
 <td>integer</td>
+<td>optional</td>
 <td>Budget creator id</td>
 </tr>
 <tr>
 <td>company[budget_attributes][0][currency_id]</td>
 <td>integer</td>
+<td>optional</td>
 <td>Budget currency id</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][id]</td>
 <td>integer</td>
+<td>optional</td>
 <td>ID</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][currency_id]</td>
 <td>integer</td>
+<td>required</td>
 <td><code>Required</code> - Company Setting&#39;s currency id</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][pdf_font_size]</td>
 <td>integer</td>
+<td>optional</td>
 <td>PDF font size</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][date_format]</td>
 <td>string</td>
+<td>optional</td>
 <td>Date format e.g: &quot;%Y-%m-%d&quot;</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][custom_field_to_include_in_po_number_id]</td>
 <td>integer</td>
+<td>optional</td>
 <td>Custom field to include in PO number ID</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][javascript]</td>
 <td>string</td>
+<td>optional</td>
 <td>Javascript setting</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][departments_alias]</td>
 <td>string</td>
+<td>optional</td>
 <td>Department alias</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][tax_label]</td>
 <td>string</td>
+<td>optional</td>
 <td>Tax label</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][approvals_require_login]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Approvals require Login?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][show_po_item_number]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Show PO item number?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][fixed_supplier_list]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Fixed supplier List?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][display_remaining_budget_amount]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Display remaining budget amount?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][display_budget_on_pdf]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Display budget on PDF?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][fixed_product_list]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Fixed product list?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][show_tax_column]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Show TAX column?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][show_company_name]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Show company name?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][show_approver_name]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Show approver name?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][user_can_add_supplier]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>User can add supplier?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][manually_approve_by_lowest_available_approvers]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Manually approve by lowest available approvers?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][share_po_access_by_department]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Share PO access by department?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][allow_budget_overruns]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Allow budget overruns?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][allocations_enabled]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Allocations enabled?</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][pdf_background]</td>
 <td>string</td>
+<td>optional</td>
 <td>PDF background</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][pdf_footer]</td>
 <td>string</td>
+<td>optional</td>
 <td>PDF footer</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][logo]</td>
 <td>string</td>
+<td>optional</td>
 <td>Logo</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][logo_alignment]</td>
 <td>string</td>
+<td>optional</td>
 <td>Logo alignment</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][logo_content_type]</td>
 <td>string</td>
+<td>optional</td>
 <td>Logo content type</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][budgets_alias]</td>
 <td>string</td>
+<td>optional</td>
 <td>Budget alias</td>
 </tr>
 <tr>
 <td>company[company_setting_attributes][po_fields]</td>
 <td>Array[]</td>
+<td>optional</td>
 <td>PO fields</td>
 </tr>
 </tbody></table>
@@ -3365,42 +3436,50 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <tr>
 <th>Params</th>
 <th>Type</th>
+<th>required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>authentication_token</td>
 <td>header</td>
+<td>required</td>
 <td>Authentication token</td>
 </tr>
 <tr>
 <td>app_company_id</td>
 <td>header</td>
+<td>required</td>
 <td>Company ID</td>
 </tr>
 <tr>
 <td>product[description]</td>
 <td>string</td>
+<td>required</td>
 <td><code>Required</code> Product Description</td>
 </tr>
 <tr>
 <td>product[sku]</td>
 <td>string</td>
+<td>optional</td>
 <td>Product Stock Keeping Unit (sku)</td>
 </tr>
 <tr>
 <td>product[unit_price]</td>
 <td>decimal</td>
+<td>optional</td>
 <td>Product Unit Price</td>
 </tr>
 <tr>
 <td>product[supplier_id]</td>
 <td>integer</td>
+<td>optional</td>
 <td>Supplier ID</td>
 </tr>
 <tr>
 <td>product[source]</td>
 <td>string</td>
+<td>optional</td>
 <td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 </tbody></table>
@@ -3779,13 +3858,13 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <tr>
 <td>authentication_token</td>
 <td>header</td>
-<td></td>
+<td>required</td>
 <td>Authentication Token</td>
 </tr>
 <tr>
 <td>app_company_id</td>
 <td>header</td>
-<td></td>
+<td>required</td>
 <td>Company ID</td>
 </tr>
 <tr>
@@ -3803,43 +3882,43 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <tr>
 <td>purchase_order[supplier_name]</td>
 <td>string</td>
-<td></td>
+<td>required</td>
 <td>Supplier Name</td>
 </tr>
 <tr>
 <td>purchase_order[new_supplier_name]</td>
 <td>string</td>
-<td></td>
+<td>optional</td>
 <td>New Supplier Name</td>
 </tr>
 <tr>
 <td>purchase_order[department_id]</td>
 <td>integer</td>
-<td></td>
+<td>required</td>
 <td>Department ID</td>
 </tr>
 <tr>
 <td>purchase_order[creator_id]</td>
 <td>integer</td>
-<td></td>
+<td>required</td>
 <td>Creator ID</td>
 </tr>
 <tr>
 <td>purchase_order[supplier_id]</td>
 <td>integer</td>
-<td></td>
+<td>required</td>
 <td>Supplier ID</td>
 </tr>
 <tr>
 <td>purchase_order[currency_id]</td>
 <td>integer</td>
-<td></td>
+<td>required</td>
 <td>Currency ID</td>
 </tr>
 <tr>
 <td>purchase_order[notes]</td>
 <td>string</td>
-<td></td>
+<td>optional</td>
 <td>Notes for this PO</td>
 </tr>
 <tr>
@@ -3851,73 +3930,73 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <tr>
 <td>purchase_order[company_id]</td>
 <td>integer</td>
-<td></td>
+<td>required</td>
 <td>Company ID</td>
 </tr>
 <tr>
 <td>purchase_order[approver_list]</td>
 <td>Array[]</td>
-<td></td>
+<td>required (follow approval routing guide)</td>
 <td>Approver list IDs</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_items_attributes][][id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Purchase order item id</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_items_attributes][][sequence_no]</td>
 <td>integer</td>
-<td></td>
+<td>required</td>
 <td>Sequence number</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_items_attributes][][description]</td>
 <td>string</td>
-<td></td>
+<td>required</td>
 <td>Description</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_items_attributes][][quantity]</td>
 <td>decimal</td>
-<td></td>
+<td>required</td>
 <td>Item quantity</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_items_attributes][][net_amount]</td>
 <td>decimal</td>
-<td></td>
+<td>required</td>
 <td>Net amount</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_items_attributes][][unit_price]</td>
 <td>decimal</td>
-<td></td>
+<td>required</td>
 <td>Unit price</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_items_attributes][][budget_id]</td>
 <td>integer</td>
-<td></td>
+<td>required</td>
 <td>Budget ID</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_items_attributes][][vat]</td>
 <td>decimal</td>
-<td></td>
+<td>required</td>
 <td>VAT</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_items_attributes][][item_number]</td>
 <td>string</td>
-<td></td>
+<td>required</td>
 <td>Item Number</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_items_attributes][][purchase_order_id]</td>
 <td>integer</td>
-<td></td>
+<td>required</td>
 <td>Purchase Order ID</td>
 </tr>
 <tr>
@@ -3929,151 +4008,151 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <tr>
 <td>purchase_order[purchase_order_items_attributes][custom_field_values_attributes][][id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td><code>CustomFieldValue</code> ID</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_items_attributes][custom_field_values_attributes][][value]</td>
 <td>string</td>
-<td></td>
+<td>optional</td>
 <td>Value for CustomFieldValue</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_items_attributes][custom_field_values_attributes][][custom_field_id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>CustomField ID</td>
 </tr>
 <tr>
 <td>purchase_order[custom_field_values_attributes][][id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>CustomFieldValue ID</td>
 </tr>
 <tr>
 <td>purchase_order[custom_field_values_attributes][][value]</td>
 <td>string</td>
-<td></td>
+<td>optional</td>
 <td>Value for CustomFieldValue</td>
 </tr>
 <tr>
 <td>purchase_order[custom_field_values_attributes][][custom_field_id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>CustomField ID</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_comments_attributes][][id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>PurchaseOrderComment ID</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_comments_attributes][][creator_id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Creator ID</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_comments_attributes][][comment]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Comment</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_comments_attributes][][purchase_order_id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Purchase Order ID</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_comments_attributes][uploads_attributes][][id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Upload ID</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_comments_attributes][uploads_attributes][][file]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>file field used to upload file e.g: Images, Documents, etc</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_comments_attributes][uploads_attributes][][creator_id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Creator ID</td>
 </tr>
 <tr>
 <td>purchase_order[purchase_order_comments_attributes][uploads_attributes][][_destroy]</td>
 <td>boolean</td>
-<td><code>true</code> <br/> <code>false</code></td>
+<td>optional <code>true</code> <br/> <code>false</code></td>
 <td>Set <code>true</code> if you want to delete specific row of upload</td>
 </tr>
 <tr>
 <td>purchase_order[uploads_attributes][][id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Upload ID</td>
 </tr>
 <tr>
 <td>purchase_order[uploads_attributes][][file]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>file field used to upload file e.g: Images, Documents, etc</td>
 </tr>
 <tr>
 <td>purchase_order[uploads_attributes][][creator_id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Creator ID</td>
 </tr>
 <tr>
 <td>purchase_order[uploads_attributes][][_destroy]</td>
 <td>boolean</td>
-<td><code>true</code> <br/> <code>false</code></td>
+<td>optional <code>true</code> <br/> <code>false</code></td>
 <td>Set <code>true</code> if you want to delete specific row of upload</td>
 </tr>
 <tr>
 <td>purchase_order[requests_attributes][][id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Request ID</td>
 </tr>
 <tr>
 <td>purchase_order[requests_attributes][][approver_id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Approver ID</td>
 </tr>
 <tr>
 <td>purchase_order[requests_attributes][][_destroy]</td>
 <td>boolean</td>
-<td><code>true</code> <br/> <code>false</code></td>
+<td>optional <code>true</code> <br/> <code>false</code></td>
 <td>Set <code>true</code> if you want to delete specific row of request</td>
 </tr>
 <tr>
 <td>purchase_order[allocations_attributes][][id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Allocation ID</td>
 </tr>
 <tr>
 <td>purchase_order[allocations_attributes][][allocation_target_id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Allocation Target ID</td>
 </tr>
 <tr>
 <td>purchase_order[allocations_attributes][][group_id]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Group ID</td>
 </tr>
 <tr>
 <td>purchase_order[allocations_attributes][][maybe_value]</td>
 <td>integer</td>
-<td></td>
+<td>optional</td>
 <td>Value</td>
 </tr>
 <tr>
@@ -5040,72 +5119,86 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <tr>
 <th>Params</th>
 <th>Type</th>
+<th>required</th>
 <th>description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>authentication_token</td>
 <td>header</td>
+<td>required</td>
 <td>Authentication token</td>
 </tr>
 <tr>
 <td>app_company_id</td>
 <td>header</td>
+<td>required</td>
 <td>Company ID</td>
 </tr>
 <tr>
 <td>supplier[source]</td>
 <td>string</td>
+<td>optional</td>
 <td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 <tr>
 <td>supplier[name]</td>
 <td>string</td>
+<td>required</td>
 <td>Supplier name must present and should be unique</td>
 </tr>
 <tr>
 <td>supplier[email]</td>
 <td>string</td>
+<td>optional</td>
 <td>Email address</td>
 </tr>
 <tr>
 <td>supplier[address]</td>
 <td>string</td>
+<td>optional</td>
 <td>Supplier address</td>
 </tr>
 <tr>
 <td>supplier[notes]</td>
 <td>string</td>
+<td>optional</td>
 <td>Notes</td>
 </tr>
 <tr>
 <td>supplier[payment_details]</td>
 <td>string</td>
+<td>optional</td>
 <td>Payment Details</td>
 </tr>
 <tr>
 <td>supplier[phone_number]</td>
 <td>string</td>
+<td>optional</td>
 <td>Phone Number</td>
 </tr>
 <tr>
 <td>supplier[archived]</td>
 <td>boolean</td>
+<td>optional</td>
 <td>Archived?</td>
 </tr>
 <tr>
 <td>supplier[tax_number]</td>
 <td>string</td>
+<td>optional</td>
 <td>TAX Number</td>
 </tr>
 <tr>
 <td>supplier[contact_person]</td>
 <td>string</td>
+<td>optional</td>
 <td>Contact Person</td>
 </tr>
 <tr>
 <td>department_ids</td>
 <td>array[]</td>
+<td>optional</td>
 <td>List of Department IDs</td>
 </tr>
 </tbody></table>
