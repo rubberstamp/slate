@@ -481,10 +481,13 @@
               </ul>
           </li>
           <li>
-            <a href="#bulk-datas" class="toc-h1 toc-link" data-title="Bulk Datas">Bulk Datas</a>
+            <a href="#offline-apis" class="toc-h1 toc-link" data-title="Offline APIs">Offline APIs</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#list-all-bulk-datas" class="toc-h2 toc-link" data-title="Bulk Datas">List All Bulk Datas</a>
+                    <a href="#list-all-bulk-datas" class="toc-h2 toc-link" data-title="Offline APIs">List All Bulk Datas</a>
+                  </li>
+                  <li>
+                    <a href="#create-bulk-purchase-orders" class="toc-h2 toc-link" data-title="Offline APIs">Create Bulk Purchase Orders</a>
                   </li>
               </ul>
           </li>
@@ -6309,7 +6312,7 @@ object in JSON format.</p>
 <td>Upload Token in url params</td>
 </tr>
 </tbody></table>
-<h1 id='bulk-datas'>Bulk Datas</h1><h2 id='list-all-bulk-datas'>List All Bulk Datas</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<h1 id='offline-apis'>Offline APIs</h1><h2 id='list-all-bulk-datas'>List All Bulk Datas</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
   <span class="s1">'https://app.procurementexpress.com/api/v1/bulk_datas'</span><span class="p">,</span>
@@ -6551,6 +6554,391 @@ object in JSON format.</p>
 <aside class="info">
 NOTE - You will get <strong>synced_at</strong> value from the json response for top level object, so make sure you store it somewhere to reuse it in future.
 </aside>
+<h2 id='create-bulk-purchase-orders'>Create Bulk Purchase Orders</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/bulk_save'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">purchase_order: </span><span class="p">{</span>
+     <span class="ss">data: </span><span class="p">[{</span>
+        <span class="ss">creator_id: </span><span class="mi">1</span><span class="p">,</span>
+        <span class="ss">status: </span><span class="s2">"draft"</span><span class="p">,</span>
+        <span class="ss">supplier_name: </span><span class="s2">"John Doe"</span><span class="p">,</span>
+        <span class="ss">notes: </span><span class="s2">"Notes"</span><span class="p">,</span>
+        <span class="ss">company_id: </span><span class="mi">1</span><span class="p">,</span>
+        <span class="ss">currency_id: </span><span class="mi">1</span><span class="p">,</span>
+        <span class="ss">department_id:  </span><span class="mi">1</span><span class="p">,</span>
+        <span class="ss">source: </span><span class="s1">'mobile_android'</span><span class="p">,</span>
+        <span class="ss">purchase_order_items_attributes: </span><span class="p">[</span>
+          <span class="p">{</span>
+            <span class="ss">description: </span><span class="s2">"hello"</span><span class="p">,</span>
+            <span class="ss">budget_id: </span><span class="mi">1</span><span class="p">,</span>
+            <span class="ss">vat: </span><span class="s2">"1.1"</span><span class="p">,</span>
+            <span class="ss">status: </span><span class="s2">"pending"</span><span class="p">,</span>
+            <span class="ss">quantity: </span><span class="s2">"1.0"</span><span class="p">,</span>
+            <span class="ss">unit_price: </span><span class="s2">"50"</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="ss">_id: </span><span class="s2">"1234567890"</span>
+      <span class="p">}]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/bulk_save'</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -d <span class="s2">"purchase_order[data][][source]=mobile_android"</span>
+  -d <span class="s2">"purchase_order[data][][creator_id]=1"</span>
+  -d <span class="s2">"purchase_order[data][][status]=draft"</span>
+  -d <span class="s2">"purchase_order[data][][supplier_name]=John Doe"</span>
+  -d <span class="s2">"purchase_order[data][][notes]=Notes"</span>
+  -d <span class="s2">"purchase_order[data][][company_id]=1"</span>
+  -d <span class="s2">"purchase_order[data][][currency_id]=1"</span>
+  -d <span class="s2">"purchase_order[data][][department_id]=1"</span>
+  -d <span class="s2">"purchase_order[data][][purchase_order_items_attributes][][description]=hello"</span>
+  -d <span class="s2">"purchase_order[data][][purchase_order_items_attributes][][budget_id]=1"</span>
+  -d <span class="s2">"purchase_order[data][][purchase_order_items_attributes][][vat]=1.1"</span>
+  -d <span class="s2">"purchase_order[data][][purchase_order_items_attributes][][status]=pending"</span>
+  -d <span class="s2">"purchase_order[data][][purchase_order_items_attributes][][quantity]=1.0"</span>
+  -d <span class="s2">"purchase_order[data][][purchase_order_items_attributes][][unit_price]=50"</span>
+  -d <span class="s2">"purchase_order[data][][_id]=1234567890
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"done"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w"> </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"failed"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>In this api endpoint, you can pass multiple new purchase orders request at once, and it will try to create them all in our database. You should pass <code>_id</code> unique id for each purchase order, so that final response will return success or failed purchase orders with <code>_id</code> that you sent and the <code>id</code> that was created in server. If there are failed purchase orders, then it will also return <code>errors</code> for each failed purchase orders with validation message.</p>
+<h3 id='about-source-column'>About source column</h3>
+<p>Source column is used to determine what is the source of data, and it accept one of these
+four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders/bulk_save</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>required</td>
+<td>Authentication Token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>required</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>commit</td>
+<td>string</td>
+<td><code>Send</code> <br /> <code>Draft</code></td>
+<td>Possible values are <code>Send</code> and <code>Draft</code></td>
+</tr>
+<tr>
+<td>purchase_order[data][][source]</td>
+<td>string</td>
+<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
+<td></td>
+</tr>
+<tr>
+<td>purchase_order[data][][supplier_name]</td>
+<td>string</td>
+<td>required</td>
+<td>Supplier Name</td>
+</tr>
+<tr>
+<td>purchase_order[data][][new_supplier_name]</td>
+<td>string</td>
+<td>optional</td>
+<td>New Supplier Name</td>
+</tr>
+<tr>
+<td>purchase_order[data][][department_id]</td>
+<td>integer</td>
+<td>required</td>
+<td>Department ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][creator_id]</td>
+<td>integer</td>
+<td>required</td>
+<td>Creator ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][supplier_id]</td>
+<td>integer</td>
+<td>required</td>
+<td>Supplier ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][currency_id]</td>
+<td>integer</td>
+<td>required</td>
+<td>Currency ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][notes]</td>
+<td>string</td>
+<td>optional</td>
+<td>Notes for this PO</td>
+</tr>
+<tr>
+<td>purchase_order[data][][status]</td>
+<td>boolean</td>
+<td><code>Pending</code> <br /> <code>Draft</code></td>
+<td>Status</td>
+</tr>
+<tr>
+<td>purchase_order[data][][company_id]</td>
+<td>integer</td>
+<td>required</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][approver_list]</td>
+<td>Array[]</td>
+<td>required (follow approval routing guide)</td>
+<td>Approver list IDs</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][][id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Purchase order item id</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][][sequence_no]</td>
+<td>integer</td>
+<td>required</td>
+<td>Sequence number</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][][description]</td>
+<td>string</td>
+<td>required</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][][quantity]</td>
+<td>decimal</td>
+<td>required</td>
+<td>Item quantity</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][][net_amount]</td>
+<td>decimal</td>
+<td>required</td>
+<td>Net amount</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][][unit_price]</td>
+<td>decimal</td>
+<td>required</td>
+<td>Unit price</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][][budget_id]</td>
+<td>integer</td>
+<td>required</td>
+<td>Budget ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][][vat]</td>
+<td>decimal</td>
+<td>required</td>
+<td>VAT</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][][item_number]</td>
+<td>string</td>
+<td>required</td>
+<td>Item Number</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][][purchase_order_id]</td>
+<td>integer</td>
+<td>required</td>
+<td>Purchase Order ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][][_destroy]</td>
+<td>boolean</td>
+<td><code>true</code> <br/> <code>false</code></td>
+<td>set <code>true</code> if you want to delete specific row of item</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][custom_field_values_attributes][][id]</td>
+<td>integer</td>
+<td>optional</td>
+<td><code>CustomFieldValue</code> ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][custom_field_values_attributes][][value]</td>
+<td>string</td>
+<td>optional</td>
+<td>Value for CustomFieldValue</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_items_attributes][custom_field_values_attributes][][custom_field_id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>CustomField ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][custom_field_values_attributes][][id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>CustomFieldValue ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][custom_field_values_attributes][][value]</td>
+<td>string</td>
+<td>optional</td>
+<td>Value for CustomFieldValue</td>
+</tr>
+<tr>
+<td>purchase_order[data][][custom_field_values_attributes][][custom_field_id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>CustomField ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_comments_attributes][][id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>PurchaseOrderComment ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_comments_attributes][][creator_id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Creator ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_comments_attributes][][comment]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Comment</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_comments_attributes][][purchase_order_id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Purchase Order ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_comments_attributes][uploads_attributes][][id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Upload ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_comments_attributes][uploads_attributes][][file]</td>
+<td>integer</td>
+<td>optional</td>
+<td>file field used to upload file e.g: Images, Documents, etc</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_comments_attributes][uploads_attributes][][creator_id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Creator ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][purchase_order_comments_attributes][uploads_attributes][][_destroy]</td>
+<td>boolean</td>
+<td>optional <code>true</code> <br/> <code>false</code></td>
+<td>Set <code>true</code> if you want to delete specific row of upload</td>
+</tr>
+<tr>
+<td>purchase_order[data][][uploads_attributes][][id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Upload ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][uploads_attributes][][file]</td>
+<td>integer</td>
+<td>optional</td>
+<td>file field used to upload file e.g: Images, Documents, etc</td>
+</tr>
+<tr>
+<td>purchase_order[data][][uploads_attributes][][creator_id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Creator ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][uploads_attributes][][_destroy]</td>
+<td>boolean</td>
+<td>optional <code>true</code> <br/> <code>false</code></td>
+<td>Set <code>true</code> if you want to delete specific row of upload</td>
+</tr>
+<tr>
+<td>purchase_order[data][][requests_attributes][][id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Request ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][requests_attributes][][approver_id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Approver ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][requests_attributes][][_destroy]</td>
+<td>boolean</td>
+<td>optional <code>true</code> <br/> <code>false</code></td>
+<td>Set <code>true</code> if you want to delete specific row of request</td>
+</tr>
+<tr>
+<td>purchase_order[data][][allocations_attributes][][id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Allocation ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][allocations_attributes][][allocation_target_id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Allocation Target ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][allocations_attributes][][group_id]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Group ID</td>
+</tr>
+<tr>
+<td>purchase_order[data][][allocations_attributes][][maybe_value]</td>
+<td>integer</td>
+<td>optional</td>
+<td>Value</td>
+</tr>
+<tr>
+<td>purchase_order[data][][allocations_attributes][][_destroy]</td>
+<td>destroy</td>
+<td><code>true</code> <br/> <code>false</code></td>
+<td>set <code>true</code> if you want to delete specifi row of allocation</td>
+</tr>
+</tbody></table>
 <h1 id='extras'>Extras</h1><h2 id='index'>Index</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.procurementexpress.com/api/v1/extras'</span><span class="p">)</span>
