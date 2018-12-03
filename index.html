@@ -6562,7 +6562,7 @@ NOTE - You will get <strong>synced_at</strong> value from the json response for 
     <span class="ss">purchase_order: </span><span class="p">{</span>
      <span class="ss">data: </span><span class="p">[{</span>
         <span class="ss">creator_id: </span><span class="mi">1</span><span class="p">,</span>
-        <span class="ss">status: </span><span class="s2">"draft"</span><span class="p">,</span>
+        <span class="ss">commit: </span><span class="s2">"send"</span><span class="p">,</span>
         <span class="ss">supplier_name: </span><span class="s2">"John Doe"</span><span class="p">,</span>
         <span class="ss">notes: </span><span class="s2">"Notes"</span><span class="p">,</span>
         <span class="ss">company_id: </span><span class="mi">1</span><span class="p">,</span>
@@ -6595,7 +6595,7 @@ NOTE - You will get <strong>synced_at</strong> value from the json response for 
   -H <span class="s2">"app_company_id: 1"</span>
   -d <span class="s2">"purchase_order[data][][source]=mobile_android"</span>
   -d <span class="s2">"purchase_order[data][][creator_id]=1"</span>
-  -d <span class="s2">"purchase_order[data][][status]=draft"</span>
+  -d <span class="s2">"purchase_order[data][][commit]=send"</span>
   -d <span class="s2">"purchase_order[data][][supplier_name]=John Doe"</span>
   -d <span class="s2">"purchase_order[data][][notes]=Notes"</span>
   -d <span class="s2">"purchase_order[data][][company_id]=1"</span>
@@ -6618,6 +6618,8 @@ NOTE - You will get <strong>synced_at</strong> value from the json response for 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>In this api endpoint, you can pass multiple new purchase orders request at once, and it will try to create them all in our database. You should pass <code>_id</code> unique id for each purchase order, so that final response will return success or failed purchase orders with <code>_id</code> that you sent and the <code>id</code> that was created in server. If there are failed purchase orders, then it will also return <code>errors</code> for each failed purchase orders with validation message.</p>
+<h3 id='about-commit-params'>About commit params</h3>
+<p><code>commit</code> params will accept 2 values <code>send</code> and <code>draft</code>, default is <code>draft</code>. If you pass <code>send</code> as a value, it will create purchase order as pending, and send it for approval, otherwise it will be in draft state.</p>
 <h3 id='about-source-column'>About source column</h3>
 <p>Source column is used to determine what is the source of data, and it accept one of these
 four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
