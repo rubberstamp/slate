@@ -684,7 +684,6 @@ curl <span class="s1">'https://app.procurementexpress.com/api/v1/register'</span
   -d <span class="s2">"name=Api user"</span>
   -d <span class="s2">"phone_number=98xxxxxxxx"</span>
   -d <span class="s2">"terms_of_service=true"</span>
-  -d <span class="s2">"source=mobile_android"</span>
 
 <span class="c"># Example With Tracking Info</span>
 
@@ -716,8 +715,7 @@ curl <span class="s1">'https://app.procurementexpress.com/api/v1/register'</span
     <span class="ss">password_confirmation: </span><span class="s1">'pass1234'</span><span class="p">,</span>
     <span class="ss">name: </span><span class="s1">'Api user'</span><span class="p">,</span>
     <span class="ss">phone_number: </span><span class="s1">'98xxxxxx'</span><span class="p">,</span>
-    <span class="ss">terms_of_service: </span><span class="kp">true</span><span class="p">,</span>
-    <span class="ss">source: </span><span class="s1">'mobile_android'</span>
+    <span class="ss">terms_of_service: </span><span class="kp">true</span>
   <span class="p">}</span>
 <span class="p">)</span>
 
@@ -770,9 +768,6 @@ to your email and you can confirm it. It will returns <code>User</code> object a
 with <code>authentication_token</code>.</p>
 <h3 id='terms-of-service'>Terms of service</h3>
 <p><code>terms_of_service</code> is a required field.</p>
-<h3 id='about-source-column'>About source column</h3>
-<p>Source column is used to determine what is the source of data, and it accept one of these
-four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/register</code></p>
 <h3 id='tracking-registration'>Tracking Registration</h3>
@@ -835,12 +830,6 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <td>boolean</td>
 <td>required</td>
 <td>You must accept terms of service</td>
-</tr>
-<tr>
-<td>source</td>
-<td>string</td>
-<td>optional</td>
-<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 <tr>
 <td>tracking_info[properties][uuid]</td>
@@ -1603,7 +1592,6 @@ account. We ignore <code>gmail</code>, <code>hotmail</code>, <code>icloud</code>
   <span class="s1">'https://app.procurementexpress.com/api/v1/budgets'</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="ss">budget: </span><span class="p">{</span>
-      <span class="ss">source: </span><span class="s1">'mobile_android'</span>
       <span class="ss">amount: </span><span class="mi">100</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
       <span class="ss">name: </span><span class="s1">'Test'</span><span class="p">,</span>
       <span class="ss">currency_id: </span><span class="mi">1</span><span class="p">,</span>
@@ -1623,7 +1611,6 @@ account. We ignore <code>gmail</code>, <code>hotmail</code>, <code>icloud</code>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
   -H <span class="s2">"app_company_id: 1"</span>
-  -d <span class="s2">"budget[source]=mobile_android"</span>
   -d <span class="s2">"budget[amount]=100.0"</span>
   -d <span class="s2">"budget[name]=Test"</span>
   -d <span class="s2">"budget[currency_id]=1"</span>
@@ -1666,9 +1653,6 @@ department ids in the POST request.</p>
 <p>Because we support multiple date formats, we need to send dates depending on
 <code>company_setting.date_format</code>. In this API endpoint, you need to provide proper
 date format for <code>start_date</code> and <code>end_date</code>. Please find date format in <a href="/slate/#get-a-specific-company">Company Setting</a></p>
-<h3 id='about-source-column'>About source column</h3>
-<p>Source column is used to determine what is the source of data, and it accept one of these
-four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/budgets</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -1757,12 +1741,6 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <td>Array</td>
 <td>optional</td>
 <td>Array of department ids</td>
-</tr>
-<tr>
-<td>budget[source]</td>
-<td>string</td>
-<td>optional</td>
-<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 </tbody></table>
 <h2 id='get-all-budgets'>GET All Budgets</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
@@ -2134,7 +2112,6 @@ https://app.procurementexpress.com/api/v1/purchase_order/:purchase_order_id/comm
   <span class="p">{</span>
     <span class="ss">company: </span><span class="p">{</span>
       <span class="ss">name: </span><span class="s1">'ABC Corp.'</span><span class="p">,</span>
-      <span class="ss">source: </span><span class="s1">'website'</span><span class="p">,</span>
       <span class="ss">gross_or_net_config: </span><span class="mi">1</span><span class="p">,</span>
       <span class="ss">company_setting_attributes: </span><span class="p">{</span>
         <span class="ss">currency_id: </span><span class="mi">1</span>
@@ -2150,7 +2127,6 @@ https://app.procurementexpress.com/api/v1/purchase_order/:purchase_order_id/comm
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
   -d <span class="s2">"company[name]=ABC Corp."</span>
-  -d <span class="s2">"company[source]=website"</span>
   -d <span class="s2">"company[gross_or_net_config]=1"</span>
   -d <span class="s2">"company[company_setting_attributes][currency_id]=1"</span>
 </code></pre>
@@ -2163,9 +2139,6 @@ https://app.procurementexpress.com/api/v1/purchase_order/:purchase_order_id/comm
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Create a new Company and returns the <code>Company</code> object that is created.</p>
-<h3 id='about-source-column'>About source column</h3>
-<p>Source column is used to determine what is the source of data, and it accept one of these
-four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/companies</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -2188,12 +2161,6 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <td>string</td>
 <td>required</td>
 <td><code>Required</code> - Company name</td>
-</tr>
-<tr>
-<td>company[source]</td>
-<td>string</td>
-<td>optional</td>
-<td>one of <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code> or <code>mobile_other</code></td>
 </tr>
 <tr>
 <td>company[gross_or_net_config]</td>
@@ -3395,8 +3362,7 @@ Any parameters not provided will be left unchanged.</p>
       <span class="ss">description: </span><span class="s1">'1 IPad Charging Station'</span><span class="p">,</span>
       <span class="ss">sku: </span><span class="s1">'SKU-001'</span><span class="p">,</span>
       <span class="ss">unit_price: </span><span class="mi">44</span><span class="o">.</span><span class="mi">23</span><span class="p">,</span>
-      <span class="ss">supplier_id: </span><span class="mi">1</span><span class="p">,</span>
-      <span class="ss">source: </span><span class="s1">'mobile_android'</span>
+      <span class="ss">supplier_id: </span><span class="mi">1</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3413,7 +3379,6 @@ Any parameters not provided will be left unchanged.</p>
   -d <span class="s2">"product[sku]=SKU-001"</span>
   -d <span class="s2">"product[unit_price]=44.23"</span>
   -d <span class="s2">"product[supplier_id]=1"</span>
-  -d <span class="s2">"product[source]=mobile_android"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -3429,9 +3394,6 @@ Any parameters not provided will be left unchanged.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Create a new products and returns the <code>Product</code> object that is created.</p>
-<h3 id='about-source-column'>About source column</h3>
-<p>Source column is used to determine what is the source of data, and it accept one of these
-four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/products</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -3478,12 +3440,6 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <td>integer</td>
 <td>optional</td>
 <td>Supplier ID</td>
-</tr>
-<tr>
-<td>product[source]</td>
-<td>string</td>
-<td>optional</td>
-<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 </tbody></table>
 <h2 id='get-all-products'>Get all Products</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
@@ -3715,7 +3671,6 @@ Any parameters not provided will be left unchanged.</p>
       <span class="ss">company_id: </span><span class="mi">1</span><span class="p">,</span>
       <span class="ss">currency_id: </span><span class="mi">1</span><span class="p">,</span>
       <span class="ss">department_id:  </span><span class="mi">1</span><span class="p">,</span>
-      <span class="ss">source: </span><span class="s1">'mobile_android'</span><span class="p">,</span>
       <span class="ss">purchase_order_items_attributes: </span><span class="p">[</span>
         <span class="p">{</span>
           <span class="ss">description: </span><span class="s2">"hello"</span><span class="p">,</span>
@@ -3739,7 +3694,6 @@ Any parameters not provided will be left unchanged.</p>
   -H <span class="s2">"authentication_token: your token"</span>
   -H <span class="s2">"app_company_id: 1"</span>
   -d <span class="s2">"commit=Send"</span>
-  -d <span class="s2">"purchase_order[source]=mobile_android"</span>
   -d <span class="s2">"purchase_order[creator_id]=1"</span>
   -d <span class="s2">"purchase_order[status]=draft"</span>
   -d <span class="s2">"purchase_order[supplier_name]=John Doe"</span>
@@ -3844,9 +3798,6 @@ Any parameters not provided will be left unchanged.</p>
 <p>Create a new Purchase Order and return the <code>Purchase Order</code> object that is created.
 You need to pass <code>commit</code> param which accepts 2 values for now <code>Draft</code> and <code>Send</code>,
 these values will determine the status of the Purchase Order.</p>
-<h3 id='about-source-column'>About source column</h3>
-<p>Source column is used to determine what is the source of data, and it accept one of these
-four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -3875,12 +3826,6 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <td>string</td>
 <td><code>Send</code> <br /> <code>Draft</code></td>
 <td>Possible values are <code>Send</code> and <code>Draft</code></td>
-</tr>
-<tr>
-<td>purchase_order[source]</td>
-<td>string</td>
-<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
-<td></td>
 </tr>
 <tr>
 <td>purchase_order[supplier_name]</td>
@@ -5074,8 +5019,7 @@ have enough permission to mark purchase order as paid or not, you need to first 
       <span class="ss">name: </span><span class="s1">'iCare Center'</span><span class="p">,</span>
       <span class="ss">email: </span><span class="s1">'icare@example.com'</span><span class="p">,</span>
       <span class="ss">address: </span><span class="s1">'234 Saint St.'</span><span class="p">,</span>
-      <span class="ss">notes: </span><span class="s1">'purchase iPhone 7'</span><span class="p">,</span>
-      <span class="ss">source: </span><span class="s1">'mobile_android'</span>
+      <span class="ss">notes: </span><span class="s1">'purchase iPhone 7'</span>
     <span class="p">}</span>
   <span class="p">}</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -5092,7 +5036,6 @@ have enough permission to mark purchase order as paid or not, you need to first 
   -d <span class="s2">"supplier[email]=icare@example.com"</span>
   -d <span class="s2">"supplier[address]=234 Saint St."</span>
   -d <span class="s2">"supplier[notes]=purchase iPhone 7"</span>
-  -d <span class="s2">"supplier[source]=mobile_android"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -5112,9 +5055,6 @@ have enough permission to mark purchase order as paid or not, you need to first 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Create a new suppliers and returns the <code>Supplier</code> object that is created.</p>
-<h3 id='about-source-column'>About source column</h3>
-<p>Source column is used to determine what is the source of data, and it accept one of these
-four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/suppliers</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -5137,12 +5077,6 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <td>header</td>
 <td>required</td>
 <td>Company ID</td>
-</tr>
-<tr>
-<td>supplier[source]</td>
-<td>string</td>
-<td>optional</td>
-<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
 </tr>
 <tr>
 <td>supplier[name]</td>
@@ -6462,6 +6396,7 @@ object in JSON format.</p>
           </span><span class="s2">"products"</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"has_unassigned_budgets"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tax_rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -6548,6 +6483,8 @@ page number are you on right now, and how many pages are there, total number of 
 this information to build your pagination.</p>
 
 <p><code>GET https://app.procurementexpress.com/api/v1/bulk_datas?synced_at=...&amp;page=1</code></p>
+<h3 id='about-approval-routing'>About approval routing</h3>
+<p>Read <a href="https://github.com/rubberstamp/po-app/wiki/Rubberstamp-Approvals-Flow">Approval Routing Docs</a> for more information. In bulk_datas api endpoint response, each companies object will hold <code>has_unassigned_budgets</code> attribute, if it is true, then we should implement manual approval routing and if the value is false then it should be auto approval routing.</p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -6590,7 +6527,6 @@ NOTE - You will get <strong>synced_at</strong> value from the json response for 
         <span class="ss">company_id: </span><span class="mi">1</span><span class="p">,</span>
         <span class="ss">currency_id: </span><span class="mi">1</span><span class="p">,</span>
         <span class="ss">department_id:  </span><span class="mi">1</span><span class="p">,</span>
-        <span class="ss">source: </span><span class="s1">'mobile_android'</span><span class="p">,</span>
         <span class="ss">purchase_order_items_attributes: </span><span class="p">[</span>
           <span class="p">{</span>
             <span class="ss">description: </span><span class="s2">"hello"</span><span class="p">,</span>
@@ -6615,7 +6551,6 @@ NOTE - You will get <strong>synced_at</strong> value from the json response for 
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"authentication_token: your token"</span>
   -H <span class="s2">"app_company_id: 1"</span>
-  -d <span class="s2">"purchase_order[data][][source]=mobile_android"</span>
   -d <span class="s2">"purchase_order[data][][creator_id]=1"</span>
   -d <span class="s2">"purchase_order[data][][commit]=send"</span>
   -d <span class="s2">"purchase_order[data][][supplier_name]=John Doe"</span>
@@ -6642,9 +6577,6 @@ NOTE - You will get <strong>synced_at</strong> value from the json response for 
 <p>In this api endpoint, you can pass multiple new purchase orders request at once, and it will try to create them all in our database. You should pass <code>_id</code> unique id for each purchase order, so that final response will return success or failed purchase orders with <code>_id</code> that you sent and the <code>id</code> that was created in server. If there are failed purchase orders, then it will also return <code>errors</code> for each failed purchase orders with validation message.</p>
 <h3 id='about-commit-params'>About commit params</h3>
 <p><code>commit</code> params will accept 2 values <code>send</code> and <code>draft</code>, default is <code>draft</code>. If you pass <code>send</code> as a value, it will create purchase order as pending, and send it for approval, otherwise it will be in draft state.</p>
-<h3 id='about-source-column'>About source column</h3>
-<p>Source column is used to determine what is the source of data, and it accept one of these
-four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android</code>, <code>mobile_other</code>. Default value is <code>website</code>.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders/bulk_save</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
@@ -6673,12 +6605,6 @@ four values <code>website</code>, <code>mobile_ios</code>, <code>mobile_android<
 <td>string</td>
 <td><code>Send</code> <br /> <code>Draft</code></td>
 <td>Possible values are <code>Send</code> and <code>Draft</code></td>
-</tr>
-<tr>
-<td>purchase_order[data][][source]</td>
-<td>string</td>
-<td>one of <code>website</code>, <code>mobile_android</code>, <code>mobile_ios</code> or <code>mobile_other</code></td>
-<td></td>
 </tr>
 <tr>
 <td>purchase_order[data][][supplier_name]</td>
