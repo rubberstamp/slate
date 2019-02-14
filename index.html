@@ -244,6 +244,9 @@
               </ul>
           </li>
           <li>
+            <a href="#tracking-source" class="toc-h1 toc-link" data-title="Tracking Source">Tracking Source</a>
+          </li>
+          <li>
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
@@ -671,6 +674,79 @@ failure of an API request.</p>
 <td>locale</td>
 <td>header</td>
 <td>locale key for required language support</td>
+</tr>
+</tbody></table>
+<h1 id='tracking-source'>Tracking Source</h1><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/endpoint'</span><span class="p">,</span>
+  <span class="n">headers</span><span class="o">=</span><span class="p">{</span> <span class="ss">source: </span><span class="s1">'mobile_android_offline'</span> <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/endpoint"</span>
+  -H <span class="s2">" source: mobile_android_offline"</span>
+</code></pre>
+<p>We can track source for given models. This will help us identify which device has created those data</p>
+
+<table><thead>
+<tr>
+<th>models</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>User</td>
+</tr>
+<tr>
+<td>Company</td>
+</tr>
+<tr>
+<td>Budget</td>
+</tr>
+<tr>
+<td>PurchaseOrder</td>
+</tr>
+<tr>
+<td>Product</td>
+</tr>
+<tr>
+<td>Supplier</td>
+</tr>
+</tbody></table>
+
+<p><code>app_source</code> header params needs to be pass to set source for those models, and it will accept one of given values</p>
+
+<table><thead>
+<tr>
+<th>source value</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>website</td>
+<td>default value</td>
+</tr>
+<tr>
+<td>mobile_ios</td>
+<td>ios device</td>
+</tr>
+<tr>
+<td>mobile_android</td>
+<td>android device</td>
+</tr>
+<tr>
+<td>mobile_other</td>
+<td>other mobile devices</td>
+</tr>
+<tr>
+<td>mobile_android_offline</td>
+<td>android device but offline mode</td>
+</tr>
+<tr>
+<td>mobile_ios_offline</td>
+<td>ios device but offline mode</td>
+</tr>
+<tr>
+<td>push_cart</td>
+<td>Push Cart chrome extension</td>
 </tr>
 </tbody></table>
 <h1 id='users'>Users</h1><h2 id='register'>Register</h2><pre class="highlight shell tab-shell"><code><span class="c"># Example Without Tracking Info</span>
