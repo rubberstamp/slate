@@ -417,6 +417,12 @@
                   <li>
                     <a href="#cancel-receiving-items" class="toc-h2 toc-link" data-title="Purchase Orders">Cancel Receiving Items</a>
                   </li>
+                  <li>
+                    <a href="#delete" class="toc-h2 toc-link" data-title="Purchase Orders">Delete</a>
+                  </li>
+                  <li>
+                    <a href="#generate-pdf" class="toc-h2 toc-link" data-title="Purchase Orders">Generate PDF</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -5402,6 +5408,94 @@ page, the users who are able to receive items can also cancel them. so please ma
 <h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders/:id/cancel_receiving_items</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company ID</td>
+</tr>
+</tbody></table>
+<h2 id='delete'>Delete</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/delete'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/delete'</span>
+  -X DELETE
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Ability to delete purchase order <a href="/slate/#get-purchase-order-details">Purchase Order Details</a></p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>DELETE https://app.procurementexpress.com/api/v1/purchase_orders/:id/delete</code></p>
+<h3 id='url-parameters-11'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company ID</td>
+</tr>
+</tbody></table>
+<h2 id='generate-pdf'>Generate PDF</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/generate_pdf'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/purchase_orders/1/generate_pdf'</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"pdf_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://rubberstamp-exports.s3.amazonaws.com/PO-Pending-28062019164608-tech%20test.pdf"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Ability to generate purchase order pdf <a href="/slate/#get-purchase-order-details">Purchase Order Details</a></p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders/:id/generate_pdf</code></p>
+<h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Params</th>
