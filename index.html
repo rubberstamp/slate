@@ -3876,6 +3876,16 @@ Any parameters not provided will be left unchanged.</p>
 <p>Create a new Purchase Order and return the <code>Purchase Order</code> object that is created.
 You need to pass <code>commit</code> param which accepts 2 values for now <code>Draft</code> and <code>Send</code>,
 these values will determine the status of the Purchase Order.</p>
+<h3 id='currency-setting'>Currency setting</h3>
+<p>We now have two options to attach currency to purchase_order.</p>
+
+<ol>
+<li>using <code>currency_id</code> field</li>
+<li>using <code>iso_code</code> field</li>
+</ol>
+
+<p>So, now api client should be able to pass either currency_id or iso_code of the currency
+and that currency will be attached to the purchase order.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -3940,6 +3950,12 @@ these values will determine the status of the Purchase Order.</p>
 <td>integer</td>
 <td>required</td>
 <td>Currency ID</td>
+</tr>
+<tr>
+<td>purchase_order[iso_code]</td>
+<td>string</td>
+<td>Optional</td>
+<td>Currency Iso Code</td>
 </tr>
 <tr>
 <td>purchase_order[notes]</td>
