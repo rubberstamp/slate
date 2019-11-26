@@ -370,6 +370,9 @@
                   <li>
                     <a href="#update-product" class="toc-h2 toc-link" data-title="Products">Update Product</a>
                   </li>
+                  <li>
+                    <a href="#get-skus" class="toc-h2 toc-link" data-title="Products">Get SKUS</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -3748,6 +3751,68 @@ Any parameters not provided will be left unchanged.</p>
 <td>product[supplier_id]</td>
 <td>integer</td>
 <td>Supplier ID</td>
+</tr>
+</tbody></table>
+<h2 id='get-skus'>Get SKUS</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/products/skus'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://app.procurementexpress.com/api/v1/products/skus'</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="s2">"SKU-001"</span><span class="p">,</span><span class="w"> </span><span class="s2">"SKU-002"</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Returns a list of your products&#39;s SKUs.</p>
+<h3 id='filter-skus-by-supplier'>Filter skus by supplier</h3>
+<p>you can pass <code>supplier_id</code> query params to filter skus by supplier like:
+<code>/api/v1/products/skus?supplier_id=1</code></p>
+<h3 id='filter-skus-by-keyword'>Filter skus by keyword</h3>
+<p>To filter sku list based on user input keyword, you can pass <code>query</code> params in URL like:</p>
+
+<p><code>/api/v1/products/skus?query=SKU</code></p>
+<h3 id='filter-archived-skus'>Filter archived skus</h3>
+<p>If you want to filter archived skus you can pass <code>archived</code> params like:
+<code>/api/v1/products/skus?archived=true</code></p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://app.procurementexpress.com/api/v1/products/skus</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>supplier_id</td>
+<td>integer</td>
+<td>filter by supplier</td>
+</tr>
+<tr>
+<td>archived</td>
+<td>boolean</td>
+<td>filter archived products</td>
 </tr>
 </tbody></table>
 <h1 id='purchase-orders'>Purchase Orders</h1><h2 id='create-a-purchase-order'>Create a Purchase Order</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
