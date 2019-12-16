@@ -829,7 +829,7 @@ Update Player ID In User Account
 require 'rest-client'
 
 RestClient.post(
-  'https://app.procurementexpress.com/api/v1/users/get_player,
+  'https://app.procurementexpress.com/api/v1/users/update_player,
   headers = {
     authentication_token: 'your token'
   }
@@ -840,7 +840,7 @@ RestClient.post(
 ```
 
 ```shell
-curl https://app.procurementexpress.com/api/v1/users/get_player'
+curl https://app.procurementexpress.com/api/v1/users/update_player'
   -X POST
   -H "Content-Type: application/json"
   -H "authentication_token: your token"
@@ -858,7 +858,7 @@ curl https://app.procurementexpress.com/api/v1/users/get_player'
 
 ### HTTP Request
 
-`POST https://app.procurementexpress.com/api/v1/users/get_player`
+`POST https://app.procurementexpress.com/api/v1/users/update_player`
 
 ### Query Parameters
 
