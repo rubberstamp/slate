@@ -4043,6 +4043,10 @@ these values will determine the status of the Purchase Order.</p>
 
 <p>So, now api client should be able to pass either currency_id or iso_code of the currency
 and that currency will be attached to the purchase order.</p>
+<h3 id='on-behalf-of'>On behalf of</h3>
+<p>we now have ability to create new Purchase order on behalf of other users. For security purpose, we only allow companyadmin to create purchase orders on behalf of other users. And also that user must be an employee of current company.</p>
+
+<p>To use this feature, you need to pass other user&#39;s id in <code>purchase_order[on_behalf_of]****</code> params</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -4119,6 +4123,12 @@ and that currency will be attached to the purchase order.</p>
 <td>string</td>
 <td>optional</td>
 <td>Notes for this PO</td>
+</tr>
+<tr>
+<td>purchase_order[on_behalf_of]</td>
+<td>integer</td>
+<td>optional</td>
+<td>on behalf of user</td>
 </tr>
 <tr>
 <td>purchase_order[status]</td>
