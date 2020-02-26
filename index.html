@@ -2024,6 +2024,8 @@ date format for <code>start_date</code> and <code>end_date</code>. Please find d
 <h3 id='filter-budgets-by-department_id'>Filter budgets by department_id</h3>
 <p>you can pass <code>department_id</code> query params to filter budgets by departments like:
 <code>/api/v1/budgets?department_id=1</code></p>
+<h3 id='filter-by-archived'>Filter by archived</h3>
+<p>You can also filter only archived budgets by sending archived params and set it&#39;s value to <code>true</code>. example, /api/v1/budgets?archived=true. Also note that, default list will return only active budgets that are not archived.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://app.procurementexpress.com/api/v1/budgets</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
