@@ -1969,75 +1969,85 @@ date format for <code>start_date</code> and <code>end_date</code>. Please find d
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advocacy"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advocacy : 2017"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"department_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"approver_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audit And Accountancy Fees"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audit And Accountancy Fees : 2017"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"department_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"approver_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Board Expenses"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Board Expenses : 2017"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"department_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"approver_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"budgets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advocacy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advocacy : 2017"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"department_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"approver_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audit And Accountancy Fees"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audit And Accountancy Fees : 2017"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"department_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"approver_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Board Expenses"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cost_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cost_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"base_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"base_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allow_anyone_to_approve_a_po"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1483401600</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1519862400</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Board Expenses : 2017"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"department_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"approver_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prev_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Returns a list of Budgets.</p>
 <h3 id='filter-budgets-by-department_id'>Filter budgets by department_id</h3>
 <p>you can pass <code>department_id</code> query params to filter budgets by departments like:
 <code>/api/v1/budgets?department_id=1</code></p>
+<h3 id='pagination'>Pagination</h3>
+<p>Budget listing api results are paginated so that we don&#39;t load all budgets at once. You can send <code>page</code> params to load other records e.g: <code>/api/v1/budgets?page=2</code>. You can also see meta key in the response you get, that will return informations like <code>current_page</code>, <code>next_page</code>, <code>previous_page</code>, <code>total_pages</code>, and <code>total_count</code> to help your write your own logic for pagination.</p>
 <h3 id='filter-by-archived'>Filter by archived</h3>
 <p>Return list of archived budgets by passing <code>archived</code> queryParams with value <code>true</code>.
 Example: <code>/api/v1/budgets?archived=true</code>. Default list are active budget lists.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.procurementexpress.com/api/v1/budgets</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/budgets?page=1&amp;archived=false</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
