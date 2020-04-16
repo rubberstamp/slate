@@ -5291,7 +5291,7 @@ for current authentication_token.</p>
 <h3 id='sorting'>Sorting</h3>
 <p>You can sort requests by column with <code>asc</code> and <code>desc</code> directions.
 Example if you want to sort requests in <code>asc</code> order by <code>created_at</code> column then:
-<code>GET https://app.procurementexpress.com/api/v1/purchase_orders/pending_requests?sort=created_at&amp;direction=asc</code></p>
+<code>GET https://app.procurementexpress.com/api/v1/purchase_orders?requests=true&amp;sort=created_at&amp;direction=asc</code></p>
 <h3 id='pagination-2'>Pagination</h3>
 <p>You can send <code>page</code> params to load paginated records e.g: <code>/api/v1/purchase_orders?page=2</code>.
 You can also see <code>meta</code> key in the response you get, that will return
@@ -5300,7 +5300,7 @@ and <code>total_count</code> to help your write your own logic of pagination.</p
 <h3 id='search-2'>Search</h3>
 <p>You can also search for your pending requests using <code>search</code> params example <code>/api/v1/purchase_orders?search=your search keyword</code>. It will perform full-text search and return matching results.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders/pending_requests</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders?requests=true</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
