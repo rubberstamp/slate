@@ -1847,7 +1847,8 @@ account. We ignore <code>gmail</code>, <code>hotmail</code>, <code>icloud</code>
   </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"department_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="s2">"approver_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="s2">"approver_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"quickbooks_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank Charge - Expenses"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Create a new Budget and returns the Budget object that is created.</p>
@@ -2695,7 +2696,10 @@ https://app.procurementexpress.com/api/v1/purchase_order/:purchase_order_id/comm
     </span><span class="s2">"report_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user_can_add_supplier"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"po_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Date"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Budgets"</span><span class="p">,</span><span class="w"> </span><span class="s2">"From"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PO number"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Net Amount"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"reserve_po_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="s2">"reserve_po_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"show_remaining_budget_to_teammember"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allow_open_draft_access"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link_budgets_to_qbo_account"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
