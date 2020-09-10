@@ -4064,6 +4064,9 @@ Any parameters not provided will be left unchanged.</p>
   -d <span class="s2">"purchase_order[purchase_order_items_attributes][][status]=pending"</span>
   -d <span class="s2">"purchase_order[purchase_order_items_attributes][][quantity]=1.0"</span>
   -d <span class="s2">"purchase_order[purchase_order_items_attributes][][unit_price]=50"</span>
+  -d <span class="s2">"purchase_order[purchase_order_items_attributes][][custom[custom_field_values_attributes][][custom_field_id]=1"</span>
+  -d <span class="s2">"purchase_order[purchase_order_items_attributes][][custom[custom_field_values_attributes][][value]=custom field value"</span>
+  -d <span class="s2">"purchase_order[purchase_order_items_attributes][][custom[custom_field_values_attributes][][id]=1"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -4152,7 +4155,27 @@ and that currency will be attached to the purchase order.</p>
 <p>we now have ability to create new Purchase order on behalf of other users. For security purpose, we only allow companyadmin to create purchase orders on behalf of other users. And also that user must be an employee of current company.</p>
 
 <p>To use this feature, you need to pass other user&#39;s id in <code>purchase_order[on_behalf_of]</code> params</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='quickbooks-account'>QuickBooks Account</h3>
+<p>If QuickBooks is connected, then customer also have ability to map QuickBooks Account with their PEX Budget,
+In that case Account custom field is required custom field, we can re-use already mapped QuickBooks Account
+value from <a href="https://rubberstamp.github.io/slate/#get-a-specific-budget">Budget</a> API. Check for attribute named
+<code>quickbooks_account</code> in json response.</p>
+
+<p>To make sure User has enabled QuickBooks Account mapping with budget check for attribute named <code>link_budgets_to_qbo_account</code>
+in <a href="https://rubberstamp.github.io/slate/#get-a-specific-company">Company Details</a> API. If this value is <code>true</code> you
+will see <code>quickbooks_account</code> attribute in Budget details api response.</p>
+
+<p>Now find <code>custom_fields</code> from <a href="https://rubberstamp.github.io/slate/#get-a-specific-company">Company Details</a>, and
+check for <code>custom_field</code> with name <code>Account</code>. Let&#39;s say it&#39;s id is 200 and <code>quickbooks_account</code> value is <code>Fuel - Expense</code>
+Then you can pass custom field value like given example:</p>
+<pre class="highlight ruby tab-ruby"><code><span class="ss">purchase_order_items_attributes: </span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="ss">custom_field_values_attributes: </span><span class="p">[</span>
+            <span class="p">{</span> <span class="ss">custom_field_id: </span><span class="mi">200</span><span class="p">,</span> <span class="ss">value: </span><span class="s1">'Fuel - Expense'</span> <span class="p">},</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+</code></pre><h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/purchase_orders</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
