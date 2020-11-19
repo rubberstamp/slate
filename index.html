@@ -1851,7 +1851,8 @@ account. We ignore <code>gmail</code>, <code>hotmail</code>, <code>icloud</code>
   </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"department_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="s2">"approver_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="s2">"quickbooks_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank Charge - Expenses"</span><span class="w">
+  </span><span class="s2">"chart_of_account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank Charge"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"chart_of_account_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Create a new Budget and returns the Budget object that is created.</p>
@@ -4037,7 +4038,8 @@ Any parameters not provided will be left unchanged.</p>
           <span class="ss">tax_rate_id: </span><span class="mi">1</span><span class="p">,</span>
           <span class="ss">status: </span><span class="s2">"pending"</span><span class="p">,</span>
           <span class="ss">quantity: </span><span class="s2">"1.0"</span><span class="p">,</span>
-          <span class="ss">unit_price: </span><span class="s2">"50"</span>
+          <span class="ss">unit_price: </span><span class="s2">"50"</span><span class="p">,</span>
+          <span class="ss">chart_of_account_id: </span><span class="mi">1</span><span class="p">,</span>
         <span class="p">}</span>
       <span class="p">]</span>
     <span class="p">}</span>
@@ -4067,6 +4069,7 @@ Any parameters not provided will be left unchanged.</p>
   -d <span class="s2">"purchase_order[purchase_order_items_attributes][][status]=pending"</span>
   -d <span class="s2">"purchase_order[purchase_order_items_attributes][][quantity]=1.0"</span>
   -d <span class="s2">"purchase_order[purchase_order_items_attributes][][unit_price]=50"</span>
+  -d <span class="s2">"purchase_order[purchase_order_items_attributes][][chart_of_account_id]=1"</span>
   -d <span class="s2">"purchase_order[purchase_order_items_attributes][][custom[custom_field_values_attributes][][custom_field_id]=1"</span>
   -d <span class="s2">"purchase_order[purchase_order_items_attributes][][custom[custom_field_values_attributes][][value]=custom field value"</span>
   -d <span class="s2">"purchase_order[purchase_order_items_attributes][][custom[custom_field_values_attributes][][id]=1"</span>
@@ -4161,16 +4164,15 @@ and that currency will be attached to the purchase order.</p>
 <h3 id='quickbooks-account'>QuickBooks Account</h3>
 <p>If QuickBooks is connected, then customer also have ability to map QuickBooks Account with their PEX Budget,
 In that case Account custom field is required custom field, we can re-use already mapped QuickBooks Account
-value from <a href="https://rubberstamp.github.io/slate/#get-a-specific-budget">Budget</a> API. Check for attribute named
-<code>quickbooks_account</code> in json response.</p>
+value from <a href="https://rubberstamp.github.io/slate/#get-a-specific-budget">Budget</a> API. Check for attributes named
+<code>chart_of_account_id</code> and <code>chart_of_account_name</code> in json response.</p>
 
 <p>To make sure User has enabled QuickBooks Account mapping with budget check for attribute named <code>link_budgets_to_qbo_account</code>
 in <a href="https://rubberstamp.github.io/slate/#get-a-specific-company">Company Details</a> API. If this value is <code>true</code> you
 will see <code>quickbooks_account</code> attribute in Budget details api response.</p>
 
-<p>Now find <code>custom_fields</code> from <a href="https://rubberstamp.github.io/slate/#get-a-specific-company">Company Details</a>, and
-check for <code>custom_field</code> with name <code>Account</code>. Let&#39;s say it&#39;s id is 200 and <code>quickbooks_account</code> value is <code>Fuel - Expense</code>
-Then you can pass custom field value like given example:</p>
+<p>To auto select Account dropdown for selected budget, you can simply get <code>chart_of_account_id</code> from budget api
+and select that value in Account Dropdown.</p>
 <pre class="highlight ruby tab-ruby"><code><span class="ss">purchase_order_items_attributes: </span><span class="p">[</span>
     <span class="p">{</span>
         <span class="ss">custom_field_values_attributes: </span><span class="p">[</span>
