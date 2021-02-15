@@ -6275,6 +6275,10 @@ have enough permission to mark purchase order as paid or not, you need to first 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Create a new suppliers and returns the <code>Supplier</code> object that is created.</p>
+<h3 id='supplier-approval'>Supplier Approval</h3>
+<p>If Supplier <code>Require Approval</code> setting is ON and any one Approver is selected. Then supplier will go under approval process and this supplier will available on supplier list once approved by the approver.</p>
+
+<p>Returns text: <code>Your request to add a new supplier has been sent for approval, please check your email for updates.</code></p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://app.procurementexpress.com/api/v1/suppliers</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
