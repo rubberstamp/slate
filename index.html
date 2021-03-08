@@ -5255,7 +5255,7 @@ and select that value in Account Dropdown.</p>
 <p>Returns a list of purchase orders. The response of purchase orders are paginated,
 so it will only return first 20 records as a response.</p>
 <h3 id='pagination'>Pagination</h3>
-<p>You can send <code>page</code> params to load other records e.g: <code>/api/v1/purchase_orders?page=2</code>.
+<p>You can send <code>orders_page</code> params to load other records e.g: <code>/api/v1/purchase_orders?orders_page=2</code>.
 You can also see <code>meta</code> key in the response you get, that will return informations
 like <code>current_page</code>, <code>next_page</code>, <code>previous_page</code>, <code>total_pages</code>, and <code>total_count</code>
 to help your write your own logic of pagination.</p>
@@ -5264,7 +5264,7 @@ to help your write your own logic of pagination.</p>
 <code>/api/v1/purchase_orders?search=your search keyword</code>. It will perform full-text
 search and return result accordingly.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders?page=1&amp;search=something</code></p>
+<p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders?orders_page=1&amp;search=something</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -5284,7 +5284,7 @@ search and return result accordingly.</p>
 <td>Company ID</td>
 </tr>
 <tr>
-<td>page</td>
+<td>orders_page</td>
 <td>integer</td>
 <td>Used for Loading records from specified page number</td>
 </tr>
