@@ -548,6 +548,18 @@
             <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#what-are-webhooks" class="toc-h2 toc-link" data-title="Webhooks">What are webhooks</a>
+                  </li>
+                  <li>
+                    <a href="#when-should-i-use-webhooks" class="toc-h2 toc-link" data-title="Webhooks">When should I use webhooks</a>
+                  </li>
+                  <li>
+                    <a href="#access-webhooks-in-procurementexpress-application" class="toc-h2 toc-link" data-title="Webhooks">Access webhooks in ProcurementExpress application</a>
+                  </li>
+                  <li>
+                    <a href="#supported-events" class="toc-h2 toc-link" data-title="Webhooks">Supported events</a>
+                  </li>
+                  <li>
                     <a href="#create-a-webhook" class="toc-h2 toc-link" data-title="Webhooks">Create a Webhook</a>
                   </li>
                   <li>
@@ -8334,7 +8346,29 @@ already registered otherwise returns <code>false</code>.</p>
 <td>email address to check</td>
 </tr>
 </tbody></table>
-<h1 id='webhooks'>Webhooks</h1><h2 id='create-a-webhook'>Create a Webhook</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<h1 id='webhooks'>Webhooks</h1><h2 id='what-are-webhooks'>What are webhooks</h2>
+<p>Webhooks are notifications about ProcurementExpress entities that are sent to your app. When any event specified on <code>event_type</code> query params occurs, a <code>POST</code> request is sent to the specified <code>url</code>. Webhooks notification configured here are triggered by events in your ProcurementExpress company. </p>
+<h2 id='when-should-i-use-webhooks'>When should I use webhooks</h2>
+<p>If you use API endpoints, then you will get response only when you call it. But there comes a scenario where you might like to know about the changes in realtime, for example, you want to listen to changes as soon as purchase order is created, approved, delivered or paid, then webhooks makes your life easier, because it send a <code>POST</code> request to your application, as soon as those event occurs in your ProcurementExpress company.</p>
+<h2 id='access-webhooks-in-procurementexpress-application'>Access webhooks in ProcurementExpress application</h2>
+<ul>
+<li>Login to your company in https://app.procurementexpress.com as <code>companyadmin</code>.</li>
+<li>Click on the users menu on the top right corner of the application</li>
+<li>click on Integrations menu item</li>
+<li>And finally click on <code>Integrate</code> button for <code>Create webhooks based on events</code> section</li>
+<li>Here you will see list of webhooks you have configured, and also click on <code>Add Webhooks</code> button to create new one.</li>
+</ul>
+<h2 id='supported-events'>Supported events</h2>
+<p>Right now we support following webhooks events:</p>
+<h3 id='code-new_po-code'><code>new_po</code></h3>
+<p>If <code>new_po</code> event is enabled in webhooks configuration, then everytime new purchase order is created in your ProcurementExpress company, a webhooks request is notified.</p>
+<h3 id='code-po_approved-code'><code>po_approved</code></h3>
+<p>When <code>po_approved</code> event is enabled in webhooks configuration, then everytime a purchase order is approved in your ProcurementExpress company, a webhooks request is notified.</p>
+<h3 id='code-po_delivered-code'><code>po_delivered</code></h3>
+<p>When <code>po_delivered</code> event is enabled in webhooks configuration, then everytime a purchase order is marked as delivered, a webhooks request is notified.</p>
+<h3 id='code-po_paid-code'><code>po_paid</code></h3>
+<p>When <code>po_paid</code> event is enabled in webhooks configuration, then everytime a purchase order is marked as paid, a webhooks request is notified.</p>
+<h2 id='create-a-webhook'>Create a Webhook</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
   <span class="s1">'https://app.procurementexpress.com/api/v1/webhooks'</span><span class="p">,</span>
