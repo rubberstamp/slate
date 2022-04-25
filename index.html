@@ -8368,6 +8368,8 @@ already registered otherwise returns <code>false</code>.</p>
 <p>When <code>po_delivered</code> event is enabled in webhooks configuration, then everytime a purchase order is marked as delivered, a webhooks request is notified.</p>
 <h3 id='code-po_paid-code'><code>po_paid</code></h3>
 <p>When <code>po_paid</code> event is enabled in webhooks configuration, then everytime a purchase order is marked as paid, a webhooks request is notified.</p>
+<h3 id='code-po_cancelled-code'><code>po_cancelled</code></h3>
+<p>When <code>po_cancelled</code> event is enabled in webhooks configuration, then everytime a purchase order is marked as cancelled, a webhooks request is notified.</p>
 <h2 id='create-a-webhook'>Create a Webhook</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
