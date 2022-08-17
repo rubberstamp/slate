@@ -553,6 +553,9 @@
                   <li>
                     <a href="#user-already-registered" class="toc-h2 toc-link" data-title="Extras">User already registered?</a>
                   </li>
+                  <li>
+                    <a href="#error-logs" class="toc-h2 toc-link" data-title="Extras">Error Logs</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -8516,6 +8519,82 @@ already registered otherwise returns <code>false</code>.</p>
 <td>email</td>
 <td>string</td>
 <td>email address to check</td>
+</tr>
+</tbody></table>
+<h2 id='error-logs'>Error Logs</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v1/error_logs'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+      <span class="ss">app_company_id: </span><span class="s1">'1'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/error_logs"</span>
+  -X GET
+  -H <span class="s1">'app_company_id: 1'</span>
+  -H <span class="s1">'authentication_token: your token'</span>
+  -H <span class="s1">'content-type: application/json'</span>
+  -D <span class="s1">'error_message=Your error message'</span>
+  -D <span class="s1">'options[department_id]=1'</span>
+  -D <span class="s1">'options[supplier_id]=2'</span>
+  -D <span class="s1">'options[approver_id]=3'</span>
+  -D <span class="s1">'options[budget_id]=4'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>PO creation failed on Pushcart due to error. Post that error on Slack error channel. And once done return success true.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://app.procurementexpress.com/api/v1/error_logs</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication Token</td>
+</tr>
+<tr>
+<td>error_message</td>
+<td>string</td>
+<td>Error Message</td>
+</tr>
+<tr>
+<td>options[department_id]</td>
+<td>string</td>
+<td>Department ID</td>
+</tr>
+<tr>
+<td>options[supplier_id]</td>
+<td>string</td>
+<td>Supplier ID</td>
+</tr>
+<tr>
+<td>options[approver_id]</td>
+<td>string</td>
+<td>Approver ID</td>
+</tr>
+<tr>
+<td>options[budget_id]</td>
+<td>string</td>
+<td>Budget ID</td>
 </tr>
 </tbody></table>
 <h1 id='webhooks'>Webhooks</h1><h2 id='example-post-request-send-to-the-webhooks-url'>Example post request send to the webhooks URL</h2>
