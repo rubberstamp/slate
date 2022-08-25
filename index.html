@@ -4616,6 +4616,8 @@ and that currency will be attached to the purchase order.</p>
 <p>we now have ability to create new Purchase order on behalf of other users. For security purpose, we only allow companyadmin to create purchase orders on behalf of other users. And also that user must be an employee of current company.</p>
 
 <p>To use this feature, you need to pass other user&#39;s id in <code>purchase_order[on_behalf_of]</code> params</p>
+<h3 id='copy'>Copy</h3>
+<p>You can check <code>can_copy</code> boolean flag in the api response to make sure whether or not current logged in user can copy the purchase order.</p>
 <h3 id='quickbooks-account'>QuickBooks Account</h3>
 <p>If QuickBooks is connected, then customer also have ability to map QuickBooks Account with their PEX Budget,
 In that case Account custom field is required custom field, we can re-use already mapped QuickBooks Account
