@@ -3336,6 +3336,7 @@ params.</p>
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin User"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"approver_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin User"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -3352,6 +3353,8 @@ params.</p>
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountant@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accountant User"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accountant User"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"approver_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Approver User (on behalf of Accountant User)"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"setup_incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -3367,6 +3370,10 @@ params.</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Retrieves the list of all approvers for current company regardless of auto approval routing</p>
+<h3 id='holiday-delegates'>Holiday Delegates</h3>
+<p>Also Note that, because approvers can enable holiday mode and add other approvers as their delegate approvers, in above json response
+you will also see <code>approver_name</code> column, which contains the name of either delegated approver name, or original approver name.
+This column is useful, if you want to display any requests that are delegated on behalf of holiday approver.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://app.procurementexpress.com/api/v1/companies/all_approvers</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
@@ -4594,7 +4601,19 @@ Any parameters not provided will be left unchanged.</p>
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"approver_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gillian Neary"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"approver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="s2">"approver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accept_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"....."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reject_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"......"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"delegate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"approver_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gillian Neary (on behalf of John Doe)"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"approver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accept_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"....."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reject_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"......"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"delegate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5053,7 +5072,19 @@ and select that value in Account Dropdown.</p>
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"approver_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gillian Neary"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"approver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="s2">"approver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accept_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"....."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reject_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"......"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"delegate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"approver_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gillian Neary (on behalf of John Doe)"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"approver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accept_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"....."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reject_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"......"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"delegate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5585,8 +5616,18 @@ search and return result accordingly.</p>
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"approver_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gillian Neary"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"approver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"accept_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17943-344853-20171017053411......"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reject_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17943-344853-20171017053411......"</span><span class="w">
+      </span><span class="s2">"accept_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"....."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reject_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"......"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"delegate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"approver_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gillian Neary (on behalf of John Doe)"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"approver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accept_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"....."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reject_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"......"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"delegate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"supplier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5602,6 +5643,12 @@ unique purchase order id, that was returned upon product creation.</p>
 <p>PurchaseOrder&#39;s <code>status</code> will be <code>approved</code> if all of the approvers have already
 approved this purchase order. You can find list of approvers in <code>approver_requests</code>
 attribute.</p>
+<h3 id='delegate-approvers'>delegate approvers</h3>
+<p>If the approver who is assigned to given purchase order is on holiday mode and also delegate approver is selected
+then json repsonse will contains <code>delegate_id: x</code> which means, that request should be approved/rejected by the user
+matching the delegate_id.</p>
+
+<p>Also notice the <code>approver_name</code> which contains the naming format <code>Approver xxx (on behalf of Approver yyy)</code>.</p>
 <h3 id='copy'>Copy</h3>
 <p>You can check <code>can_copy</code> boolean flag in the api response to make sure whether or not current logged in user can copy the purchase order.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
