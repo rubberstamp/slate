@@ -461,6 +461,41 @@
               </ul>
           </li>
           <li>
+            <a href="#invoices" class="toc-h1 toc-link" data-title="Invoices">Invoices</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-invoices" class="toc-h2 toc-link" data-title="Invoices">List Invoices</a>
+                  </li>
+                  <li>
+                    <a href="#invoice-details" class="toc-h2 toc-link" data-title="Invoices">Invoice Details</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-invoice" class="toc-h2 toc-link" data-title="Invoices">Create an Invoice</a>
+                  </li>
+                  <li>
+                    <a href="#update-an-invoice" class="toc-h2 toc-link" data-title="Invoices">Update an Invoice</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-comment" class="toc-h2 toc-link" data-title="Invoices">Create a Comment</a>
+                  </li>
+                  <li>
+                    <a href="#approve-an-invoice" class="toc-h2 toc-link" data-title="Invoices">Approve an Invoice</a>
+                  </li>
+                  <li>
+                    <a href="#reject-an-invoice" class="toc-h2 toc-link" data-title="Invoices">Reject an Invoice</a>
+                  </li>
+                  <li>
+                    <a href="#cancel-an-invoice" class="toc-h2 toc-link" data-title="Invoices">Cancel an Invoice</a>
+                  </li>
+                  <li>
+                    <a href="#archive-an-invoice" class="toc-h2 toc-link" data-title="Invoices">Archive an Invoice</a>
+                  </li>
+                  <li>
+                    <a href="#dearchive-an-invoice" class="toc-h2 toc-link" data-title="Invoices">Dearchive an Invoice</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#payments" class="toc-h1 toc-link" data-title="Payments">Payments</a>
               <ul class="toc-list-h2">
                   <li>
@@ -6379,6 +6414,1084 @@ page, This value should be true in order to allow user to complete delivery.</p>
 <td>app_company_id</td>
 <td>header</td>
 <td>Company ID</td>
+</tr>
+</tbody></table>
+<h1 id='invoices'>Invoices</h1><h2 id='list-invoices'>List Invoices</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/invoices"</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/invoices"</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"invoices"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invoice_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invoice 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ready_to_pay"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"issue_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1683522000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"validation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1683522000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uploaded_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1683522000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1683522000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">150.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gross_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1150.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"balance_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1150.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"supplier_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"supplier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Supplier Name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"purchase_order_references"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"1-1970-01-01"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"can_approve"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"can_reject"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"can_cancel"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"can_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"can_dearchive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">162</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="mi">710</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South African Rand"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"R"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-01T04:21:56.144-06:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-08T03:02:08.904-05:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prev_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>List all invoices for the Company indicated by <code>app_company_id</code>.</p>
+<h3 id='pagination'>Pagination</h3>
+<p>The Invoice list returned is paginated with 100 records per page. You can find details on the current page and total number of pages under the <code>meta</code> attributes in the JSON repsonse. You can enter additioal pages by passing the <code>page</code> argument as follows: <code>https://app.procurementexpress.com/api/v1/purchase_orders?page=2</code></p>
+<h3 id='filtering'>Filtering</h3>
+<p>A variety of filters can be applied to the list by adding additional parameters, e.g. <code>archived</code>, like follows: <code>https://app.procurementexpress.com/api/v1/purchase_orders?archived=false</code></p>
+
+<p>Please see the <code>Query Parameters</code> for a complete list of potential filter arguments.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /api/v1/invoices</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td></td>
+<td>Company ID number</td>
+</tr>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td></td>
+<td>Authentication Token</td>
+</tr>
+<tr>
+<td>archived</td>
+<td>boolean</td>
+<td><code>true</code> or <code>false</code></td>
+<td>Whether the Invoice(s) are archived or not</td>
+</tr>
+<tr>
+<td>requester_id</td>
+<td>number</td>
+<td></td>
+<td>The ID Number of the user thgat requested the Invoice(s)</td>
+</tr>
+<tr>
+<td>approver_id</td>
+<td>number</td>
+<td></td>
+<td>The ID Number of the user that approved the Invoice(s)</td>
+</tr>
+<tr>
+<td>supplier_id</td>
+<td>number</td>
+<td></td>
+<td>The ID Number of the supplier the Invoice(s) are associated with</td>
+</tr>
+<tr>
+<td>invoice_date_filter</td>
+<td>string</td>
+<td>&quot;last 7days&quot;</td>
+<td>The date-range filter for the updated date with which to filter the Invoice(s) by</td>
+</tr>
+<tr>
+<td>page</td>
+<td>number</td>
+<td></td>
+<td>The page number for which results are returned (see <code>Pagination</code>)</td>
+</tr>
+</tbody></table>
+<h2 id='invoice-details'>Invoice Details</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/1"</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/1"</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span></code></pre>
+<p>This endpoint gives acces to detailed information about a specific Invoice.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /api/v1/invoices/:id</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td></td>
+<td>Company ID number</td>
+</tr>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td></td>
+<td>Authentication Token</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='create-an-invoice'>Create an Invoice</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/invoices"</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="s2">"invoice_number"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"issue_date"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"validation_date"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"supplier_id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"uploaded_date"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"received_date"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"due_date"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"gross_amount"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"currency_id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"invoice_line_items_attributes"</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"sequence_no"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"description"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"unit_price"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"quantity"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"vat"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"net_amount"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"base_net_amount"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"tax_rate_id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"chart_of_account_id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"purchase_order_id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"purchase_order_item_id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"billable_status"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"_destroy"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"custom_field_values_attributes"</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">"value"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">"custom_field_id"</span><span class="p">:</span> <span class="n">null</span>
+      <span class="p">}]</span>
+    <span class="p">}],</span>
+    <span class="s2">"supplier_invoice_uploads_attributes"</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"file"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"_destroy"</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">}]</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/invoices"</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -d <span class="s2">"action: create"</span>
+  -d <span class="s2">"invoice[invoice_number] = inv-001"</span>,
+  -d <span class="s2">"invoice[issue_date] = 2023-01-01"</span>,
+  -d <span class="s2">"invoice[supplier_id] = null"</span>,
+  -d <span class="s2">"invoice[received_date] = 2023-01-01"</span>,
+  -d <span class="s2">"invoice[due_date] = 2023-02-01"</span>,
+  -d <span class="s2">"invoice[gross_amount] = 1210"</span>,
+  -d <span class="s2">"invoice[currency_id] = 1000"</span>,
+  -d <span class="s2">"[invoice[invoice_line_items_attributes][][description] = Airfare"</span>,
+  -d <span class="s2">"[invoice[invoice_line_items_attributes][][unit_price] = 1000"</span>,
+  -d <span class="s2">"[invoice[invoice_line_items_attributes][][quantity] = 1"</span>,
+  -d <span class="s2">"[invoice[invoice_line_items_attributes][][vat] = 21"</span>,
+  -d <span class="s2">"[invoice[invoice_line_items_attributes][][net_amount] = 1000"</span>,
+  -d <span class="s2">"[invoice[invoice_line_items_attributes][][purchase_order_id] = 100023456789"</span>,
+  -d <span class="s2">"[supplier_invoice_uploads_attributes][][file] = https://po-app-staging.s3.amazonaws.com/supplier_invoice_uploads/files/000/000/007/original/test.pdf?1681894799"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"invoice_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inv-001"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outstanding"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"issue_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681880400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"validation_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uploaded_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681880400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681966800</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"gross_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balance_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681894799</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681894799</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"978"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Euro"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-19T03:59:57.085-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-19T03:59:57.367-05:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"supplier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payment_details"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contact_person"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tax_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-19T03:59:57.581-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-19T03:59:58.820-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"department_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"third_party_id_mappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"external_vendor_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"invoice_line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sequence_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advertising"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"base_net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deleted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billable_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tax_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"chart_of_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"purchase_order_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"purchase_order_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"markup_info"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681894800</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681894800</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"purchase_orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"approval_key"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Team Member"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1600.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"supplier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30000 Apple Team Member  pending 1680.00   iPhone 840.0 800.0   iPhone 840.0 800.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681894796000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_gross_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1600.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"base_gross_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1680.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"submitted_on"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681894798000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"share_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GCFJSAFMLFVGXFBSFIPQXFUEHHMKXQQN20230419035958"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"department_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"department_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"supplier_invoice_uploads"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.pdf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">13264</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://po-app-staging.s3.amazonaws.com/supplier_invoice_uploads/files/000/000/007/original/test.pdf?1681894799"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"histories"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Create a new Invoice for the Company ID mentioned in the header.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET /api/v1/invoices/create</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td></td>
+<td>Company ID number</td>
+</tr>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td></td>
+<td>Authentication Token</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td></td>
+<td>The name of the action that processes the request</td>
+</tr>
+<tr>
+<td>gross_amount</td>
+<td>string</td>
+<td></td>
+<td>Gross amount of the invoice</td>
+</tr>
+<tr>
+<td>due_date</td>
+<td>string</td>
+<td></td>
+<td>Due date of the invoice</td>
+</tr>
+<tr>
+<td>uploaded_date</td>
+<td>string</td>
+<td></td>
+<td>Date on which the invoice was uploaded</td>
+</tr>
+<tr>
+<td>issue_date</td>
+<td>string</td>
+<td></td>
+<td>Date on which the invoice was issued</td>
+</tr>
+<tr>
+<td>received_date</td>
+<td>string</td>
+<td></td>
+<td>Date on which the invoice was received</td>
+</tr>
+<tr>
+<td>currency_id</td>
+<td>string</td>
+<td></td>
+<td>ID of the currency used for the invoice</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>string</td>
+<td></td>
+<td>ID of the company that issued the invoice</td>
+</tr>
+<tr>
+<td>invoice_number</td>
+<td>string</td>
+<td></td>
+<td>Unique identifier for the invoice</td>
+</tr>
+<tr>
+<td>supplier_id</td>
+<td>string</td>
+<td></td>
+<td>ID of the supplier that the invoice is being issued to</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes</td>
+<td>array</td>
+<td></td>
+<td>An array of invoice line items that belongs to the invoice</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.description</td>
+<td>string</td>
+<td></td>
+<td>Description of the invoice line item</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.unit_price</td>
+<td>string</td>
+<td></td>
+<td>Price per unit of the invoice line item</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.quantity</td>
+<td>string</td>
+<td></td>
+<td>Quantity of the invoice line item</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.vat</td>
+<td>string</td>
+<td></td>
+<td>VAT of the invoice line item</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.net_amount</td>
+<td>string</td>
+<td></td>
+<td>Net amount of the invoice line item</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.purchase_order_id</td>
+<td>string</td>
+<td></td>
+<td>ID of the purchase order associated with the invoice line item</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.purchase_order_item_id</td>
+<td>string</td>
+<td></td>
+<td>ID of the purchase order item associated with the invoice line item</td>
+</tr>
+<tr>
+<td>supplier_invoice_uploads_attributes</td>
+<td>array</td>
+<td></td>
+<td>An array of invoice uploads that belong to the supplier</td>
+</tr>
+<tr>
+<td>supplier_invoice_uploads_attributes.file</td>
+<td>string</td>
+<td></td>
+<td>The uploaded invoice file URL</td>
+</tr>
+</tbody></table>
+<h2 id='update-an-invoice'>Update an Invoice</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/invoices"</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="s2">"invoice_number"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"issue_date"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"validation_date"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"supplier_id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"uploaded_date"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"received_date"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"due_date"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"gross_amount"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"currency_id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">"invoice_line_items_attributes"</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"sequence_no"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"description"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"unit_price"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"quantity"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"vat"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"net_amount"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"base_net_amount"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"tax_rate_id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"chart_of_account_id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"purchase_order_id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"purchase_order_item_id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"billable_status"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"_destroy"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"custom_field_values_attributes"</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">"value"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">"custom_field_id"</span><span class="p">:</span> <span class="n">null</span>
+      <span class="p">}]</span>
+    <span class="p">}],</span>
+    <span class="s2">"supplier_invoice_uploads_attributes"</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"file"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">"_destroy"</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">}]</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/invoices"</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -d <span class="s2">"action: create"</span>
+  -d <span class="s2">"invoice[invoice_number] = inv-001"</span>,
+  -d <span class="s2">"invoice[issue_date] = 2023-01-01"</span>,
+  -d <span class="s2">"invoice[supplier_id] = null"</span>,
+  -d <span class="s2">"invoice[received_date] = 2023-01-01"</span>,
+  -d <span class="s2">"invoice[due_date] = 2023-02-01"</span>,
+  -d <span class="s2">"invoice[gross_amount] = 1210"</span>,
+  -d <span class="s2">"invoice[currency_id] = 1000"</span>,
+  -d <span class="s2">"[invoice[invoice_line_items_attributes][][description] = Airfare"</span>,
+  -d <span class="s2">"[invoice[invoice_line_items_attributes][][unit_price] = 1000"</span>,
+  -d <span class="s2">"[invoice[invoice_line_items_attributes][][quantity] = 1"</span>,
+  -d <span class="s2">"[invoice[invoice_line_items_attributes][][vat] = 21"</span>,
+  -d <span class="s2">"[invoice[invoice_line_items_attributes][][net_amount] = 1000"</span>,
+  -d <span class="s2">"[invoice[invoice_line_items_attributes][][purchase_order_id] = 100023456789"</span>,
+  -d <span class="s2">"[supplier_invoice_uploads_attributes][][file] = https://po-app-staging.s3.amazonaws.com/supplier_invoice_uploads/files/000/000/007/original/test.pdf?1681894799"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"invoice_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inv-001"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outstanding"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"issue_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681880400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"validation_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uploaded_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681880400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681966800</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"gross_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balance_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681894799</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681894799</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"978"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Euro"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-19T03:59:57.085-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-19T03:59:57.367-05:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"supplier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payment_details"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contact_person"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tax_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-19T03:59:57.581-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-19T03:59:58.820-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"department_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"third_party_id_mappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"external_vendor_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"invoice_line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sequence_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advertising"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"base_net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deleted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billable_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tax_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"chart_of_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"purchase_order_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"purchase_order_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"markup_info"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681894800</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681894800</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"purchase_orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"approval_key"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Team Member"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1600.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"supplier_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30000 Apple Team Member  pending 1680.00   iPhone 840.0 800.0   iPhone 840.0 800.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681894796000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_gross_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1600.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"base_gross_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1680.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"submitted_on"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681894798000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"share_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GCFJSAFMLFVGXFBSFIPQXFUEHHMKXQQN20230419035958"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"department_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"department_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"supplier_invoice_uploads"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.pdf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">13264</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://po-app-staging.s3.amazonaws.com/supplier_invoice_uploads/files/000/000/007/original/test.pdf?1681894799"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"histories"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Update an Invoice. THIS SECTION IS BEING WORKED ON.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET /api/v1/invoices/create</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td></td>
+<td>Company ID number</td>
+</tr>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td></td>
+<td>Authentication Token</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td></td>
+<td>The name of the action that processes the request</td>
+</tr>
+<tr>
+<td>gross_amount</td>
+<td>string</td>
+<td></td>
+<td>Gross amount of the invoice</td>
+</tr>
+<tr>
+<td>due_date</td>
+<td>string</td>
+<td></td>
+<td>Due date of the invoice</td>
+</tr>
+<tr>
+<td>uploaded_date</td>
+<td>string</td>
+<td></td>
+<td>Date on which the invoice was uploaded</td>
+</tr>
+<tr>
+<td>issue_date</td>
+<td>string</td>
+<td></td>
+<td>Date on which the invoice was issued</td>
+</tr>
+<tr>
+<td>received_date</td>
+<td>string</td>
+<td></td>
+<td>Date on which the invoice was received</td>
+</tr>
+<tr>
+<td>currency_id</td>
+<td>string</td>
+<td></td>
+<td>ID of the currency used for the invoice</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>string</td>
+<td></td>
+<td>ID of the company that issued the invoice</td>
+</tr>
+<tr>
+<td>invoice_number</td>
+<td>string</td>
+<td></td>
+<td>Unique identifier for the invoice</td>
+</tr>
+<tr>
+<td>supplier_id</td>
+<td>string</td>
+<td></td>
+<td>ID of the supplier that the invoice is being issued to</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes</td>
+<td>array</td>
+<td></td>
+<td>An array of invoice line items that belongs to the invoice</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.description</td>
+<td>string</td>
+<td></td>
+<td>Description of the invoice line item</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.unit_price</td>
+<td>string</td>
+<td></td>
+<td>Price per unit of the invoice line item</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.quantity</td>
+<td>string</td>
+<td></td>
+<td>Quantity of the invoice line item</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.vat</td>
+<td>string</td>
+<td></td>
+<td>VAT of the invoice line item</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.net_amount</td>
+<td>string</td>
+<td></td>
+<td>Net amount of the invoice line item</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.purchase_order_id</td>
+<td>string</td>
+<td></td>
+<td>ID of the purchase order associated with the invoice line item</td>
+</tr>
+<tr>
+<td>invoice_line_items_attributes.purchase_order_item_id</td>
+<td>string</td>
+<td></td>
+<td>ID of the purchase order item associated with the invoice line item</td>
+</tr>
+<tr>
+<td>supplier_invoice_uploads_attributes</td>
+<td>array</td>
+<td></td>
+<td>An array of invoice uploads that belong to the supplier</td>
+</tr>
+<tr>
+<td>supplier_invoice_uploads_attributes.file</td>
+<td>string</td>
+<td></td>
+<td>The uploaded invoice file URL</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-comment'>Create a Comment</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/1/create_comment"</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">comment: </span><span class="s2">"write a comment"</span>
+  <span class="p">}</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/1/create_comment"</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -d <span class="s2">"comment: write a comment"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new comment"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">296</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">41000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Team Member"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681988035</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681988035</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comment_formatted_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05:53"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comment_formatted_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-20"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"formatted_comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;new comment&lt;/p&gt;"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Leave a comment on an Invoice.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST /api/v1/invoices/:id/create_comment</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td></td>
+<td>Company ID number</td>
+</tr>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td></td>
+<td>Authentication Token</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>string</td>
+<td></td>
+<td>Text to be added as a comment</td>
+</tr>
+</tbody></table>
+<h2 id='approve-an-invoice'>Approve an Invoice</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/1/invoices/approve"</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/1/invoices/approve"</span>
+  -X PUT
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Approve an Invoice in the <code>Pending</code> status.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>PUT /api/v1/invoices/:id/approve</code></p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td></td>
+<td>Company ID number</td>
+</tr>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td></td>
+<td>Authentication Token</td>
+</tr>
+</tbody></table>
+<h2 id='reject-an-invoice'>Reject an Invoice</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/1/reject"</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/1/reject"</span>
+  -X PUT
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Reject an Invoice in the <code>Pending</code> status.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>PUT /api/v1/invoices/:id/reject</code></p>
+<h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td></td>
+<td>Company ID number</td>
+</tr>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td></td>
+<td>Authentication Token</td>
+</tr>
+</tbody></table>
+<h2 id='cancel-an-invoice'>Cancel an Invoice</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/1/cancel"</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/purchase_orders/1/cancel"</span>
+  -X PUT
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Cancel an existing Invoice.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>PUT /api/v1/invoices/:id/cancel</code></p>
+<h3 id='query-parameters-8'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td></td>
+<td>Company ID number</td>
+</tr>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td></td>
+<td>Authentication Token</td>
+</tr>
+</tbody></table>
+<h2 id='archive-an-invoice'>Archive an Invoice</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/1/archive"</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/purchase_orders/1/archive"</span>
+  -X PUT
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Archive an existing Invoice.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>PUT /api/v1/invoices/:id/archive</code></p>
+<h3 id='query-parameters-9'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td></td>
+<td>Company ID number</td>
+</tr>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td></td>
+<td>Authentication Token</td>
+</tr>
+</tbody></table>
+<h2 id='dearchive-an-invoice'>Dearchive an Invoice</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/1/dearchive"</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/purchase_orders/1/dearchive"</span>
+  -X PUT
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Dearchive an archived Invoice.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>PUT /api/v1/invoices/:id/dearchive</code></p>
+<h3 id='query-parameters-10'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td></td>
+<td>Company ID number</td>
+</tr>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td></td>
+<td>Authentication Token</td>
 </tr>
 </tbody></table>
 <h1 id='payments'>Payments</h1><h2 id='create-a-payment'>Create a Payment</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
