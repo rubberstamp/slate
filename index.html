@@ -482,6 +482,9 @@
                     <a href="#create-a-comment" class="toc-h2 toc-link" data-title="Invoices">Create a Comment</a>
                   </li>
                   <li>
+                    <a href="#accept-an-awaiting-review-invoices" class="toc-h2 toc-link" data-title="Invoices">Accept an awaiting review invoices</a>
+                  </li>
+                  <li>
                     <a href="#approve-an-invoice" class="toc-h2 toc-link" data-title="Invoices">Approve an Invoice</a>
                   </li>
                   <li>
@@ -6535,6 +6538,7 @@ page, This value should be true in order to allow user to complete delivery.</p>
     </span><span class="s2">"purchase_order_references"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
       </span><span class="s2">"1-1970-01-01"</span><span class="w">
     </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"can_accept"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"can_approve"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"can_reject"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"can_cancel"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -6840,7 +6844,7 @@ page, This value should be true in order to allow user to complete delivery.</p>
 </span></code></pre>
 <p>Create a new Invoice for the Company ID mentioned in the header.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET /api/v1/invoices/create</code></p>
+<p><code>POST /api/v1/invoices</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -6983,8 +6987,8 @@ page, This value should be true in order to allow user to complete delivery.</p>
 <td>The uploaded invoice file URL</td>
 </tr>
 </tbody></table>
-<h2 id='update-an-invoice'>Update an Invoice</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
-  <span class="s2">"https://app.procurementexpress.com/api/v1/invoices"</span><span class="p">,</span>
+<h2 id='update-an-invoice'>Update an Invoice</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/1"</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="s2">"invoice_number"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
     <span class="s2">"issue_date"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
@@ -7027,8 +7031,8 @@ page, This value should be true in order to allow user to complete delivery.</p>
     <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
   <span class="p">}</span>
 <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/invoices"</span>
-  -X POST
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/1"</span>
+  -X PUT
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"app_company_id: 1"</span>
   -H <span class="s2">"authentication_token: your token"</span>
@@ -7145,9 +7149,16 @@ page, This value should be true in order to allow user to complete delivery.</p>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>Update an Invoice. THIS SECTION IS BEING WORKED ON.</p>
+<p>Update an Invoice. Always pass the id of an existing items including <code>Invoice</code>, <code>invoice_line_items_attributes</code> and so on
+this will help us update your existing items. </p>
+
+<p>If you want to delete existing Invoice line items than you can pass <code>_destroy: 1</code> in the corresponding <code>invoice_line_items_attributes</code>
+along with the invoice item id.</p>
+
+<p>If any item is missing <code>id</code> attribute or <code>id: null</code> is passed, those items will be treated as new items and will  be created
+as new entry in our database.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET /api/v1/invoices/create</code></p>
+<p><code>PUT /api/v1/invoices/:id</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -7354,6 +7365,56 @@ page, This value should be true in order to allow user to complete delivery.</p>
 <td>Text to be added as a comment</td>
 </tr>
 </tbody></table>
+<h2 id='accept-an-awaiting-review-invoices'>Accept an awaiting review invoices</h2>
+<p>If your invoice status is in <code>awaiting_review</code> status and you are authorized to perform
+and <code>accept</code> action on the invoice. You can check <a href="#list-invoices">Invoice List</a> or <a href="#invoice-details">Invoice Detail</a>
+API response which includes <code>can_accept</code> boolean value. If it is <code>true</code> current logged in
+user can accept an invoice, otherwise they can not accept.</p>
+<pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/:id/accept"</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/invoices/:id/accept"</span>
+  -X PUT
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Accept an Invoice scan in the <code>Awaiting Review</code> status.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>PUT /api/v1/invoices/:id/accept</code></p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Options</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td></td>
+<td>Company ID number</td>
+</tr>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td></td>
+<td>Authentication Token</td>
+</tr>
+</tbody></table>
 <h2 id='approve-an-invoice'>Approve an Invoice</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span>
   <span class="s2">"https://app.procurementexpress.com/api/v1/1/invoices/approve"</span><span class="p">,</span>
   <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -7375,9 +7436,9 @@ page, This value should be true in order to allow user to complete delivery.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Approve an Invoice in the <code>Pending</code> status.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>PUT /api/v1/invoices/:id/approve</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Params</th>
@@ -7420,9 +7481,9 @@ page, This value should be true in order to allow user to complete delivery.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Reject an Invoice in the <code>Pending</code> status.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>PUT /api/v1/invoices/:id/reject</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Params</th>
@@ -7465,9 +7526,9 @@ page, This value should be true in order to allow user to complete delivery.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Cancel an existing Invoice.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>PUT /api/v1/invoices/:id/cancel</code></p>
-<h3 id='query-parameters-8'>Query Parameters</h3>
+<h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Params</th>
@@ -7510,9 +7571,9 @@ page, This value should be true in order to allow user to complete delivery.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Archive an existing Invoice.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>PUT /api/v1/invoices/:id/archive</code></p>
-<h3 id='query-parameters-9'>Query Parameters</h3>
+<h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Params</th>
@@ -7555,9 +7616,9 @@ page, This value should be true in order to allow user to complete delivery.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Dearchive an archived Invoice.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>PUT /api/v1/invoices/:id/dearchive</code></p>
-<h3 id='query-parameters-10'>Query Parameters</h3>
+<h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Params</th>
