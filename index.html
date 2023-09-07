@@ -6544,6 +6544,9 @@ page, This value should be true in order to allow user to complete delivery.</p>
     </span><span class="s2">"can_cancel"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"can_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"can_dearchive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"digital_invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"standalone_invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">162</span><span class="p">,</span><span class="w">
       </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
@@ -6693,6 +6696,9 @@ page, This value should be true in order to allow user to complete delivery.</p>
         <span class="s2">"supplier_id"</span><span class="p">:</span> <span class="mi">131</span><span class="p">,</span>
         <span class="s2">"issue_date"</span><span class="p">:</span> <span class="s2">"2023-05-16"</span><span class="p">,</span>
         <span class="s2">"received_date"</span><span class="p">:</span> <span class="s2">"2023-05-16"</span><span class="p">,</span>
+        <span class="s2">"digital_invoice"</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+        <span class="s2">"standalone_invoice"</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+        <span class="s2">"confidence_score"</span><span class="p">:</span> <span class="s2">"0.9"</span><span class="p">,</span>
         <span class="s2">"invoice_line_items_attributes"</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span>
                 <span class="s2">"sequence_no"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
@@ -6835,6 +6841,21 @@ page, This value should be true in order to allow user to complete delivery.</p>
 
 </span></code></pre>
 <p>Create a new Invoice for the Company ID mentioned in the header.</p>
+
+<p><strong>Digital Invoice (Invoice Scan and Match)</strong></p>
+
+<p>For all the invoices that were scanned using OCR, please pass <code>invoice[digital_invoice] = true</code> as a 
+value that allow us to know if that invoice was manually created by user or using scan and match feature.
+This is important for us, because we need to charge our customer based on how much scan they have done
+in our application.</p>
+
+<p><strong>standalone invoice</strong></p>
+
+<p>If any invoice that is extracted by OCR service do not detect the matching PO, you can mark them
+as standalone invoice today in webapp. There also is a option available to the customer where they
+can mark invoice as standalone invoice if there are no linked purchase orders in any invoices.
+In that case you can pass <code>invoice[standalone_invoice] = true</code> and those invoices will be treated
+as stand alone invoices.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST /api/v1/invoices</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
