@@ -502,6 +502,14 @@
               </ul>
           </li>
           <li>
+            <a href="#invoice-scan-and-match" class="toc-h1 toc-link" data-title="Invoice Scan and Match">Invoice Scan and Match</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-digital-invoice" class="toc-h2 toc-link" data-title="Invoice Scan and Match">Create Digital Invoice</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#payments" class="toc-h1 toc-link" data-title="Payments">Payments</a>
               <ul class="toc-list-h2">
                   <li>
@@ -7651,6 +7659,214 @@ user can accept an invoice, otherwise they can not accept.</p>
 <td>header</td>
 <td></td>
 <td>Authentication Token</td>
+</tr>
+</tbody></table>
+<h1 id='invoice-scan-and-match'>Invoice Scan and Match</h1><h2 id='create-digital-invoice'>Create Digital Invoice</h2><pre class="highlight ruby tab-ruby"><code><span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s2">"https://app.procurementexpress.com/api/v1/digital_invoices"</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">authentication_token: </span><span class="s2">"your token"</span>
+  <span class="p">},</span>
+  <span class="ss">data: </span><span class="p">{</span>
+    <span class="ss">file: </span><span class="s1">'fileblob'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.procurementexpress.com/api/v1/digital_invoices"</span>
+  -X POST
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+  -H <span class="s2">"authentication_token: your token"</span>
+  -d <span class="s2">"file:&lt;fileblob&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File is required"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">181717</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"invoice_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outstanding"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"issue_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1693198800</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"validation_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uploaded_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694151677</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1230.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gross_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1230.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694151678</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694151680</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"standalone_invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"can_accept"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"can_approve"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"can_reject"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"can_cancel"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"can_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"can_dearchive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.77"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"digital_invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"978"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Euro"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-12-05T09:32:59.165-06:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-06T06:32:46.644-05:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"supplier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1104905</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6008</span><span class="p">,</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"invoice_line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">270279</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sequence_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPad Air 5th gen Cover case"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"base_net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deleted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"billable_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tax_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15073</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"chart_of_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">181717</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"purchase_order_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"purchase_order_item_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"markup_info"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694151679</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694151679</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">270280</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sequence_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paper like screen protector for iPad Pro 5th gen"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"base_net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deleted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"billable_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tax_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15073</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"chart_of_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">181717</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"purchase_order_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"purchase_order_item_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"markup_info"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694151679</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694151679</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">270281</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sequence_no"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple Pencil V2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"base_net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deleted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"billable_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tax_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15073</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"chart_of_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">181717</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"purchase_order_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"purchase_order_item_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"markup_info"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694151679</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694151679</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"purchase_orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"supplier_invoice_uploads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">180354</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"change2.pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">63330</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://po-app-staging.s3.amazonaws.com/supplier_invoice_uploads/files/000/180/354/original/my-invoice.pdf?1694151678"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"histories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">122397</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">" has scanned an invoice via document upload"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">181717</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11752</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test android"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694151680</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1694151680</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment_formatted_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00:41"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment_formatted_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-08"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"formatted_comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt; has scanned an invoice via document upload&lt;/p&gt;"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create an invoice using PDF file upload feature. It will extract all the content from
+the file, create an invoice, calculate confidence score, and try to find and match supplier,
+currency, and purchase orders. It will also automatically link the invoice line items with
+the purchase order line items if any match found.</p>
+<h3 id='how-to-know-invoice-is-linked-with-purchase-order'>How to know Invoice is Linked with Purchase Order</h3>
+<p>Invoice are linked with Purchase order through Invoice line items. Every invoice line items
+has a <code>purcahse_order_item_id</code> and <code>purchase_order_id</code> properties. If There is a match found
+then corresponding invoice line items will have these 2 values set. If the values are <code>null</code>
+in that case, User need to link invoice items with purchase order items using our app.</p>
+<h3 id='limitations'>Limitations</h3>
+<p><strong>Supported File Types</strong></p>
+
+<ul>
+<li><code>application/pdf</code></li>
+</ul>
+
+<p>Only PDF files are supported today</p>
+
+<p><strong>Maximum file size</strong></p>
+
+<p><code>10 MB</code></p>
+
+<p><strong>PDF Maximum Pages</strong></p>
+
+<p><code>10</code></p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><strong>URL</strong></p>
+
+<p><code>POST https://app.procurementexpress.com/api/v1/digital_invoices</code></p>
+
+<p><strong>Content-Type</strong></p>
+
+<p><code>multipart/form-data</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<p>NOTE that <code>&lt;file&gt;</code> can be either a file object or a base64</p>
+
+<table><thead>
+<tr>
+<th>Params</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication_token</td>
+<td>header</td>
+<td>Authentication token in header</td>
+</tr>
+<tr>
+<td>app_company_id</td>
+<td>header</td>
+<td>Company id</td>
+</tr>
+<tr>
+<td>file</td>
+<td>File</td>
+<td>either a file object or a base64</td>
 </tr>
 </tbody></table>
 <h1 id='payments'>Payments</h1><h2 id='create-a-payment'>Create a Payment</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
