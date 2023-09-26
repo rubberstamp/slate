@@ -3115,6 +3115,21 @@ https://app.procurementexpress.com/api/v1/purchase_order/:purchase_order_id/comm
 </span></code></pre>
 <p>Retrieves the details of an existing company. You need to send unique company id
 that was returned upon company creation.</p>
+<h3 id='check-for-specific-feature-flags'>Check for Specific feature flags</h3>
+<p>If you are interested in checking any feature flags, then all feature flags flag are
+available in this API endpiont.</p>
+
+<p><strong>Invoice Scan and Match Feature flag</strong></p>
+
+<p>For example, if you want to enable <strong>Invoice Scan and Match</strong>
+feature then you can check <code>scan_and_match_ff_enabled</code> is <code>true</code>, if this value is <code>false</code> that means
+it is not available to the customer. Visit <a href="#invoice-scan-and-match">Invoice scan and match</a> for more information.</p>
+
+<p><strong>Payment Terms Feature Flag</strong></p>
+
+<p>We have also added feature flag for <strong>Payment Terms</strong> in the invoice section, and maybe in future we
+can add it to Supplier also. Check if <code>payment_term_ff_enabled</code> is <code>true</code>, then <code>Payment Term</code>
+feature is available for those companies.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://app.procurementexpress.com/api/v1/companies/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
@@ -7814,6 +7829,13 @@ user can accept an invoice, otherwise they can not accept.</p>
 the file, create an invoice, calculate confidence score, and try to find and match supplier,
 currency, and purchase orders. It will also automatically link the invoice line items with
 the purchase order line items if any match found.</p>
+<h3 id='requires-invoice-and-match-feature-flag'>Requires Invoice and Match feature flag</h3>
+<p>This API endpoint return <code>Invoice Scan and Match feature is disabled for this company</code> if
+<code>enable_digital_invoice</code> feature flag or corrosponding feature flag for Invoice scan and match
+feature is disabled for the company. So make sure to only allow this feature in mobile app
+for the companies where Invoice scan and match feature flag is enabled. To check if required
+feature flag is enabled or not check <a href="#get-a-specific-company">Company Detail API</a> and check if
+<code>scan_and_match_ff_enabled</code> attribute is <code>true</code>.</p>
 <h3 id='how-to-know-invoice-is-linked-with-purchase-order'>How to know Invoice is Linked with Purchase Order</h3>
 <p>Invoice are linked with Purchase order through Invoice line items. Every invoice line items
 has a <code>purcahse_order_item_id</code> and <code>purchase_order_id</code> properties. If There is a match found
