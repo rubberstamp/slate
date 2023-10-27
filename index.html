@@ -7836,11 +7836,15 @@ feature is disabled for the company. So make sure to only allow this feature in 
 for the companies where Invoice scan and match feature flag is enabled. To check if required
 feature flag is enabled or not check <a href="#get-a-specific-company">Company Detail API</a> and check if
 <code>scan_and_match_ff_enabled</code> attribute is <code>true</code>.</p>
-<h3 id='how-to-know-invoice-is-linked-with-purchase-order'>How to know Invoice is Linked with Purchase Order</h3>
+<h3 id='how-to-know-invoice-is-linked-with-purchase-order'>How to know Invoice is Linked with Purchase Order?</h3>
 <p>Invoice are linked with Purchase order through Invoice line items. Every invoice line items
 has a <code>purcahse_order_item_id</code> and <code>purchase_order_id</code> properties. If There is a match found
 then corresponding invoice line items will have these 2 values set. If the values are <code>null</code>
 in that case, User need to link invoice items with purchase order items using our app.</p>
+<h3 id='how-to-create-draft-purchase-request-rather-than-invoice-from-a-scan'>How to create Draft Purchase Request rather than Invoice from a scan?</h3>
+<p>To create a purchase request pass a <code>upload_type = &#39;request&#39;</code> data along with file and other required POST body params. If <code>upload_type</code> is other than <code>request</code> it will always create <code>Invoice</code>.</p>
+
+<p>Also note that, the response you get is a valid JSON response of either <code>Invoice</code> json serializer, or <code>PurchaseOrder</code> json serializer or <code>Error</code> json depending on the <code>upload_type</code> value and the success/failure state of the request.</p>
 <h3 id='limitations'>Limitations</h3>
 <p><strong>Supported File Types</strong></p>
 
@@ -7889,6 +7893,11 @@ in that case, User need to link invoice items with purchase order items using ou
 <td>file</td>
 <td>File</td>
 <td>either a file object or a base64</td>
+</tr>
+<tr>
+<td>upload_type</td>
+<td>String</td>
+<td><code>request</code> to create draft PO, default is Invoice</td>
 </tr>
 </tbody></table>
 <h1 id='payments'>Payments</h1><h2 id='create-a-payment'>Create a Payment</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
