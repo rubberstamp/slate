@@ -247,6 +247,23 @@
             <a href="#tracking-source" class="toc-h1 toc-link" data-title="Tracking Source">Tracking Source</a>
           </li>
           <li>
+            <a href="#available-oauth2-routes-endpoints-for-v3-api" class="toc-h1 toc-link" data-title="Available Oauth2 routes/endpoints for V3 API">Available Oauth2 routes/endpoints for V3 API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getting-a-bearer-token-sign-in" class="toc-h2 toc-link" data-title="Available Oauth2 routes/endpoints for V3 API">Getting a bearer token (Sign in)</a>
+                  </li>
+                  <li>
+                    <a href="#revoke-a-token-or-sign-out" class="toc-h2 toc-link" data-title="Available Oauth2 routes/endpoints for V3 API">Revoke a token (or Sign out)</a>
+                  </li>
+                  <li>
+                    <a href="#check-if-token-is-valid" class="toc-h2 toc-link" data-title="Available Oauth2 routes/endpoints for V3 API">Check if token is valid</a>
+                  </li>
+                  <li>
+                    <a href="#accessing-other-resources-with-token" class="toc-h2 toc-link" data-title="Available Oauth2 routes/endpoints for V3 API">Accessing other resources with token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
@@ -877,6 +894,154 @@ failure of an API request.</p>
 <td>Zapier app</td>
 </tr>
 </tbody></table>
+<h1 id='available-oauth2-routes-endpoints-for-v3-api'>Available Oauth2 routes/endpoints for V3 API</h1><h2 id='getting-a-bearer-token-sign-in'>Getting a bearer token (Sign in)</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v3/oauth/token'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">email: </span><span class="s2">"example@gmai.com"</span><span class="p">,</span>
+    <span class="ss">password: </span><span class="s1">'password'</span><span class="p">,</span>
+    <span class="ss">grant_type: </span><span class="s2">"grant_type"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">client_id: </span><span class="s1">'client Iid'</span><span class="p">,</span>
+    <span class="ss">client_secret: </span><span class="s2">"client secret"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurementexpress.com/api/v3/oauth/token
+  -X POST
+  -H <span class="s2">"client_id: client id"</span>
+  -H <span class="s2">"client_secret: client secret"</span>
+  -d <span class="s2">"email=john@example.com"</span>
+  -d <span class="s2">"password=password"</span>
+  -d <span class="s2">"grant_type=grant_type"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NoR6Oz8OG5Ci....WXmC_8WE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NxmOamX....TqekmatIw"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1692767229</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://app.procurementexpress.com/api/v3/oauth/token</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>email</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>strong password</td>
+</tr>
+<tr>
+<td>grant_type</td>
+<td>string</td>
+<td>password</td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>header</td>
+<td>client_id</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td>header</td>
+<td>client_secret</td>
+</tr>
+</tbody></table>
+<h2 id='revoke-a-token-or-sign-out'>Revoke a token (or Sign out)</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v3/oauth/revoke'</span><span class="p">,</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="ss">client_id: </span><span class="s1">'client Iid'</span><span class="p">,</span>
+        <span class="ss">client_secret: </span><span class="s2">"client secret"</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurementexpress.com/api/v3/oauth/token
+  -X POST
+  -H <span class="s2">"client_id: client id"</span>
+  -H <span class="s2">"client_secret: client secret"</span>
+</code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://app.procurementexpress.com/api/v3/oauth/revoke</code></p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>Authorization: Bearer &lt;token&gt;</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>client_id</td>
+<td>header</td>
+<td>client_id</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td>header</td>
+<td>client_secret</td>
+</tr>
+</tbody></table>
+<h2 id='check-if-token-is-valid'>Check if token is valid</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v3/oauth/token/info'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurementexpress.com/api/v3/oauth/token/info
+  -X GET
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+</code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://app.procurementexpress.com/api/v3/oauth/token/info</code></p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>Authorization: Bearer &lt;token&gt;</code></p>
+<h2 id='accessing-other-resources-with-token'>Accessing other resources with token</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span>
+  <span class="s1">'https://app.procurementexpress.com/api/v3/api/v3/budgets'</span><span class="p">,</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">authentication_token: </span><span class="s1">'your token'</span><span class="p">,</span>
+    <span class="ss">app_company_id: </span><span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://app.procurementexpress.com/api/v3/api/v3/budgets
+  -X GET
+  -H <span class="s2">"authentication_token: your token"</span>
+  -H <span class="s2">"app_company_id: 1"</span>
+</code></pre><h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://app.procurementexpress.com/api/v3/api/v3/budgets</code></p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>Authorization: Bearer &lt;token&gt;</code></p>
 <h1 id='users'>Users</h1><h2 id='register'>Register</h2><pre class="highlight shell tab-shell"><code><span class="c"># Example Without Tracking Info</span>
 
 curl <span class="s1">'https://app.procurementexpress.com/api/v1/register'</span>
