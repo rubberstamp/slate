@@ -546,6 +546,11 @@ You can also search for your `Purchase Order` using `search` params example
 `/api/v1/purchase_orders?search=your search keyword`. It will perform full-text
 search and return result accordingly.
 
+### Return all purchase orders created/updated after certain date
+
+You can use `updated_after` query parameter to which should be a valid date string.
+example: `/api/v1/purchase_orders?updated_after=2024-01-01`.
+
 ### HTTP Request
 
 `GET https://app.procurementexpress.com/api/v1/purchase_orders?orders_page=1&search=something`
@@ -558,6 +563,7 @@ search and return result accordingly.
 | app_company_id       | header  | Company ID                                          |
 | orders_page          | integer | Used for Loading records from specified page number |
 | search               | string  | Used for searching Purchase Order by search keyword |
+| updated_after | Date (YYYY-mm-dd) | Return all purchase orders updated after given date |
 
 ## Get Purchase Order details
 
