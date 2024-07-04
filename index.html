@@ -5744,6 +5744,9 @@ to help your write your own logic of pagination.</p>
 <p>You can also search for your <code>Purchase Order</code> using <code>search</code> params example
 <code>/api/v1/purchase_orders?search=your search keyword</code>. It will perform full-text
 search and return result accordingly.</p>
+<h3 id='return-all-purchase-orders-created-updated-after-certain-date'>Return all purchase orders created/updated after certain date</h3>
+<p>You can use <code>updated_after</code> query parameter to which should be a valid date string.
+example: <code>/api/v1/purchase_orders?updated_after=2024-01-01</code>.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://app.procurementexpress.com/api/v1/purchase_orders?orders_page=1&amp;search=something</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
@@ -5773,6 +5776,11 @@ search and return result accordingly.</p>
 <td>search</td>
 <td>string</td>
 <td>Used for searching Purchase Order by search keyword</td>
+</tr>
+<tr>
+<td>updated_after</td>
+<td>Date (YYYY-mm-dd)</td>
+<td>Return all purchase orders updated after given date</td>
 </tr>
 </tbody></table>
 <h2 id='get-purchase-order-details'>Get Purchase Order details</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
