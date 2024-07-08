@@ -8228,17 +8228,18 @@ have enough permission to mark purchase order as paid or not, you need to first 
 
 <p><strong>updated_at</strong>: is the date when the supplier request was last updated. We don&#39;t store specific approval date in our db, so you can use <code>updated_at</code> as a approval date.</p>
 <h3 id='feature-flag-enable_supplier_approval_api_access'>Feature Flag (enable_supplier_approval_api_access)</h3>
-<p>Feature flag must be enabled to access this API endpoint otherwise it will return following response</p>
-
-<p><img src="https://github.com/rubberstamp/po-app/assets/4189129/4a3a965f-e050-4de4-a780-f11345c2057c" alt="image" /></p>
-<h3 id='supplier-approval-is-disabled-in-company-setting'>Supplier approval is disabled in company setting</h3>
-<p>If following company setting id disabled</p>
-
-<p><img src="https://github.com/rubberstamp/po-app/assets/4189129/2f75e79a-a4c6-4dec-9a03-3ca8af635829" alt="image" /></p>
-
-<p>You will receive following response
-<img src="https://github.com/rubberstamp/po-app/assets/4189129/0bd9125e-f852-475e-be24-502b572b698b" alt="image" /></p>
-<h3 id='pagination'>Pagination</h3>
+<p>Feature flag must be enabled to access this API endpoint otherwise it will return error response.</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please enable supplier approval setting from your company setting, Supplier tab."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='supplier-approval-is-disabled-in-company-setting'>Supplier approval is disabled in company setting</h3>
+<p>If the supplier approval company setting is disabled it will return error response.</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please contact support/success team to enable supplier approval."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='pagination'>Pagination</h3>
 <p>You can paginate records by passing <code>page</code> params, example:
 <code>/api/v1/supplier_approvals?page=2</code>. If you enable pagination, the output will include
 <code>meta</code> object which contains information like <code>current_page</code>, <code>next_page</code>,
