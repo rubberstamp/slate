@@ -26,6 +26,7 @@ includes:
   - invoices
   - digital_invoices
   - payments
+  - supplier_approvals
   - suppliers
   - send_to_supplier_templates
   - tax_rates
