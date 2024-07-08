@@ -74,6 +74,28 @@ This API endpoint returns list of supplier requests that are either `pending`, `
 
 **updated_at**: is the date when the supplier request was last updated. We don't store specific approval date in our db, so you can use `updated_at` as a approval date.
 
+### Feature Flag (enable_supplier_approval_api_access)
+
+Feature flag must be enabled to access this API endpoint otherwise it will return error response.
+
+```json
+{
+    "error": "Please enable supplier approval setting from your company setting, Supplier tab.",
+    "status": 400
+}
+```
+
+### Supplier approval is disabled in company setting
+
+If the supplier approval company setting is disabled it will return error response.
+
+```json
+{
+    "error": "Please contact support/success team to enable supplier approval.",
+    "status": 400
+}
+```
+
 ### Pagination
 
 You can paginate records by passing `page` params, example:
